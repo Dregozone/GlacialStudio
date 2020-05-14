@@ -9,7 +9,7 @@
         <section class="linksRight">
             <div><a href="termsofservice">Terms of service</a></div>
             <div><a href="privacypolicy">Privacy policy</a></div>
-            <div><a href="">Site map</a></div>
+            <div><a href="#">Site map</a></div>
         </section>
     </section>
 

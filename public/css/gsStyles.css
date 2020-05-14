@@ -9,6 +9,11 @@ html, body {
 
 a {
     text-decoration: none !important;
+    color: inherit !important;
+}
+
+.center {
+    text-align: center;
 }
 
 .links > a {
@@ -28,6 +33,7 @@ header {
     justify-content: center; 
     align-items: center;
     background: #adcce6;
+    box-shadow: 0 0 15px 3px lightgrey;
 }
     header > .logo {
         width: 25%;
@@ -61,10 +67,14 @@ header {
         text-align: center;
     }
 
-main { grid-area: main; }
+main { 
+    grid-area: main; 
+    margin: 0 !important;
+}
 
 footer { 
     grid-area: footer; 
+    margin: 0 !important;
 
 }
     footer > .links {
@@ -92,6 +102,7 @@ footer {
         text-align: center;
         padding: 1vmin;
         color: black;
+        font-size: 70%;
     }
 
 .grid-container {

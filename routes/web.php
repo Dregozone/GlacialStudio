@@ -23,10 +23,3 @@ Route::get('/contact', 'PagesController@contact');
 Route::get('/news', 'PagesController@news');
 Route::get('/termsofservice', 'PagesController@termsofservice');
 Route::get('/privacypolicy', 'PagesController@privacypolicy');
-
-
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/

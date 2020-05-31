@@ -1,0 +1,26 @@
+section.projectGroup {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2% 15%;
+    width: 70%;
+    border: 1px solid red;
+}
+    article.project {
+        background: green;
+        width: 31%;
+        margin: 1%;
+    }
+        img.project {
+            border: 2px solid black;
+        }
+
+/* FOR MOBILE */
+@media only screen and (max-width: 600px) {
+    section.projectGroup {
+        margin: 1% 5%;
+        width: 90%;
+    }
+        article.project {
+            width: 98%;
+        }
+}

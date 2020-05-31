@@ -71,6 +71,9 @@ main {
     grid-area: main; 
     margin: 0 !important;
 }
+    .heading {
+        text-align: center;
+    }
 
 footer { 
     grid-area: footer; 

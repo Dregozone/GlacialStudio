@@ -18,8 +18,12 @@ Route::get('/home', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
 Route::get('/products', 'PagesController@products');
 Route::get('/portfolio', 'PagesController@portfolio');
+
+Route::post('/contact', 'PagesController@contact')->name('contact');
 Route::get('/contact', 'PagesController@contact');
 
 Route::get('/news', 'PagesController@news');
 Route::get('/termsofservice', 'PagesController@termsofservice');
 Route::get('/privacypolicy', 'PagesController@privacypolicy');
+
+Route::resource('pages', 'PagesController');

@@ -15,7 +15,12 @@
             
         <!-- Start dynamic page content -->
         <main>
-            Home {{ $a }}
+            <h1 class="heading">About</h1>
+            
+            <p>
+                Coming soon...
+            </p>
+            
         </main>
         <!-- End dynamic page content -->
             

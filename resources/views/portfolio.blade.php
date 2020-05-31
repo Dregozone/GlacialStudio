@@ -7,6 +7,7 @@
         <!-- Page level <head> information -->
         <title>Home - Glacial Studio</title>
         
+        <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}" />
         
     </head>
     <body>
@@ -15,7 +16,47 @@
             
         <!-- Start dynamic page content -->
         <main>
-            Home {{ $a }}
+            <h1 class="heading">Portfolio</h1>
+            
+            <section class="projectGroup">
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+                <article class="project">
+                    <img class="project" src="" alt="" />
+                </article>
+                
+            </section>
         </main>
         <!-- End dynamic page content -->
             

@@ -46,12 +46,20 @@ class PagesController extends Controller
         );
     }
 
-    public function contact() {
+    public function contact(Request $request) {
+        
+        $name = $request->post('name');
+        $email = $request->post('email');
+        $reason = $request->post('reason');
+        $message = $request->post('message');
         
         return view(
              "contact"
             ,array(
-                "a" => "1"
+                 "name" => $name
+                ,"email" => $email
+                ,"reason" => $reason
+                ,"message" => $message
             )
         );
     }

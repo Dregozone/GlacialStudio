@@ -17,7 +17,7 @@
         <main>
             <h1 class="heading">About</h1>
             
-            <p>
+            <p class="center">
                 Coming soon...
             </p>
             

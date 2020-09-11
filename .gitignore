@@ -10,3 +10,17 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+.bash_history
+.bash_logout
+.bashrc
+bitnami_application_password
+bitnami_credentials
+.cache
+.config
+.editorconfig
+.local
+.profile
+.ssh
+/stack
+

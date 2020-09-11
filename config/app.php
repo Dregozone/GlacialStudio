@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'GlacialStudio'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://18.132.97.201'),
+    'url' => env('APP_URL', 'http://18.134.40.25'),
 
     'asset_url' => env('ASSET_URL', null),
 

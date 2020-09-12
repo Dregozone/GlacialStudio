@@ -1,0 +1,25 @@
+section.projectGroup {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2vmin 15vw;
+    width: 70vw;
+}
+    article.project {
+        width: 32.8vw;
+        margin: 1vw;
+    }
+        img.project {
+            border: 1px solid darkslategrey;
+            width: 100%;
+        }
+
+/* FOR MOBILE */
+@media only screen and (max-width: 600px) {
+    section.projectGroup {
+        margin: 1vmin 5vw;
+        width: 90vw;
+    }
+        article.project {
+            width: 98%;
+        }
+}

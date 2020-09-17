@@ -21,8 +21,11 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
+$autoloadLocation = file_exists( "/home/bitnami/vendor/autoload.php" ) ? "/home/bitnami" : __DIR__;
+
+define("HOST_DIR", $autoloadLocation); // Smart
 //define("HOST_DIR", __DIR__); // Local development
-define("HOST_DIR", "/home/bitnami"); // Deployed on AWS
+//define("HOST_DIR", "/home/bitnami"); // Deployed on AWS
 
 require HOST_DIR . '/vendor/autoload.php';
 

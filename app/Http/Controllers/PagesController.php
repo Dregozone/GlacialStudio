@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function home() {
-        
+
         return view(
              "home"
             ,array(
@@ -15,9 +15,9 @@ class PagesController extends Controller
             )
         );
     }
-    
+
     public function about() {
-        
+
         return view(
              "about"
             ,array(
@@ -27,7 +27,7 @@ class PagesController extends Controller
     }
 
     public function products() {
-        
+
         return view(
              "products"
             ,array(
@@ -37,7 +37,7 @@ class PagesController extends Controller
     }
 
     public function portfolio() {
-        
+
         return view(
              "portfolio"
             ,array(
@@ -47,12 +47,12 @@ class PagesController extends Controller
     }
 
     public function contact(Request $request) {
-        
+
         $name = $request->post('name');
         $email = $request->post('email');
         $reason = $request->post('reason');
         $message = $request->post('message');
-        
+
         return view(
              "contact"
             ,array(
@@ -65,7 +65,7 @@ class PagesController extends Controller
     }
 
     public function news() {
-        
+
         return view(
              "news"
             ,array(
@@ -75,7 +75,7 @@ class PagesController extends Controller
     }
 
     public function termsofservice() {
-        
+
         return view(
              "termsofservice"
             ,array(
@@ -85,7 +85,7 @@ class PagesController extends Controller
     }
 
     public function privacypolicy() {
-        
+
         return view(
              "privacypolicy"
             ,array(

@@ -5,8 +5,7 @@
         @include('includes.htmlHead')
 
         <!-- Page level <head> information -->
-        <title>About - Glacial Studio</title>
-
+        <title><?= Route::currentRouteName(); ?> - Glacial Studio</title>
 
     </head>
     <body>

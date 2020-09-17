@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@home');
 Route::get('/home', 'PagesController@home');
-Route::get('/about', 'PagesController@about');
-Route::get('/products', 'PagesController@products');
-Route::get('/portfolio', 'PagesController@portfolio');
+Route::get('/about', 'PagesController@about')->name('About');
+Route::get('/products', 'PagesController@products')->name('Products');
+Route::get('/portfolio', 'PagesController@portfolio')->name('Portfolio');
 
 Route::post('/contact', 'PagesController@contact')->name('contact');
-Route::get('/contact', 'PagesController@contact');
+Route::get('/contact', 'PagesController@contact')->name('Contact');
 
-Route::get('/news', 'PagesController@news');
-Route::get('/termsofservice', 'PagesController@termsofservice');
-Route::get('/privacypolicy', 'PagesController@privacypolicy');
+Route::get('/news', 'PagesController@news')->name('News');
+Route::get('/termsofservice', 'PagesController@termsofservice')->name('ToS');
+Route::get('/privacypolicy', 'PagesController@privacypolicy')->name('Privacy');
 
 Route::resource('pages', 'PagesController');

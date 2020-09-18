@@ -5,7 +5,7 @@ html, body {
     font-weight: 200;
     font-size: 1.5vw;
     margin: 0;
-}            
+}
 
 a {
     text-decoration: none !important;
@@ -26,11 +26,11 @@ a {
     text-transform: uppercase;
 }
 
-header { 
-    grid-area: header; 
+header {
+    grid-area: header;
     display: flex;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     background: #adcce6;
     box-shadow: 0 0 15px 3px lightgrey;
@@ -67,16 +67,16 @@ header {
         text-align: center;
     }
 
-main { 
-    grid-area: main; 
+main {
+    grid-area: main;
     margin: 0 !important;
 }
     .heading {
         text-align: center;
     }
 
-footer { 
-    grid-area: footer; 
+footer {
+    grid-area: footer;
     margin: 0 !important;
 
 }
@@ -114,6 +114,17 @@ footer {
     grid-gap: 0;
     padding: 0;
 }
+
+.socials {
+    margin-bottom: 2%;
+}
+    .socials > a > img {
+        width: 4.7vmin;
+        border: 1px solid rgba(29, 83, 138, 0.2);
+    }
+    .socialsRounded {
+        border-radius: 100%;
+    }
 
 /* FOR MOBILE */
 @media only screen and (max-width: 600px) {

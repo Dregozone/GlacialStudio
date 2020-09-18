@@ -15,6 +15,20 @@
     </nav>
 
     <section class="socialMedia">
-        Social media
+
+        <div class="socials">
+            <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank">
+                <img class="socialsRounded" src="{{ asset("images/Facebook.png") }}" />
+            </a>
+
+            <a href="https://www.linkedin.com/in/andreas-learmonth-982318a1/" target="_blank">
+                <img class="socialsRounded" src="{{ asset("images/LinkedIn.png") }}" />
+            </a>
+
+            <a href="https://github.com/Dregozone" target="_blank">
+                <img class="socialsRounded" src="{{ asset("images/GitHub.png") }}" />
+            </a>
+        </div>
+
     </section>
 </header>

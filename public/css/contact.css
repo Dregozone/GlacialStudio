@@ -32,10 +32,10 @@ textarea {
 
 .fbContainer {
     position: relative;
-    padding-top: 7%;
+    padding-top: 7vmin;
 }
     .fbContainer > div {
-        padding-top: 1%;
+        padding-top: 1vmin;
         margin-left: 20%;
         text-align: left;
     }
@@ -46,3 +46,27 @@ textarea {
         margin: 8px 1%;
         color: black;
     }
+
+/* FOR MOBILE */
+@media only screen and (max-width: 600px) {
+
+    label {
+        width: 20%;
+    }
+
+    .contactContainer {
+        flex-direction: column;
+    }
+    .contactContainer > section {
+        margin: 1% 5vw;
+        text-align: center;
+    }
+    .contactContainerLeft {
+        width: 90vw;
+    }
+    .contactContainerRight {
+        width: 90vw;
+        padding-bottom: 3vmin;
+    }
+
+}

@@ -27,6 +27,8 @@ a {
 }
 
 header {
+    position: sticky;
+    top: 0;
     grid-area: header;
     display: flex;
     flex-direction: row;
@@ -78,7 +80,6 @@ main {
 footer {
     grid-area: footer;
     margin: 0 !important;
-
 }
     footer > .links {
         display: flex;
@@ -105,7 +106,7 @@ footer {
         text-align: center;
         padding: 1vmin;
         color: black;
-        font-size: 70%;
+        font-size: 55%;
     }
 
 .grid-container {

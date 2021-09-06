@@ -45,26 +45,26 @@
                         <fieldset>
                             <p>
                                 <label for="name">Name</label>
-                                <input class="inputField" type="text" id="name" name="name" placeholder="Your name" value="{{ $name }}" />
+                                <input class="form-control inputField" type="text" id="name" name="name" placeholder="Your name" value="{{ $name }}" />
                             </p>
 
                             <p>
                                 <label for="email">Email</label>
-                                <input class="inputField" type="text" id="email" name="email" placeholder="Email" value="{{ $email }}" />
+                                <input class="form-control inputField" type="text" id="email" name="email" placeholder="Email" value="{{ $email }}" />
                             </p>
 
                             <p>
                                 <label for="reason">Reason for contact</label>
-                                <select class="inputField" id="reason" name="reason">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                <select class="form-control inputField" id="reason" name="reason">
+                                    <option value="none">-- Please select --</option>
+                                    <option value="quote">Quote</option>
+                                    <option value="info">More information</option>
                                 </select>
                             </p>
 
                             <p>
                                 <label for="message">Message</label>
-                                <textarea class="inputField" id="message" name="message">{{ $message }}</textarea>
+                                <textarea class="form-control inputField" id="message" name="message">{{ $message }}</textarea>
                             </p>
 
                             <p>

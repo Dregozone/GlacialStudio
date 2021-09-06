@@ -1,9 +1,15 @@
 h1 {
     font-size: 400%;
+    margin: 1% 0 0 0;
+    padding: 0;
 }
 
 h2 {
-    font-size: 180%;
+    font-size: 150%;
+}
+
+h3 {
+    margin-top: 1%;
 }
 
 p {
@@ -23,4 +29,53 @@ section.gradient {
     background-image: linear-gradient(to top, #e3eef7, white);
     margin: 0 !important;
     padding-bottom: 1.2vmin;
+}
+
+.carouselFlex {
+    display: flex;
+    width: 80%;
+    margin: 0.5% 10% 1% 10%;
+}
+    .carouselFlex > div {
+        width: 31%;
+        margin: 0 1%;
+    }
+
+.indicatorAdjust {
+    padding: 20px;
+    margin: 20px;
+}
+    .indicatorAdjust > li {
+        border: 1px solid darkslategrey;
+        background: rgb(25, 25, 26);
+    }
+
+img.project {
+    width: 90%;
+    border: 1px solid rgba(47, 79, 79, 0.5);
+}
+img.techLogo {
+    width: 60%;
+}
+
+div.technologyTable {
+    margin: 1% 34%;
+    width: 32%;
+}
+    table.technologyTable {
+        width: 100%;
+    }
+
+.smaller {
+    font-size: 75%;
+}
+
+td.techLogo {
+    width: 15%;
+    padding: 1%;
+}
+td.techName {
+    width: 35%;
+    text-align: left;
+    margin-left: 1%;
 }

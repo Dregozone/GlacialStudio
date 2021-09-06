@@ -25,32 +25,111 @@
                     <div class="btn callToAction">Enquire to realise your vision</div>
                 </a>
 
-                <h2>About</h2>
+                <h3>About</h3>
 
                 <p>"I set up Glacial Studio with a goal to provide affordable, effective web solutions.
                     I strive for customer satisfaction, setting deliverables and clear timeframes upfront
                     and am always working towards your dream solution"
                 </p>
-                <p>- Anders Learmonth (Software Engineer)</p>
+                <p class="small">- Anders Learmonth <span class="smaller">MSc.</span> <i class="small">(Software Engineer, Glacial Studio)</i></p>
+                
+                <hr />
 
-                <p>
-                    Using a range of the latest technologies and taking a streamlined approach to development with focus on fast,
-                    efficient design, I aim to provide sleek web applications with a unique eye for user-experience that will leave your
-                    clients fulfilled.
-                </p>
-                <p>
-                    <a href="about">
-                        Find out more...
-                    </a>
-                </p>
+                <div class="technologyTable">
+                    <h3>Technologies used:</h3>
+
+                    <table class="technologyTable">
+                        <tr>
+                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/php.jpg') }}" alt="PHP Logo" /> </td>
+                            <td class="techName">PHP</td>
+                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/aws.jpg') }}" alt="AWS Logo" /> </td>
+                            <td class="techName">AWS</td>
+                        </tr>
+                        <tr>
+                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/laravel.jpg') }}" alt="Laravel Logo" /> </td>
+                            <td class="techName">Laravel</td>
+                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/react.jpg') }}" alt="React Logo" /> </td>
+                            <td class="techName">React</td>
+                        </tr>
+                        <tr>
+                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/javascript.jpg') }}" alt="Javascript Logo" /> </td>
+                            <td class="techName">Javascript</td>
+                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/bootstrap.jpg') }}" alt="Bootstrap Logo" /> </td>
+                            <td class="techName">Bootstrap</td>
+                        </tr>
+                    </table>
+                </div>
+
             </section>
 
             <section class="gradient">
-                <h2>Portfolio</h2>
+                <h3>Portfolio</h3>
 
-                <p>
-                    Scroll project portfolio here...
-                </p>
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="carouselFlex">
+                                <div>
+                                    <img class="project" src="{{ asset('images/adscreens.jpg') }}" alt="adscreens portfolio" />
+                                </div>
+                                <div>
+                                    <img class="project" src="{{ asset('images/FaceFacts.jpg') }}" alt="Face facts clinic portfolio" />
+                                </div>
+                                <div>
+                                    <img class="project" src="{{ asset('images/i-walk.jpg') }}" alt="i-walk portfolio" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="carouselFlex">
+                                <div>
+                                    <img class="project" src="{{ asset('images/HolisticVision.jpg') }}" alt="Holistic Vision portfolio" />
+                                </div>
+                                <div>
+                                    <img class="project" src="{{ asset('images/BlingWing.jpg') }}" alt="Bling Wing portfolio" />
+                                </div>
+                                <div>
+                                    <img class="project" src="{{ asset('images/ExclusionZone.jpg') }}" alt="Exclusion zone MMORPG portfolio" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 
+                        <div class="carousel-item">
+                            <div class="carouselFlex">
+                                <div>
+                                    7
+                                </div>
+                                <div>
+                                    8
+                                </div>
+                                <div>
+                                    9
+                                </div>
+                            </div>
+                        </div>
+                        --> 
+                    </div>
+
+                    <br />
+
+                    <ol class="carousel-indicators indicatorAdjust">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> --> 
+                    </ol>
+
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </section>
 
         </main>

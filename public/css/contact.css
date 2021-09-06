@@ -4,6 +4,7 @@ label {
     margin-right: 1%;
 }
 .inputField {
+    display: inline-block;
     width: 50%;
     box-sizing: border-box;
     padding: 0.8vmin 1.2vmin;

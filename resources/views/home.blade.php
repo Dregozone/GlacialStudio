@@ -25,39 +25,86 @@
                     <div class="btn callToAction">Enquire to realise your vision</div>
                 </a>
 
-                <h3>About</h3>
+                <div class="py-3">
+                    <h3>About</h3>
 
-                <p>"I set up Glacial Studio with a goal to provide affordable, effective web solutions.
-                    I strive for customer satisfaction, setting deliverables and clear timeframes upfront
-                    and am always working towards your dream solution"
-                </p>
-                <p class="small">- Anders Learmonth <span class="smaller">MSc.</span> <i class="small">(Software Engineer, Glacial Studio)</i></p>
-                
-                <hr />
+                    <blockquote class="blockquote">
+                        <p class="mb-0 small">
+                            "I set up Glacial Studio with a goal to provide affordable, effective web solutions.
+                            I strive for customer satisfaction, setting deliverables and clear timeframes upfront
+                            and am always working towards your dream solution"
+                        </p>
 
-                <div class="technologyTable">
-                    <h3>Technologies used:</h3>
+                        <footer class="blockquote-footer smaller">
+                            <cite title="Source Title">
+                                Anders Learmonth
+                            </cite>
 
-                    <table class="technologyTable">
-                        <tr>
-                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/php.jpg') }}" alt="PHP Logo" /> </td>
-                            <td class="techName">PHP</td>
-                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/aws.jpg') }}" alt="AWS Logo" /> </td>
-                            <td class="techName">AWS</td>
-                        </tr>
-                        <tr>
-                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/laravel.jpg') }}" alt="Laravel Logo" /> </td>
-                            <td class="techName">Laravel</td>
-                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/react.jpg') }}" alt="React Logo" /> </td>
-                            <td class="techName">React</td>
-                        </tr>
-                        <tr>
-                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/javascript.jpg') }}" alt="Javascript Logo" /> </td>
-                            <td class="techName">Javascript</td>
-                            <td class="techLogo"> <img class="techLogo" src="{{ asset('images/technologies/bootstrap.jpg') }}" alt="Bootstrap Logo" /> </td>
-                            <td class="techName">Bootstrap</td>
-                        </tr>
-                    </table>
+                            MSc. (Software Engineer, Glacial Studio)
+                        </footer>
+                    </blockquote>
+                </div>
+
+            </section>
+
+            <section class="gradient">
+
+                <div class="container px-4 py-3" id="featured-3">
+
+                    <h3>Products</h3>
+
+                    <div class="row g-4 row-cols-1 row-cols-lg-3 productShowArea">
+
+                        <div class="feature col productItem">
+                            <h4>Product 1</h4>
+                            
+                            <p>
+                                Explain product 1.
+                            </p>
+                            
+                            <a href="#" class="icon-link">
+                                <button class="btn btn-secondary smaller">
+                                    More info...
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="feature col productItem">
+                            <h4>Product 2</h4>
+                            
+                            <p>
+                                Explain product 2.
+                            </p>
+                            
+                            <a href="#" class="icon-link">
+                                <button class="btn btn-secondary smaller">
+                                    More info...
+                                </button>
+                            </a>
+                        </div>
+
+                        <div class="feature col productItem">
+                            <h4>Product 3</h4>
+                            
+                            <p>
+                                Explain product 3.
+                            </p>
+                            
+                            <a href="#" class="icon-link">
+                                <button class="btn btn-secondary smaller">
+                                    More info...
+                                </button>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="productsSeeAll">
+                        <a href="products">
+                            See all
+                        </a>
+                    </div>
+
                 </div>
 
             </section>
@@ -96,40 +143,26 @@
                             </div>
                         </div>
 
-                        <!-- 
-                        <div class="carousel-item">
-                            <div class="carouselFlex">
-                                <div>
-                                    7
-                                </div>
-                                <div>
-                                    8
-                                </div>
-                                <div>
-                                    9
-                                </div>
-                            </div>
-                        </div>
-                        --> 
                     </div>
 
                     <br />
 
-                    <ol class="carousel-indicators indicatorAdjust">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> --> 
-                    </ol>
-
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon nextPrev" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon nextPrev" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+            </section>
+
+            <section class="gradient">
+                <h3>Reviews</h3>
+
+
+                
             </section>
 
         </main>

@@ -18,21 +18,134 @@
         <main>
             <h1 class="heading">Products</h1>
 
-            <article class="product">
-                Create a full professional or personal website
-            </article>
+            <h2>
+                Web-based
+                <br />
+                <small class="text-muted">
+                    For websites and tools.
+                </small>
+            </h2>
 
-            <article class="product">
-                Create a single page site
-            </article>
+            <section class="productPricing">
 
-            <article class="product">
-                Create a browser based game
-            </article>
+                <div class="productItem">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">
+                            Full website
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Light card title</h5>
+                            <p class="card-text">
+                                Professional or personal websites.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="productItem">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">
+                            Single-page application
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Light card title</h5>
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="productItem">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">
+                            Browser-based game
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Light card title</h5>
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="productItem">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">
+                            Custom project
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Light card title</h5>
+                            <p class="card-text">
+                                Please enquire about custom project requests.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+            <h2>
+                IoT/Hybrid
+                <br />
+                <small class="text-muted">
+                    For projects integrating between software and hardware.
+                </small>
+            </h2>
+
+            <section class="productPricing">
+
+                <div class="card bg-light mb-3 productItem">
+                    <div class="card-header">
+                        IoT project
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Light card title</h5>
+                        <p class="card-text">
+                            Web-based front-end monitors and controls hardware.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card bg-light mb-3 productItem">
+                    <div class="card-header">
+                        Microcontroller
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Light card title</h5>
+                        <p class="card-text">
+                            Design, build, programming and test to bring your microcontroller project to life.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card bg-light mb-3 productItem">
+                    <div class="card-header">
+                        Custom project
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Light card title</h5>
+                        <p class="card-text">
+                            Please enquire about custom project requests.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+
 
             <p class="info">
-                Enquire for an accurate quote or to request more information.
+                <a href="contact">
+                    Enquire
+                </a>
+
+                for an accurate quote or to request more information.
             </p>
+
         </main>
         <!-- End dynamic page content -->
 

@@ -40,6 +40,10 @@ section.gradient {
         width: 31%;
         margin: 0 1%;
     }
+    .nextPrev {
+        background-color: darkslategrey;
+        border-radius: 50%;
+    }
 
 .indicatorAdjust {
     padding: 20px;
@@ -57,4 +61,29 @@ img.project {
 
 .smaller {
     font-size: 75%;
+}
+
+.productShowArea {
+    margin: inherit;
+}
+    .productItem {
+        display: block;
+        position: relative;
+    }
+
+.productsSeeAll {
+    margin-top: 2.5%;
+}
+
+/* FOR MOBILE */
+@media only screen and (max-width: 600px) {
+
+    .productItem {
+        margin: 2.3% 0;
+    }
+
+    .col {
+        flex-basis: unset;
+    }
+
 }

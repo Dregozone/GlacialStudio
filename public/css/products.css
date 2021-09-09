@@ -21,6 +21,29 @@
 
 .productPricing {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     justify-content: space-around;
+    margin: 0.5% 10%;
+    width: 80%;
+    font-size: 70%;
+}
+    .productPricing > div {
+        margin: 0 1%;
+    }
+    .productItem {
+        width: 24%;
+    }
+
+/* FOR MOBILE */
+@media only screen and (max-width: 600px) {
+
+    .productPricing {
+        flex-direction: column;
+        margin: 0.5% 17.5%;
+    }
+        .productItem {
+            width: 80%;
+        }
+
 }

@@ -36,6 +36,7 @@ header {
     align-items: center;
     background: #adcce6;
     box-shadow: 0 0 15px 3px lightgrey;
+    z-index: 99999;
 }
     header > .logo {
         width: 25%;
@@ -126,6 +127,12 @@ footer {
     .socialsRounded {
         border-radius: 100%;
     }
+
+.centerContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* FOR MOBILE */
 @media only screen and (max-width: 600px) {

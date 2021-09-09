@@ -18,3 +18,9 @@
     text-align: center;
     margin: 2% 0;
 }
+
+.productPricing {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

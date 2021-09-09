@@ -54,28 +54,7 @@ img.project {
     width: 90%;
     border: 1px solid rgba(47, 79, 79, 0.5);
 }
-img.techLogo {
-    width: 60%;
-}
-
-div.technologyTable {
-    margin: 1% 34%;
-    width: 32%;
-}
-    table.technologyTable {
-        width: 100%;
-    }
 
 .smaller {
     font-size: 75%;
-}
-
-td.techLogo {
-    width: 15%;
-    padding: 1%;
-}
-td.techName {
-    width: 35%;
-    text-align: left;
-    margin-left: 1%;
 }

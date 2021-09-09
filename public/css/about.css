@@ -1,0 +1,26 @@
+
+div.technologyTable {
+    margin: 1% 5%;
+    width: 40%;
+}
+    table.technologyTable {
+        width: 100%;
+    }
+
+img.techLogo {
+    width: 60%;
+}
+
+td.techLogo {
+    width: 15%;
+    padding: 1%;
+}
+td.techName {
+    width: 35%;
+    text-align: left;
+    margin-left: 1%;
+}
+
+.aboutSplitter {
+    display: flex;
+}

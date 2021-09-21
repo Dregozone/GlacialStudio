@@ -86,7 +86,7 @@
 
             </section>
 
-
+            <hr />
 
             <h2>
                 IoT/Hybrid

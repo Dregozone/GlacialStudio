@@ -1,8 +1,8 @@
 <header>
     <section class="logo">
         <a href="home">
-            <img src={{ asset('images/Logo-small.png') }} class="gsLogoSmall" alt="Glacial Studio Logo" aria-label="Glacial Studio Logo" />
-            <img src={{ asset('images/Logo.png') }} class="gsLogo" alt="Glacial Studio Logo" aria-label="Glacial Studio Logo" />
+            <img src={{ asset('images/Logo-small.png') }} class="gsLogoSmall socialsRounded" alt="Glacial Studio Logo" aria-label="Glacial Studio Logo" />
+            <img src={{ asset('images/Logo.png') }} class="gsLogo socialsRounded" alt="Glacial Studio Logo" aria-label="Glacial Studio Logo" />
         </a>
     </section>
 
@@ -18,16 +18,18 @@
 
         <div class="socials">
             <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank">
-                <img class="socialsRounded" src="{{ asset("images/Facebook.png") }}" />
+                <i class="bi bi-facebook socialsRounded" style="font-size: 1.4rem; color: #3b5998;"></i>
             </a>
 
             <a href="https://www.linkedin.com/in/andreas-learmonth-982318a1/" target="_blank">
-                <img class="socialsRounded" src="{{ asset("images/LinkedIn.png") }}" />
+                <i class="bi bi-linkedin socialsRounded" style="font-size: 1.4rem; color: #0077b5;"></i>
             </a>
 
             <a href="https://github.com/Dregozone" target="_blank">
-                <img class="socialsRounded" src="{{ asset("images/GitHub.png") }}" />
+                <i class="bi bi-github socialsRounded" style="font-size: 1.4rem; color: black;"></i>
             </a>
+
+            
         </div>
 
     </section>

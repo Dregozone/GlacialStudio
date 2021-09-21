@@ -81,15 +81,15 @@
 
                     <div class="socials">
                         <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank">
-                            <img src="{{ asset("images/Facebook.png") }}" />
+                            <i class="bi bi-facebook socialsRounded" style="font-size: 1.4rem; color: #3b5998;"></i>
                         </a>
 
                         <a href="https://www.linkedin.com/in/andreas-learmonth-982318a1/" target="_blank">
-                            <img src="{{ asset("images/LinkedIn.png") }}" />
+                            <i class="bi bi-linkedin socialsRounded" style="font-size: 1.4rem; color: #0077b5;"></i>
                         </a>
 
                         <a href="https://github.com/Dregozone" target="_blank">
-                            <img src="{{ asset("images/GitHub.png") }}" />
+                            <i class="bi bi-github socialsRounded" style="font-size: 1.4rem; color: black;"></i>
                         </a>
                     </div>
 

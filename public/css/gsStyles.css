@@ -118,14 +118,14 @@ footer {
 }
 
 .socials {
-    margin-bottom: 2%;
+    /*  */
 }
     .socials > a > img {
         width: 4.7vmin;
         border: 1px solid rgba(29, 83, 138, 0.2);
     }
-    .socialsRounded {
-        border-radius: 100%;
+    .socialsRounded:hover {
+        opacity: 0.7;
     }
 
 .centerContent {

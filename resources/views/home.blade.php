@@ -22,7 +22,9 @@
                 <h2>Innovative Web Solutions</h2>
 
                 <a href="contact">
-                    <div class="btn callToAction">Enquire to realise your vision</div>
+                    <div class="btn callToAction socialsRounded">
+                        Enquire to realise your vision
+                    </div>
                 </a>
 
                 <div class="py-3">

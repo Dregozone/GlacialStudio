@@ -1,11 +1,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- SEO -->
+<!-- Manifest and favicons --> 
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#adcce6">
+<meta name="theme-color" content="#adcce6">
 
-
-<!-- Favicon -->
 <link rel='shortcut icon' type='image/x-icon' href={{ asset('favicon.ico') }} />
+
+<meta name="msapplication-TileColor" content="#adcce6" />
+<meta name="theme-color" content="#ffffff" />
+
+<!-- SEO -->
+<meta name="author" content="Anders Learmonth, Glacial Studio" />
+<meta name="description" content="Creative web solutions, always client-focused with your project in mind. Discover your dream website with Glacial Studio." />
+<meta name="keywords" content="glacial,studio,web,design,solutions,client-focused,programmer,coder,basingstoke,hampshire,england,creative,efficient,browsing,anders,learmonth" />
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">

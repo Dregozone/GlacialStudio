@@ -70,20 +70,6 @@
                     </div>
                 </div>
 
-                <div class="productItem">
-                    <div class="card bg-light mb-3">
-                        <div class="card-header">
-                            Custom project
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
-                            <p class="card-text">
-                                Please enquire about custom project requests.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
             </section>
 
             <hr />
@@ -122,6 +108,20 @@
                     </div>
                 </div>
 
+            </section>
+
+            <hr />
+            
+            <h2>
+                Custom
+                <br />
+                <small class="text-muted">
+                    Get in touch to discuss your custom projects.
+                </small>
+            </h2>
+
+            <section class="productPricing">
+
                 <div class="card bg-light mb-3 productItem">
                     <div class="card-header">
                         Custom project
@@ -129,13 +129,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Light card title</h5>
                         <p class="card-text">
-                            Please enquire about custom project requests.
+                        Please enquire about custom project requests.
                         </p>
                     </div>
                 </div>
 
             </section>
-
 
 
             <p class="info">

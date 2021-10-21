@@ -44,17 +44,17 @@
                         @csrf
                         <fieldset>
                             <p>
-                                <label for="name">Name</label>
-                                <input class="form-control inputField" type="text" id="name" name="name" placeholder="Your name" value="{{ $name }}" />
+                                <label for="name">Name <span class="required">(*)</span></label>
+                                <input class="form-control inputField" type="text" id="name" name="name" placeholder="Your name" value="{{ $name }}" required />
                             </p>
 
                             <p>
-                                <label for="email">Email</label>
-                                <input class="form-control inputField" type="text" id="email" name="email" placeholder="Email" value="{{ $email }}" />
+                                <label for="email">Email <span class="required">(*)</span></label>
+                                <input class="form-control inputField" type="text" id="email" name="email" placeholder="Email" value="{{ $email }}" required />
                             </p>
 
                             <p>
-                                <label for="reason">Reason for contact</label>
+                                <label for="reason">Reason for contact <span class="required">(*)</span></label>
                                 <select class="form-control inputField" id="reason" name="reason">
                                     <option value="none">-- Please select --</option>
                                     <option value="quote">Quote</option>
@@ -63,16 +63,20 @@
                             </p>
 
                             <p>
-                                <label for="message">Message</label>
+                                <label for="message">Message <span class="required">(*)</span></label>
                                 <textarea class="form-control inputField" id="message" name="message">{{ $message }}</textarea>
                             </p>
 
-                            <p>
+                            <div class="formButtons">
                                 <button class="btn btn-light" onclick="clearForm(event);">Clear</button>
                                 <input class="btn btn-light" type="submit" value="Send" aria-label="Submit button" />
-                            </p>
+                            </div>
                         </fieldset>
                     </form>
+
+                    <p class="required" style="font-size: 100%;">
+                        (*) Fields are required.
+                    </p>
 
                 </section>
 

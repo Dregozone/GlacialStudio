@@ -17,19 +17,17 @@
     <section class="socialMedia">
 
         <div class="socials">
-            <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank">
+            <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank" aria-label="Facebook">
                 <i class="bi bi-facebook socialsRounded" style="font-size: 1.4rem; color: #3b5998;"></i>
             </a>
 
-            <a href="https://www.linkedin.com/in/andreas-learmonth-982318a1/" target="_blank">
+            <a href="https://www.linkedin.com/in/andreas-learmonth-982318a1/" target="_blank" aria-label="LinkedIn">
                 <i class="bi bi-linkedin socialsRounded" style="font-size: 1.4rem; color: #0077b5;"></i>
             </a>
 
-            <a href="https://github.com/Dregozone" target="_blank">
+            <a href="https://github.com/Dregozone" target="_blank" aria-label="GitHub">
                 <i class="bi bi-github socialsRounded" style="font-size: 1.4rem; color: black;"></i>
-            </a>
-
-            
+            </a>            
         </div>
 
     </section>

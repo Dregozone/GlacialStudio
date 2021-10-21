@@ -1,13 +1,28 @@
+fieldset > p {
+    display: flex;
+    align-items: flex-start;
+}
+
 label {
     width: 40%;
     text-align: right;
     margin-right: 1%;
 }
+
+.required {
+    color: darkorange;
+    font-size: 80%;
+}
+
 .inputField {
     display: inline-block;
     width: 50%;
     box-sizing: border-box;
     padding: 0.8vmin 1.2vmin;
+}
+
+.formButtons {
+    margin: 0 0 2% 1%;
 }
 
 textarea {
@@ -20,7 +35,6 @@ textarea {
     align-content: center;
 }
     .contactContainer > section {
-        /* border: 1px solid purple; */
         margin: 1% 3%;
         text-align: center;
     }

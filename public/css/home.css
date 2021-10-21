@@ -59,6 +59,12 @@ img.project {
     border: 1px solid rgba(47, 79, 79, 0.5);
 }
 
+img.thumb {
+    width: 90%;
+    border: 1px solid lightslategray;
+    margin: 1% 5%;
+}
+
 .smaller {
     font-size: 75%;
 }

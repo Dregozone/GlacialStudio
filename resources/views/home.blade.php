@@ -58,11 +58,9 @@
                     <div class="row g-4 row-cols-1 row-cols-lg-3 productShowArea">
 
                         <div class="feature col productItem">
-                            <h4>Product 1</h4>
+                            <h4>Website</h4>
                             
-                            <p>
-                                Explain product 1.
-                            </p>
+                            <img class="thumb" src="{{ asset('images/thumbs/Website.png') }}" alt="Website Thumbnail" />
                             
                             <a href="#" class="icon-link">
                                 <button class="btn btn-secondary smaller">
@@ -72,11 +70,9 @@
                         </div>
 
                         <div class="feature col productItem">
-                            <h4>Product 2</h4>
+                            <h4>IoT</h4>
                             
-                            <p>
-                                Explain product 2.
-                            </p>
+                            <img class="thumb" src="{{ asset('images/thumbs/IoT.png') }}" alt="IoT Thumbnail" />
                             
                             <a href="#" class="icon-link">
                                 <button class="btn btn-secondary smaller">
@@ -86,10 +82,10 @@
                         </div>
 
                         <div class="feature col productItem">
-                            <h4>Product 3</h4>
+                            <h4>Custom</h4>
                             
                             <p>
-                                Explain product 3.
+                                Get in touch for all custom project enquiries.
                             </p>
                             
                             <a href="#" class="icon-link">
@@ -161,7 +157,7 @@
             </section>
 
             <section class="gradient">
-                <h3>Reviews</h3>
+                <h3>Testimonials</h3>
 
                 <div class="container">
 
@@ -171,13 +167,13 @@
                                 <div class="d-flex">
                                     <div class="left">
                                         <span>
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="profile-pict-img img-fluid" alt="" />
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="profile-pict-img img-fluid" alt="User representation" />
                                         </span>
                                     </div>
                                     <div class="right">
                                         <h4>
-                                            Askbootstrap
-                                            <span class="gig-rating text-body-2">
+                                            Placeholder-user
+                                            <span class="gig-rating text-body-2" style="color: darkorange; font-weight: bold;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15" height="15">
                                                     <path
                                                         fill="currentColor"
@@ -189,18 +185,18 @@
                                         </h4>
 
                                         <div class="country d-flex align-items-center">
-                                            <span>
-                                                <img class="country-flag img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Flag" />
-                                            </span>
-                                            <div class="country-name font-accent">India</div>
+                                            <div class="country-name font-accent">
+                                                <img class="country-flag img-fluid" src="{{ asset('images/flags/uk.png') }}" alt="Flag" />
+                                                United Kingdom
+                                            </div>
                                         </div>
 
                                         <div class="review-description">
                                             <p>
-                                                The process was smooth, after providing the required info, Pragyesh sent me an outstanding packet of wireframes. Thank you a lot!
+                                                The process was smooth, after providing the required info, Anders sent me an outstanding packet of wireframes. Thank you a lot!
                                             </p>
                                         </div>
-                                        <span class="publish py-3 d-inline-block w-100">Published 4 weeks ago</span>
+                                        <span class="publish py-3 d-inline-block w-100">Published 2 weeks ago</span>
 
                                     </div>
                                 </div>
@@ -210,13 +206,13 @@
                                 <div class="d-flex">
                                     <div class="left">
                                         <span>
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="profile-pict-img img-fluid" alt="" />
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="profile-pict-img img-fluid" alt="User representation" />
                                         </span>
                                     </div>
                                     <div class="right">
                                         <h4>
-                                            Askbootstrap
-                                            <span class="gig-rating text-body-2">
+                                            Placeholder-user
+                                            <span class="gig-rating text-body-2" style="color: darkorange; font-weight: bold;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15" height="15">
                                                     <path
                                                         fill="currentColor"
@@ -228,15 +224,15 @@
                                         </h4>
 
                                         <div class="country d-flex align-items-center">
-                                            <span>
-                                                <img class="country-flag img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Flag" />
-                                            </span>
-                                            <div class="country-name font-accent">India</div>
+                                            <div class="country-name font-accent">
+                                                <img class="country-flag img-fluid" src="{{ asset('images/flags/uk.png') }}" alt="Flag" />
+                                                United Kingdom
+                                            </div>
                                         </div>
 
                                         <div class="review-description">
                                             <p>
-                                                The process was smooth, after providing the required info, Pragyesh sent me an outstanding packet of wireframes. Thank you a lot!
+                                                The process was smooth, after providing the required info, Anders sent me an outstanding packet of wireframes. Thank you a lot!
                                             </p>
                                         </div>
                                         <span class="publish py-3 d-inline-block w-100">Published 4 weeks ago</span>

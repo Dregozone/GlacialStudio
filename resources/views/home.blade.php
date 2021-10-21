@@ -190,7 +190,7 @@
 
                                         <div class="country d-flex align-items-center">
                                             <span>
-                                                <img class="country-flag img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" />
+                                                <img class="country-flag img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Flag" />
                                             </span>
                                             <div class="country-name font-accent">India</div>
                                         </div>
@@ -229,7 +229,7 @@
 
                                         <div class="country d-flex align-items-center">
                                             <span>
-                                                <img class="country-flag img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" />
+                                                <img class="country-flag img-fluid" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Flag" />
                                             </span>
                                             <div class="country-name font-accent">India</div>
                                         </div>

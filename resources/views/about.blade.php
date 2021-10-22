@@ -14,11 +14,11 @@
         @include('includes.header')
 
         <!-- Start dynamic page content -->
-        <main>
+        <main class="container">
             <h1 class="heading">About</h1>
 
             <section class="centerContent aboutPara">
-                <p class="center">
+                <p>
                     Using a range of the latest technologies and taking a streamlined approach to development with focus on fast,
                     efficient design, I aim to provide sleek web applications with a unique eye for user-experience that will leave your
                     clients fulfilled.
@@ -66,11 +66,8 @@
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="{{ asset('images/Anders.jpg') }}" alt="Photo of Anders">
 
-                        <div class="card-body">
-                            <h5 class="card-title">Anders Learmonth</h5>
-                            <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's content.
-                            </p>
+                        <div class="card-body" style="padding: 2%;">
+                            <h5 class="card-title" style="padding: 0; margin: 0; text-align: center;">Anders Learmonth MSc.</h5>
                         </div>
                     </div>
                 </div>

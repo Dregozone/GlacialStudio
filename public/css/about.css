@@ -1,4 +1,8 @@
 
+main {
+    margin: 0 auto !important; /* Fix for about page centering (Bootstrap) */
+}
+
 div.technologyTable {
     margin: 1% 5%;
     width: 40%;

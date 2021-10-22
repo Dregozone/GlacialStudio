@@ -28,7 +28,7 @@ h2 {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: center;
     margin: 0.5% 10%;
     width: 80%;
     font-size: 70%;
@@ -39,6 +39,11 @@ h2 {
     .productItem {
         width: 24%;
     }
+
+.pricings {
+    font-size: 210%;
+    text-align: center;
+}
 
 /* FOR MOBILE */
 @media only screen and (max-width: 600px) {

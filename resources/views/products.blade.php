@@ -18,11 +18,11 @@
         <main>
             <h1 class="heading">Products</h1>
 
-            <h2>
+            <h2 id="web">
                 Web-based
                 <br />
                 <small class="text-muted">
-                    For websites and tools.
+                    For a variety of websites and tools.
                 </small>
             </h2>
 
@@ -30,42 +30,69 @@
 
                 <div class="productItem">
                     <div class="card bg-light mb-3">
-                        <div class="card-header">
+                        <div class="card-header center">
                             Full website
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
+                            <h1 class="card-title pricing-card-title pricings">
+                                £24 <small class="text-muted">/ mo</small>
+                            </h1>
+
                             <p class="card-text">
-                                Professional or personal websites.
+                                <ul>
+                                    <li>Most popular</li>
+                                    <li>Professional websites</li>
+                                    <li>Personal websites</li>
+                                </ul>
                             </p>
+
+                            <button type="button" class="btn btn-block btn-outline-primary">Get started</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="productItem">
                     <div class="card bg-light mb-3">
-                        <div class="card-header">
+                        <div class="card-header center">
                             Single-page application
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
+                            <h1 class="card-title pricing-card-title pricings">
+                                £10 <small class="text-muted">/ mo</small>
+                            </h1>
+
                             <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                                <ul>
+                                    <li>Landing pages</li>
+                                    <li>Performance dashboard</li>
+                                    <li>Wizard applications</li>
+                                </ul>
                             </p>
+
+                            <button type="button" class="btn btn-block btn-outline-primary">Get started</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="productItem">
                     <div class="card bg-light mb-3">
-                        <div class="card-header">
+                        <div class="card-header center">
                             Browser-based game
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Light card title</h5>
+                            <h1 class="card-title pricing-card-title pricings">
+                                £19 <small class="text-muted">/ mo</small>
+                            </h1>
+
                             <p class="card-text">
-                                Some quick example text to build on the card title and make up the bulk of the card's content.
+                                <ul>
+                                    <li>MMORPG</li>
+                                    <li>Admin dashboards</li>
+                                    <li>Scalable solution</li>
+                                </ul>
                             </p>
+
+                            <button type="button" class="btn btn-block btn-outline-primary">Get started</button>
                         </div>
                     </div>
                 </div>
@@ -74,7 +101,7 @@
 
             <hr />
 
-            <h2>
+            <h2 id="IoT">
                 IoT/Hybrid
                 <br />
                 <small class="text-muted">
@@ -85,26 +112,46 @@
             <section class="productPricing">
 
                 <div class="card bg-light mb-3 productItem">
-                    <div class="card-header">
+                    <div class="card-header center">
                         IoT project
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Light card title</h5>
+
+                        <h1 class="card-title pricing-card-title pricings">
+                            £99 <small class="text-muted">/ mo</small>
+                        </h1>
+
                         <p class="card-text">
-                            Web-based front-end monitors and controls hardware.
+                            <ul>
+                                <li>Web-based</li>
+                                <li>Frontend monitors</li>
+                                <li>Control hardware</li>
+                            </ul>
                         </p>
+
+                        <button type="button" class="btn btn-block btn-outline-primary">Get started</button>
                     </div>
                 </div>
 
                 <div class="card bg-light mb-3 productItem">
-                    <div class="card-header">
+                    <div class="card-header center">
                         Microcontroller
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Light card title</h5>
+
+                        <h1 class="card-title pricing-card-title pricings">
+                            £99 <small class="text-muted">/ mo</small>
+                        </h1>
+
                         <p class="card-text">
-                            Design, build, programming and test to bring your microcontroller project to life.
+                            <ul>
+                                <li>Full life cycle</li>
+                                <li>Comprehensive testing</li>
+                                <li>Bring projects to life</li>
+                            </ul>
                         </p>
+
+                        <button type="button" class="btn btn-block btn-outline-primary">Get started</button>
                     </div>
                 </div>
 
@@ -112,7 +159,7 @@
 
             <hr />
             
-            <h2>
+            <h2 id="Custom">
                 Custom
                 <br />
                 <small class="text-muted">
@@ -123,14 +170,20 @@
             <section class="productPricing">
 
                 <div class="card bg-light mb-3 productItem">
-                    <div class="card-header">
+                    <div class="card-header center">
                         Custom project
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Light card title</h5>
+
+                        <h1 class="card-title pricing-card-title pricings">
+                            £<small class="text-muted">TBC</small>
+                        </h1>
+
                         <p class="card-text">
-                        Please enquire about custom project requests.
+                            Please enquire about custom project requests.
                         </p>
+
+                        <button type="button" class="btn btn-block btn-outline-primary">Get started</button>
                     </div>
                 </div>
 

@@ -62,7 +62,7 @@
                             
                             <img class="thumb" src="{{ asset('images/thumbs/Website.png') }}" alt="Website Thumbnail" />
                             
-                            <a href="#" class="icon-link">
+                            <a href="products#web" class="icon-link">
                                 <button class="btn btn-secondary smaller">
                                     More info...
                                 </button>
@@ -74,7 +74,7 @@
                             
                             <img class="thumb" src="{{ asset('images/thumbs/IoT.png') }}" alt="IoT Thumbnail" />
                             
-                            <a href="#" class="icon-link">
+                            <a href="products#IoT" class="icon-link">
                                 <button class="btn btn-secondary smaller">
                                     More info...
                                 </button>
@@ -88,7 +88,7 @@
                                 Get in touch for all custom project enquiries.
                             </p>
                             
-                            <a href="#" class="icon-link">
+                            <a href="products#Custom" class="icon-link">
                                 <button class="btn btn-secondary smaller">
                                     More info...
                                 </button>

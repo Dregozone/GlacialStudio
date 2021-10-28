@@ -50,7 +50,7 @@
 
                             <p>
                                 <label for="email">Email <span class="required">(*)</span></label>
-                                <input class="form-control inputField" type="text" id="email" name="email" placeholder="Email" value="{{ $email }}" required />
+                                <input class="form-control inputField" type="email" id="email" name="email" placeholder="Email" value="{{ $email }}" required />
                             </p>
 
                             <p>

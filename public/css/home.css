@@ -105,7 +105,7 @@ ul, ul li {
     border-radius: 50%;
 }
 .review-list ul li .right h4 {
-    font-size: 16px;
+    /* font-size: 16px; */
     margin: 0;
     display: flex;
 }
@@ -129,7 +129,7 @@ ul, ul li {
 }
 .country .country-name {
     color: #95979d;
-    font-size: 13px;
+    /* font-size: 13px; */
     font-weight: 600;
 }
 .review-list ul li {
@@ -144,16 +144,16 @@ ul, ul li {
     margin: 20px 0 0;
 }
 .review-list ul li .review-description p {
-    font-size: 14px;
+    /* font-size: 14px; */
     margin: 0;
 }
 .review-list ul li .publish {
-    font-size: 13px;
+    /* font-size: 13px; */
     color: #95979d;
 }
 
 .review-section h4 {
-    font-size: 20px;
+    /* font-size: 20px; */
     color: #222325;
     font-weight: 700;
 }

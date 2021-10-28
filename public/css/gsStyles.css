@@ -78,20 +78,24 @@ main {
         text-align: center;
     }
 
+.noBg {
+    background: none;
+}
+
 footer {
     grid-area: footer;
     margin: 0 !important;
+    background: #adcce6;
 }
-    footer > .links {
+    .links > .container {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        align-content: space-around;
-        background: #adcce6;
+        align-content: space-between;
         text-align: center;
         padding: 2vmin;
     }
-        footer > .links > .linksLeft, footer > .links > .linksRight {
+        .links > .container > .linksLeft, .links > .container > .linksRight {
             width: 50%;
         }
         .linksLeft > div > a, .linksRight > div > a {
@@ -102,7 +106,7 @@ footer {
                 color: black !important;
             }
 
-    footer > .copy {
+    .copy {
         background: #95bad8;
         text-align: center;
         padding: 1vmin;
@@ -158,10 +162,10 @@ footer {
             display: none;
         }
 
-    footer > .links {
+    .links > .container {
         flex-direction: column;
     }
-        footer > .links > .linksLeft, footer > .links > .linksRight {
+        .links > .container > .linksLeft, .links > .container > .linksRight {
             width: 100%;
         }
 }

@@ -27,7 +27,7 @@
                     </div>
                 </a>
 
-                <div class="py-3">
+                <div class="container py-3">
                     <h3>About</h3>
 
                     <blockquote class="blockquote">
@@ -37,7 +37,7 @@
                             and am always working towards your dream solution"
                         </p>
 
-                        <footer class="blockquote-footer smaller">
+                        <footer class="blockquote-footer smaller noBg">
                             <cite title="Source Title">
                                 Anders Learmonth
                             </cite>
@@ -84,9 +84,7 @@
                         <div class="feature col productItem">
                             <h4>Custom</h4>
                             
-                            <p>
-                                Get in touch for all custom project enquiries.
-                            </p>
+                            <img class="thumb" src="{{ asset('images/thumbs/Custom.png') }}" alt="Custom Thumbnail" />
                             
                             <a href="products#Custom" class="icon-link">
                                 <button class="btn btn-secondary smaller">
@@ -167,7 +165,7 @@
                                 <div class="d-flex">
                                     <div class="left">
                                         <span>
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="profile-pict-img img-fluid" alt="User representation" />
+                                            <img src="{{ asset('images/guest.jpg') }}" class="profile-pict-img img-fluid" alt="User representation" />
                                         </span>
                                     </div>
                                     <div class="right">
@@ -206,7 +204,7 @@
                                 <div class="d-flex">
                                     <div class="left">
                                         <span>
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="profile-pict-img img-fluid" alt="User representation" />
+                                            <img src="{{ asset('images/guest.jpg') }}" class="profile-pict-img img-fluid" alt="User representation" />
                                         </span>
                                     </div>
                                     <div class="right">

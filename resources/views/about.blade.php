@@ -35,7 +35,6 @@
             </section>
 
             <div class="aboutSplitter">
-
                 <div class="technologyTable">
                     <h3>Technologies used:</h3>
 
@@ -61,9 +60,8 @@
                     </table>
                 </div>
 
-
                 <div class="technologyTable">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="max-width: 15rem; margin: auto;">
                         <img class="card-img-top" src="{{ asset('images/Anders.jpg') }}" alt="Photo of Anders">
 
                         <div class="card-body" style="padding: 2%;">
@@ -71,9 +69,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
 
         </main>
         <!-- End dynamic page content -->

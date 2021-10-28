@@ -27,4 +27,20 @@ td.techName {
 
 .aboutSplitter {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* FOR MOBILE */
+@media only screen and (max-width: 600px) {
+
+    .aboutSplitter {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .technologyTable {
+        text-align: center;
+    }
 }

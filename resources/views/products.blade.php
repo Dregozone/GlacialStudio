@@ -40,7 +40,7 @@
 
                             <p class="card-text">
                                 <ul>
-                                    <li>Most popular</li>
+                                    <li> <span style="color: #e6b800;">&#128946;</span> Most popular</li>
                                     <li>Professional websites</li>
                                     <li>Personal websites</li>
                                 </ul>
@@ -97,6 +97,29 @@
                     </div>
                 </div>
 
+                <div class="productItem">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header center">
+                            eCommerce Shop
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title pricings">
+                                £99 <small class="text-muted">/ mo</small>
+                            </h1>
+
+                            <p class="card-text">
+                                <ul>
+                                    <li>Online shop</li>
+                                    <li>Admin dashboards</li>
+                                    <li>User metrics</li>
+                                </ul>
+                            </p>
+
+                            <button type="button" class="btn btn-block btn-outline-primary">Get started</button>
+                        </div>
+                    </div>
+                </div>
+
             </section>
 
             <hr />
@@ -125,7 +148,7 @@
                             <ul>
                                 <li>Web-based</li>
                                 <li>Frontend monitors</li>
-                                <li>Control hardware</li>
+                                <li>Hardware control</li>
                             </ul>
                         </p>
 

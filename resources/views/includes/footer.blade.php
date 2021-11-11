@@ -17,7 +17,7 @@
 
     <section class="copy">
         <div class="container">
-            &copy; Copyright <?= date('Y'); ?>
+            Glacial Studio &copy; Copyright <?= date('Y'); ?>
         </div>
     </section>
 </footer>

@@ -91,6 +91,9 @@ ul, ul li {
     list-style: none;
     margin: 0px;
 }
+.review-list {
+    font-size: 1.7vmin;
+}
 .review-list ul li .left span {
     width: 32px;
     height: 32px;
@@ -106,6 +109,7 @@ ul, ul li {
 }
 .review-list ul li .right h4 {
     /* font-size: 16px; */
+    font-size: 2vmin;
     margin: 0;
     display: flex;
 }

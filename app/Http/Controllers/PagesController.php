@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
     public function home() {
 
-        return view(
-             "home"
-            ,array(
-                "a" => "1"
-            )
+        $testimonials = DB::select('select * from testimonials');
+
+        //dd( $testimonials );
+
+        return view("home", [
+                "a" => "1",
+                "testimonials" => $testimonials,
+            ]
         );
     }
 

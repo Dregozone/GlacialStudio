@@ -161,83 +161,49 @@
 
                     <div class="review-list">
                         <ul>
-                            <li>
-                                <div class="d-flex">
-                                    <div class="left">
-                                        <span>
-                                            <img src="{{ asset('images/guest.jpg') }}" class="profile-pict-img img-fluid" alt="User representation" />
-                                        </span>
-                                    </div>
-                                    <div class="right">
-                                        <h4>
-                                            Placeholder-user
-                                            <span class="gig-rating text-body-2" style="color: darkorange; font-weight: bold;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15" height="15">
-                                                    <path
-                                                        fill="currentColor"
-                                                        d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
-                                                    ></path>
-                                                </svg>
-                                                5.0
+
+                            @foreach ($testimonials as $testimonial) 
+
+                                <li>
+                                    <div class="d-flex">
+                                        <div class="left">
+                                            <span>
+                                                <img src="{{ asset('images/guest.jpg') }}" class="profile-pict-img img-fluid" alt="User representation" />
                                             </span>
-                                        </h4>
-
-                                        <div class="country d-flex align-items-center">
-                                            <div class="country-name font-accent">
-                                                <img class="country-flag img-fluid" src="{{ asset('images/flags/uk.png') }}" alt="Flag" />
-                                                United Kingdom
+                                        </div>
+                                        <div class="right">
+                                            <h4>
+                                                {{ $testimonial->username }}
+                                                <span class="gig-rating text-body-2" style="color: darkorange; font-weight: bold;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15" height="15">
+                                                        <path
+                                                            fill="currentColor"
+                                                            d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
+                                                        ></path>
+                                                    </svg>
+                                                    {{ $testimonial->rating }}.0
+                                                </span>
+                                            </h4>
+    
+                                            <div class="country d-flex align-items-center">
+                                                <div class="country-name font-accent">
+                                                    <img class="country-flag img-fluid" src="{{ asset('images/flags/uk.png') }}" alt="Flag" />
+                                                    {{ $testimonial->country }}
+                                                </div>
                                             </div>
-                                        </div>
-
-                                        <div class="review-description">
-                                            <p>
-                                                The process was smooth, after providing the required info, Anders sent me an outstanding packet of wireframes. Thank you a lot!
-                                            </p>
-                                        </div>
-                                        <span class="publish py-3 d-inline-block w-100">Published 2 weeks ago</span>
-
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="d-flex">
-                                    <div class="left">
-                                        <span>
-                                            <img src="{{ asset('images/guest.jpg') }}" class="profile-pict-img img-fluid" alt="User representation" />
-                                        </span>
-                                    </div>
-                                    <div class="right">
-                                        <h4>
-                                            Placeholder-user
-                                            <span class="gig-rating text-body-2" style="color: darkorange; font-weight: bold;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="15" height="15">
-                                                    <path
-                                                        fill="currentColor"
-                                                        d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"
-                                                    ></path>
-                                                </svg>
-                                                5.0
-                                            </span>
-                                        </h4>
-
-                                        <div class="country d-flex align-items-center">
-                                            <div class="country-name font-accent">
-                                                <img class="country-flag img-fluid" src="{{ asset('images/flags/uk.png') }}" alt="Flag" />
-                                                United Kingdom
+    
+                                            <div class="review-description">
+                                                <p>
+                                                    {{ $testimonial->message }}
+                                                </p>
                                             </div>
+                                            <span class="publish py-3 d-inline-block w-100">Published x weeks ago</span>
+    
                                         </div>
-
-                                        <div class="review-description">
-                                            <p>
-                                                The process was smooth, after providing the required info, Anders sent me an outstanding packet of wireframes. Thank you a lot!
-                                            </p>
-                                        </div>
-                                        <span class="publish py-3 d-inline-block w-100">Published 4 weeks ago</span>
-
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach 
+
                         </ul>
                     </div>
                 </div>

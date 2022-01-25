@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
         <link rel="stylesheet" href="{{ asset('css/shared.css') }}" />
     </head>
     <body>
@@ -39,15 +40,15 @@
             <section class="socials">
         
                 <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank" rel="noopener" aria-label="Facebook">
-                    <i class="bi bi-facebook socialsRounded faded" style="font-size: 1.4rem; color: #3b5998;"></i>
+                    <i class="bi bi-facebook socialsRounded fading" style="font-size: 1.4rem; color: #3b5998;"></i>
                 </a>
     
                 <a href="https://www.linkedin.com/in/andreas-learmonth-982318a1/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                    <i class="bi bi-linkedin socialsRounded faded" style="font-size: 1.4rem; color: #0077b5;"></i>
+                    <i class="bi bi-linkedin socialsRounded fading" style="font-size: 1.4rem; color: #0077b5;"></i>
                 </a>
     
                 <a href="https://github.com/Dregozone" target="_blank" rel="noopener" aria-label="GitHub">
-                    <i class="bi bi-github socialsRounded faded" style="font-size: 1.4rem; color: black;"></i>
+                    <i class="bi bi-github socialsRounded fading" style="font-size: 1.4rem; color: black;"></i>
                 </a>            
         
             </section>

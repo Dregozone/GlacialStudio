@@ -10,13 +10,13 @@ a, a:hover {
 }
 
 header {
+    position: sticky;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
     background: #adcce6;
-
-
+    box-shadow: 0 0 15px 3px lightgrey;
+    z-index: 9999;
 }
 
 .logos {
@@ -32,10 +32,16 @@ header {
     }
 
 .socials {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     width: 20%;
+    margin-right: 2%;
 }
     .socialsRounded {
+        display: inline-block;
         border-radius: 50%;
+        margin: 0 5px;
     }
     .fading:hover {
         opacity: 0.75;
@@ -72,8 +78,27 @@ main {
     /*  */
 }
 
-
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background: #adcce6;
     color: darkslategrey;
+    font-size: 90%;
+}
+    footer > section {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 0.2%;
+    }
+    footer > section > ul {
+        flex-direction: column;
+    }
+
+.copy {
+    font-size: 80%;
 }

@@ -1,9 +1,9 @@
 @extends('layout.app')
 
 @section('title')
-    Home
+    About
 @endsection
 
 @section('content')
-    Home content 
+    About content 
 @endsection

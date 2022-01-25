@@ -23,22 +23,26 @@
     
         <header>
             <section class="logos">
-                <img class="logoSm fading" src="{{ asset('img/Logo-small.png') }}" alt="Glacial Studio small logo" aria-label="Glacial Studio small logo" />
-                <img class="logoLg fading" src="{{ asset('img/Logo.png') }}" alt="Glacial Studio large logo" aria-label="Glacial Studio large logo" />
+                <a href="{{ route('home') }}">
+                    <img class="logoSm fading" src="{{ asset('img/Logo-small.png') }}" alt="Glacial Studio small logo" aria-label="Glacial Studio small logo" />
+                </a>
+        
+                <a href="{{ route('home') }}">
+                    <img class="logoLg fading" src="{{ asset('img/Logo.png') }}" alt="Glacial Studio large logo" aria-label="Glacial Studio large logo" />
+                </a>
             </section>
 
             <nav>
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Products</a></li>
-                    <li><a href="">Portfolio</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('products') }}">Products</a></li>
+                    <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
+                    <li><a href="{{ route('contact') }}">Contact</a></li>
                 </ul>
             </nav>
 
             <section class="socials">
-        
                 <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank" rel="noopener" aria-label="Facebook">
                     <i class="bi bi-facebook socialsRounded fading" style="font-size: 1.4rem; color: #3b5998;"></i>
                 </a>
@@ -49,8 +53,7 @@
     
                 <a href="https://github.com/Dregozone" target="_blank" rel="noopener" aria-label="GitHub">
                     <i class="bi bi-github socialsRounded fading" style="font-size: 1.4rem; color: black;"></i>
-                </a>            
-        
+                </a>
             </section>
         </header>
 
@@ -59,7 +62,23 @@
         </main>
 
         <footer>
+            <section>
+                <ul>
+                    <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('contact') }}">Contact</a></li>
+                    <li><a href="{{ route('news') }}">News</a></li>
+                </ul>
 
+                <ul>
+                    <li><a href="{{ route('tos') }}">Terms of Service</a></li>
+                    <li><a href="{{ route('pp') }}">Privacy Policy</a></li>
+                    <li><a href="">Site Map</a></li>
+                </ul>
+            </section>
+
+            <section class="copy">
+                Glacial Studio &copy; Copyright {{ now()->year }}
+            </section>
         </footer>
     </body>
 </html>

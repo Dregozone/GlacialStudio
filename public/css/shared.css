@@ -9,6 +9,15 @@ a, a:hover {
     text-decoration: none;
 }
 
+h1, h2, h3 {
+    text-align: center;
+    font-weight: 100;
+}
+
+h1 {
+    margin: 0.3% 0 0 0;
+}
+
 header {
     position: sticky;
     display: flex;
@@ -74,9 +83,16 @@ nav {
             color: black;
         }
 
-main {
-    /*  */
+main > section {
+    background-color: aliceblue;
+    background-image: linear-gradient(to top, #e3eef7, white);
 }
+    main > section > div {
+        width: 50%;
+        margin: 0 25%;
+        padding: 0.5%;
+        text-align: center;
+    }
 
 footer {
     display: flex;
@@ -101,4 +117,30 @@ footer {
 
 .copy {
     font-size: 80%;
+    width: 100%;
+    background-image: linear-gradient(#adcce6, #95bad8);
+}
+
+
+.callToAction {
+    display: block;
+    width: 34%;
+    margin: 0 33% 3% 33%;
+    box-shadow: 2px 2px 8px 2px #adcce6;
+    border-radius: 3px;
+    font-size: 1vw;
+    padding: 0.5vw;
+    color: darkslategrey;
+    font-weight: 100;
+}  
+
+
+
+@media only screen and (max-width: 600px) {
+
+    main > section > div {
+        width: 100%;
+        margin: 0;
+    }
+
 }

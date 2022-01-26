@@ -9,13 +9,23 @@ a, a:hover {
     text-decoration: none;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     text-align: center;
     font-weight: 100;
 }
 
 h1 {
     margin: 0.3% 0 0 0;
+}
+
+h3 {
+    margin-top: 0.4%;
+}
+
+label {
+    width: 100%;
+    text-align: left;
+    margin-top: 1%;
 }
 
 header {
@@ -88,8 +98,8 @@ main > section {
     background-image: linear-gradient(to top, #e3eef7, white);
 }
     main > section > div {
-        width: 50%;
-        margin: 0 25%;
+        width: 56%;
+        margin: 0 22%;
         padding: 0.5%;
         text-align: center;
     }
@@ -102,6 +112,7 @@ footer {
     background: #adcce6;
     color: darkslategrey;
     font-size: 90%;
+    padding-top: 0.8%;
 }
     footer > section {
         display: flex;
@@ -132,15 +143,48 @@ footer {
     padding: 0.5vw;
     color: darkslategrey;
     font-weight: 100;
-}  
+}
 
+.products {
+    display: flex;
+    flex-direction: row;
+}
+    .product {
+        width: 30%;
+        margin: 0 1.6%;
+    }
+
+.img {
+    width: 90%;
+    margin: 1% 5%;
+    border: 1px solid darkslategrey;
+}
+
+.seeAll {
+    margin: 1% 0;
+}
+
+.contactInput {
+    /*  */
+}
+input[type="submit"] {
+    margin-top: 1%;
+}
 
 
 @media only screen and (max-width: 600px) {
 
     main > section > div {
-        width: 100%;
-        margin: 0;
+        width: 90%;
+        margin: 0 5%;
     }
+
+    .products {
+        flex-direction: column;
+    }
+        .product {
+            width: 80%;
+            margin: 1% 10%;
+        }
 
 }

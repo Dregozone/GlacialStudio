@@ -24,11 +24,11 @@
         <header>
             <section class="logos">
                 <a href="{{ route('home') }}">
-                    <img class="logoSm fading" src="{{ asset('img/Logo-small.png') }}" alt="Glacial Studio small logo" aria-label="Glacial Studio small logo" />
+                    <img class="logoSm fading" src="{{ asset('img/branding/Logo-small.png') }}" alt="Glacial Studio small logo" aria-label="Glacial Studio small logo" />
                 </a>
         
                 <a href="{{ route('home') }}">
-                    <img class="logoLg fading" src="{{ asset('img/Logo.png') }}" alt="Glacial Studio large logo" aria-label="Glacial Studio large logo" />
+                    <img class="logoLg fading" src="{{ asset('img/branding/Logo.png') }}" alt="Glacial Studio large logo" aria-label="Glacial Studio large logo" />
                 </a>
             </section>
 

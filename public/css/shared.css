@@ -133,13 +133,31 @@ footer {
 .copy {
     font-size: 80%;
     width: 100%;
+    background-color: #adcce6;
     background-image: linear-gradient(#adcce6, #95bad8);
 }
 
+.card-header {
+    background-color: #adcce6;
+    background-image: linear-gradient(#adcce6, #95bad8);
+    color: white;
+}
+.card {
+    border: 1px solid #adcce6;
+}
+.btn-outline-primary {
+    color: #95bad8;
+    border-color: #95bad8;
+}
+    .btn-outline-primary:hover {
+        background-color: #adcce6;
+        background-image: linear-gradient(#adcce6, #95bad8);
+        border-color: #95bad8;
+    }
 
 .callToAction {
-    display: block;
-    width: 34%;
+    display: inline-block;
+    width: auto;
     margin: 0 33% 3% 33%;
     box-shadow: 2px 2px 8px 2px #adcce6;
     border-radius: 3px;
@@ -221,7 +239,8 @@ ul.listItems {
     .project {
         width: 48%;
         margin: 1%;
-        border: 1px solid rgba(29, 83, 138, 0.3);;
+        border: 1px solid #95bad8;
+        box-shadow: 6px 6px 10px 1px #95bad8;
     }
         .project > img {
             width: 100%;
@@ -298,10 +317,11 @@ td.techName {
 
     .projects {
         flex-direction: column;
+        padding-bottom: 3%;
     }
         .project {
             width: 100%;
-            margin: 1% 0;
+            margin: 2% 0;
         }
 
     .aboutSplitter {

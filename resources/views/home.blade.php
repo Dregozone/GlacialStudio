@@ -16,11 +16,11 @@
                 Innovative Web Solutions
             </h2>
     
-            <a href="{{ route('contact') }}">
-                <div class="btn callToAction fading">
+            <div class="btn callToAction fading">
+                <a href="{{ route('contact') }}">
                     Enquire to realise your vision
-                </div>
-            </a>
+                </a>
+            </div>
     
             <h3>About</h3>
             <p>

@@ -8,7 +8,7 @@
     <section>
         <h1>Products</h1>
         
-        <h2 id="web">Web-based</h2>
+        <h2 id="web" style="margin-top: 1%;">Web-based</h2>
         <h3>For a variety of websites and tools.</h3>
 
         <section class="productPricing">
@@ -49,7 +49,7 @@
                         <p class="card-text">
                             <ul class="listItems left">
                                 <li>Landing pages</li>
-                                <li>Performance dashboard</li>
+                                <li>Quality dashboard</li>
                                 <li>Wizard applications</li>
                             </ul>
                         </p>
@@ -109,7 +109,7 @@
     </section>
 
     <section>
-        <h2 id="iot">IoT/Hybrid</h2>
+        <h2 id="iot" style="padding-top: 0.65%;">IoT/Hybrid</h2>
         <h3>For projects integrating between software and hardware.</h3>
 
         <section class="productPricing">
@@ -162,7 +162,7 @@
     </section>
 
     <section>
-        <h2 id="custom">Custom</h2>
+        <h2 id="custom" style="padding-top: 0.65%;">Custom</h2>
         <h3>Get in touch to discuss your custom projects.</h3>
 
         <section class="productPricing">
@@ -185,6 +185,10 @@
                 </div>
             </div>
 
+        </section>
+
+        <section class="center" style="padding-top: 0.7%; padding-bottom: 2%;">
+            <a href="{{ route('contact') }}">Enquire</a> for an accurate quote or to request more information.
         </section>
     </section>
 

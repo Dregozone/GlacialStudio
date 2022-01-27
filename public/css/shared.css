@@ -28,6 +28,10 @@ label {
     margin-top: 1%;
 }
 
+.center { text-align: center; }
+.left { text-align: left; }
+.right { text-align: right; }
+
 header {
     position: sticky;
     display: flex;
@@ -41,7 +45,7 @@ header {
 .logos {
     width: 20%;
     padding: 0.3%;
-    margin-left: 0.2%;
+    margin-left: 0.7%;
 }
     .logoSm {
         width: 13%;
@@ -171,8 +175,52 @@ input[type="submit"] {
     margin-top: 1%;
 }
 
+.productPricing {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 10%;
+    width: 80%;
+    font-size: 70%;
+}
+.productPricing > div {
+    margin: 0 1%;
+}
+.productItem {
+    width: 24%;
+}
+.pricings {
+    font-size: 210%;
+    text-align: center;
+}
+ul.listItems {
+    margin: 0 10%;
+    padding: 0;
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+    .listItems > li {
+        text-align: left;
+        width: 90%;
+        margin: 0 5%;
+        list-style-type: disc;
+    }
+
+.card-body > button {
+    width: 100%;
+}
 
 @media only screen and (max-width: 600px) {
+
+    .logoLg {
+        display: none;
+    }
+    .logoSm {
+        margin-left: 5%;
+    }
 
     main > section > div {
         width: 90%;
@@ -186,5 +234,17 @@ input[type="submit"] {
             width: 80%;
             margin: 1% 10%;
         }
+
+    .productPricing {
+        flex-direction: column;
+        margin: 0.5% 17.5%;
+    }
+        .productItem {
+            width: 80%;
+        }
+
+    footer > section {
+        flex-direction: column;
+    }
 
 }

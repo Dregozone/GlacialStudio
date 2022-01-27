@@ -213,6 +213,55 @@ ul.listItems {
     width: 100%;
 }
 
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+    .project {
+        width: 48%;
+        margin: 1%;
+        border: 1px solid rgba(29, 83, 138, 0.3);;
+    }
+        .project > img {
+            width: 100%;
+        }
+
+div.technologyTable {
+    margin: 1% 5%;
+    width: 40%;
+}
+    table.technologyTable {
+        width: 100%;
+    }
+
+img.techLogo {
+    width: 60%;
+}
+
+td.techLogo {
+    width: 15%;
+    padding: 1%;
+}
+td.techName {
+    width: 35%;
+    text-align: left;
+    margin-left: 1%;
+}
+
+.centerContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutSplitter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 @media only screen and (max-width: 600px) {
 
     .logoLg {
@@ -247,4 +296,20 @@ ul.listItems {
         flex-direction: column;
     }
 
+    .projects {
+        flex-direction: column;
+    }
+        .project {
+            width: 100%;
+            margin: 1% 0;
+        }
+
+    .aboutSplitter {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .technologyTable {
+        text-align: center;
+    }
 }

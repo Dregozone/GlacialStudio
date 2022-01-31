@@ -41,6 +41,10 @@
                 <div class="project">
                     <img src="{{ asset('img/portfolio/EnergizedGaming.jpg') }}" alt="" />
                 </div>
+
+                <div class="project">
+                    <img src="{{ asset('img/portfolio/PhpChain.jpg') }}" alt="" />
+                </div>
             </div>
         </div>
     </section>

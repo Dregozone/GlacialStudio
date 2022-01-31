@@ -8,7 +8,7 @@
     <section>
         <h1>Products</h1>
         
-        <h2 id="web" style="margin-top: 1%;">Web-based</h2>
+        <h2 id="web">Web-based</h2>
         <h3>For a variety of websites and tools.</h3>
 
         <section class="productPricing">
@@ -20,7 +20,8 @@
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title pricings">
-                            £24 <small class="text-muted">/ mo</small>
+                            <small class="text-muted" style="font-size: 40%; margin-left: -15%; line-height: 5px;">from</small>
+                            £24
                         </h1>
 
                         <p class="card-text">
@@ -43,7 +44,8 @@
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title pricings">
-                            £10 <small class="text-muted">/ mo</small>
+                            <small class="text-muted" style="font-size: 40%; margin-left: -15%; line-height: 5px;">from</small>
+                            £10
                         </h1>
 
                         <p class="card-text">
@@ -66,7 +68,8 @@
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title pricings">
-                            £19 <small class="text-muted">/ mo</small>
+                            <small class="text-muted" style="font-size: 40%; margin-left: -15%; line-height: 5px;">from</small>
+                            £19
                         </h1>
 
                         <p class="card-text">
@@ -89,7 +92,8 @@
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title pricings">
-                            £99 <small class="text-muted">/ mo</small>
+                            <small class="text-muted" style="font-size: 40%; margin-left: -15%; line-height: 5px;">from</small>
+                            £99
                         </h1>
 
                         <p class="card-text">
@@ -119,9 +123,9 @@
                     IoT project
                 </div>
                 <div class="card-body">
-
                     <h1 class="card-title pricing-card-title pricings">
-                        £99 <small class="text-muted">/ mo</small>
+                        <small class="text-muted" style="font-size: 40%; margin-left: -15%; line-height: 5px;">from</small>
+                        £99
                     </h1>
 
                     <p class="card-text">
@@ -141,9 +145,9 @@
                     Microcontroller
                 </div>
                 <div class="card-body">
-
                     <h1 class="card-title pricing-card-title pricings">
-                        £99 <small class="text-muted">/ mo</small>
+                        <small class="text-muted" style="font-size: 40%; margin-left: -15%; line-height: 5px;">from</small>
+                        £99
                     </h1>
 
                     <p class="card-text">
@@ -174,14 +178,16 @@
                 <div class="card-body">
 
                     <h1 class="card-title pricing-card-title pricings">
-                        £<small class="text-muted">TBC</small>
+                        £<small class="text-muted" style="font-size: 90%;">TBC</small>
                     </h1>
 
                     <p class="card-text">
                         Please enquire about custom project requests.
                     </p>
 
-                    <button type="button" class="btn btn-block btn-outline-primary">Get started</button>
+                    <a href="{{ route('contact') }}" style="display: block; width: 100%;">
+                        <button type="button" class="btn btn-block btn-outline-primary" style="width: 100%;">Contact us</button>
+                    </a>
                 </div>
             </div>
 

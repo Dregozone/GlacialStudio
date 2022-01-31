@@ -9,7 +9,9 @@ class PagesController extends Controller
     
     public function home() {
 
-        return view('home');
+        return view('home', [
+            "page" => "home",
+        ]);
     }
 
     public function about() {
@@ -19,7 +21,9 @@ class PagesController extends Controller
 
     public function products() {
 
-        return view('products');
+        return view('products', [
+            "page" => "products",
+        ]);
     }
 
     public function portfolio() {

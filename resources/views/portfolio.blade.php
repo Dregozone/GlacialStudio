@@ -45,6 +45,10 @@
                 <div class="project">
                     <img src="{{ asset('img/portfolio/PhpChain.jpg') }}" alt="" />
                 </div>
+
+                <div class="project">
+                    <img src="{{ asset('img/portfolio/BeeActive.jpg') }}" alt="" />
+                </div>
             </div>
         </div>
     </section>

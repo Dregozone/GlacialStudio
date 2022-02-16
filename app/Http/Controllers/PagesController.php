@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -21,10 +22,17 @@ class PagesController extends Controller
 
     public function products() {
 
-        
+        $products = Product::all();
+
+        //echo '<pre>';
+        //print_r( $products[0]->productCategory[0]->name );
+        //echo '</pre>';
+
+        //dd( $products[0] );
 
         return view('products', [
             "page" => "products",
+            'products' => $products,
         ]);
     }
 

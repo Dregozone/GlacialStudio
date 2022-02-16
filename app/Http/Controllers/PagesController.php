@@ -21,6 +21,8 @@ class PagesController extends Controller
 
     public function products() {
 
+        
+
         return view('products', [
             "page" => "products",
         ]);

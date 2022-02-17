@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\ProductCategory;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\ProductCategory;
 
 class PagesController extends Controller
 {
@@ -38,8 +39,11 @@ class PagesController extends Controller
 
     public function portfolio() {
 
+        $projects = Project::all();
+
         return view('portfolio', [
             'page' => 'portfolio',
+            'projects' => $projects,
         ]);
     }
 

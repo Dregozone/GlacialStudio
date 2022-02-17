@@ -38,41 +38,21 @@
             <h3>Products</h3>
 
             <div class="products">
-                <div class="product">
-                    <h4>Website</h4>
 
-                    <img src="{{ asset('img/products/website.png') }}" class="img" />
+                @foreach ($categories as $category)
+                    <div class="product">
+                        <h4>{{ $category->name }}</h4>
 
-                    <a href="{{ route('products') }}#web" class="icon-link">
-                        <button class="btn btn-secondary smaller">
-                            More info...
-                        </button>
-                    </a>
-                </div>
+                        <img src="{{ asset('img/products/' . $category->tag . '.png') }}" class="img" />
 
-                <div class="product">
-                    <h4>IoT</h4>
+                        <a href="{{ route('products') }}#{{ $category->tag }}" class="icon-link">
+                            <button class="btn btn-secondary smaller">
+                                More info...
+                            </button>
+                        </a>
+                    </div>
+                @endforeach
 
-                    <img src="{{ asset('img/products/iot.png') }}" class="img" />
-
-                    <a href="{{ route('products') }}#iot" class="icon-link">
-                        <button class="btn btn-secondary smaller">
-                            More info...
-                        </button>
-                    </a>
-                </div>
-
-                <div class="product">
-                    <h4>Custom</h4>
-
-                    <img src="{{ asset('img/products/custom.png') }}" class="img" />
-
-                    <a href="{{ route('products') }}#custom" class="icon-link">
-                        <button class="btn btn-secondary smaller">
-                            More info...
-                        </button>
-                    </a>
-                </div>
             </div>
 
             <div class="seeAll">
@@ -146,32 +126,7 @@
                 </div>
                 
                 <script>
-                var slideIndex = 1;
-                showSlides(slideIndex);
-                
-                function plusSlides(n) {
-                  showSlides(slideIndex += n);
-                }
-                
-                function currentSlide(n) {
-                  showSlides(slideIndex = n);
-                }
-                
-                function showSlides(n) {
-                  var i;
-                  var slides = document.getElementsByClassName("mySlides");
-                  var dots = document.getElementsByClassName("dot");
-                  if (n > slides.length) {slideIndex = 1}    
-                  if (n < 1) {slideIndex = slides.length}
-                  for (i = 0; i < slides.length; i++) {
-                      slides[i].style.display = "none";  
-                  }
-                  for (i = 0; i < dots.length; i++) {
-                      dots[i].className = dots[i].className.replace(" active", "");
-                  }
-                  slides[slideIndex-1].style.display = "block";  
-                  dots[slideIndex-1].className += " active";
-                }
+                    
                 </script>
 
 

@@ -21,6 +21,7 @@
 
         @if ( isset($page) ) 
             <link rel="stylesheet" href="{{ asset('css/' . $page . '.css') }}" />
+            <script src="{{ asset('js/' . $page . '.js') }}"></script>
         @endif
     </head>
     <body>

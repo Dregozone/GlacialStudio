@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -10,40 +11,43 @@ class PagesController extends Controller
     
     public function home() {
 
+        $categories = ProductCategory::all();
+
         return view('home', [
-            "page" => "home",
+            'page' => 'home',
+            'categories' => $categories,
         ]);
     }
 
     public function about() {
 
-        return view('about');
+        return view('about', [
+            'page' => 'about',
+        ]);
     }
 
     public function products() {
 
         $products = Product::all();
 
-        //echo '<pre>';
-        //print_r( $products[0]->productCategory[0]->name );
-        //echo '</pre>';
-
-        //dd( $products[0] );
-
         return view('products', [
-            "page" => "products",
+            'page' => 'products',
             'products' => $products,
         ]);
     }
 
     public function portfolio() {
 
-        return view('portfolio');
+        return view('portfolio', [
+            'page' => 'portfolio',
+        ]);
     }
 
     public function contact() {
 
-        return view('contact');
+        return view('contact', [
+            'page' => 'contact',
+        ]);
     }
 
     public function contactSubmit(Request $request) {

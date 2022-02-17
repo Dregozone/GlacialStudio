@@ -71,52 +71,42 @@
 
             <div class="slideshow-container">
 
-                <div class="mySlides">
-                    <div class="carousel-container">
-                        <div>
-                            <img src="{{ asset('img/portfolio/adscreens.jpg') }}" alt="" />
-                        </div>
-                        <div>
-                            <img src="{{ asset('img/portfolio/LittleMooreLighting.jpg') }}" alt="" />
-                        </div>
-                        <div>
-                            <img src="{{ asset('img/portfolio/i-walk.jpg') }}" alt="" />
-                        </div>
+                <?php 
+                    $position = 1;
+                ?>
+
+                @foreach ( $projects as $project )
+
+                    @if ( $position == 1 )
+                        <div class="mySlides">
+                            <div class="carousel-container">
+                    @endif
+
+                    <div>
+                        <img src="{{ asset('img/portfolio/' . $project->image) }}" alt="{{ $project->name }} project image" />
                     </div>
-                </div>
-                
-                <div class="mySlides">
-                    <div class="carousel-container">
-                        <div>
-                            <img src="{{ asset('img/portfolio/BlingWing.jpg') }}" alt="" />
+
+                    @if ( $position == 1 )
+                        {{-- This is the first position --}}
+                        <?php $position++; ?>
+
+                    @elseif ( $position == 3 )
+                        {{-- This is the last position --}}
+                            </div>
                         </div>
-                        <div>
-                            <img src="{{ asset('img/portfolio/EnergizedGaming.jpg') }}" alt="" />
-                        </div>
-                        <div>
-                            <img src="{{ asset('img/portfolio/ExclusionZone.jpg') }}" alt="" />
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mySlides">
-                    <div class="carousel-container">
-                        <div>
-                            <img src="{{ asset('img/portfolio/HolisticVision.jpg') }}" alt="" />
-                        </div>
-                        <div>
-                            <img src="{{ asset('img/portfolio/FaceFacts.jpg') }}" alt="" />
-                        </div>
-                        <div>
-                            <img src="{{ asset('img/portfolio/PhpChain.jpg') }}" alt="" />
-                        </div>
-                    </div>
-                </div>
-                
+
+                        <?php $position = 1; ?>
+                    @else
+                        <?php $position++; ?>
+                    @endif
+
+                @endforeach
+
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 
                 </div>
+                
                 <br>
                 
                 <div style="text-align:center">

@@ -13,10 +13,18 @@ class PagesController extends Controller
     public function home() {
 
         $categories = ProductCategory::all();
+        
+        $projects = Project::
+              where('is_active', '=', true)
+            ->orderBy('order', 'ASC')
+            ->skip(0)
+            ->take(9)
+            ->get();
 
         return view('home', [
             'page' => 'home',
             'categories' => $categories,
+            'projects' => $projects,
         ]);
     }
 

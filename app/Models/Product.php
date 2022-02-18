@@ -15,7 +15,7 @@ class Product extends Model
         'title',
         'price',
         'details',
-        'product_category_id',
+        'category_id',
         'order',
         'link',
         'is_active',

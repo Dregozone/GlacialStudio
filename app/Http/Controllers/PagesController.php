@@ -12,7 +12,9 @@ class PagesController extends Controller
     
     public function home() {
 
-        $categories = ProductCategory::all();
+        $categories = ProductCategory::
+              where('is_active', '=', true)
+            ->get();
         
         $projects = Project::
               where('is_active', '=', true)
@@ -37,7 +39,13 @@ class PagesController extends Controller
 
     public function products() {
 
-        $products = Product::all();
+        $products = Product::
+              join('product_categories', 'product_categories.id', '=', 'products.category_id')
+            ->where('products.is_active', '=', true)
+            ->where('product_categories.is_active', '=', true)
+            ->orderBy('product_categories.order', 'ASC')
+            ->orderBy('products.order', 'ASC')
+            ->get();
 
         return view('products', [
             'page' => 'products',
@@ -47,7 +55,9 @@ class PagesController extends Controller
 
     public function portfolio() {
 
-        $projects = Project::all();
+        $projects = Project::
+              where('is_active', '=', true)
+            ->get();
 
         return view('portfolio', [
             'page' => 'portfolio',

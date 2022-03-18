@@ -18,10 +18,13 @@ class PortfolioController extends Controller
               where('id', '=', $projectId)
             ->get()[0];
 
+        $tags = explode(",", $projectDetails["tags"]);
+
         return view('portfolioProject', [
             'page' => 'portfolio',
             'project' => $project,
             'projectDetails' => $projectDetails,
+            'tags' => $tags,
         ]);
     }
 

@@ -13,10 +13,10 @@
 
             <section class="detailsProjectContainer">
                 <div>
-                    <h3>About the company</h3>
-                    ...
+                    <h3>About {{ $project }}</h3>
+                    {{ $projectDetails->about }}
 
-                    <h3>About the solution</h3>
+                    <h3 style="margin-top: 3%;">The solution</h3>
                     {{ $projectDetails->description }}
                 </div>
                 <div>
@@ -27,7 +27,25 @@
                     />
 
                     <div class="detailsProjectPills">
-                        {{ $projectDetails->tags }}
+
+                        @if ( sizeof($tags) > 0 )
+                            <ul class="nav nav-pills" style="width: auto;">
+                            @foreach ( $tags as $tag )
+
+                                @if ( substr($tag, 0, 5) == "tech_" )
+                                    <li class="nav-item tag tagTech">
+                                        {{ substr($tag, 5, 99) }}
+                                    </li>
+                                @else
+                                    <li class="nav-item tag tagType">
+                                        {{ $tag }}
+                                    </li>
+                                @endif
+
+                            @endforeach
+                            </ul>
+                        @endif
+
                     </div>
                 </div>
             </section>

@@ -20,6 +20,11 @@ class PortfolioController extends Controller
 
         $tags = explode(",", $projectDetails["tags"]);
 
+        // Catch when there are no tags at all
+        if ( (sizeof($tags) == 1) && ($tags[0] == "") ) {
+            $tags = [];
+        }
+
         return view('portfolioProject', [
             'page' => 'portfolio',
             'project' => $project,

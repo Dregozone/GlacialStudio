@@ -16,6 +16,7 @@
 
     .detailsProjectImage {
         width: 98%;
+        border: 1px solid #95bad8;
     }
     .detailsProjectPills {
         padding: 0.5%;
@@ -25,15 +26,18 @@
 
 .tag {
     max-width: 25%;
+    min-width: 90px;
     font-size: 1.8vmin;
     text-align: center;
-    border: 1px solid lightgrey;
+    border: 1px solid #95bad8;
     padding: 0.7% 1.4%;
     border-radius: 5px;
 }
     .tagType {
-        background-color: #0ff;
+        background-color: rgba(179, 168, 240, 0.6);
+        color: black;
     }
     .tagTech {
-        background-color: #f00;
+        background-color: rgba(168, 195, 240, 0.6);
+        color: black;
     }

@@ -68,6 +68,6 @@
         width: 31%;
         margin: 1%;
     }
-        .carousel-container > div > img {
+        .carousel-container > div > a > img {
             width: 100%;
         }

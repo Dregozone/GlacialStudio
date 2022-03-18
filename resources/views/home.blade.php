@@ -83,7 +83,9 @@
                     @endif
 
                     <div>
-                        <img src="{{ asset('img/portfolio/' . $project->image) }}" alt="{{ $project->name }} project image" />
+                        <a href="{{ route('portfolio') }}/{{ $project->name }}">
+                            <img src="{{ asset('img/portfolio/' . $project->image) }}" alt="{{ $project->name }} project image" />
+                        </a>
                     </div>
 
                     @if ( $position == 1 )

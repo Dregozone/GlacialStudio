@@ -3,3 +3,41 @@
     width: 70%;
     margin-left: 15%;
 }
+
+.detailsProjectContainer {
+    display: flex;
+    width: 100%;
+}
+    .detailsProjectContainer > div {
+        width: 50%;
+        /* border: 1px solid black; */
+        padding: 0.5%;
+    }
+
+    .detailsProjectImage {
+        width: 98%;
+        border: 1px solid #95bad8;
+    }
+    .detailsProjectPills {
+        padding: 0.5%;
+        margin: 1% 5%;
+        width: 90%;
+    }
+
+.tag {
+    max-width: 25%;
+    min-width: 90px;
+    font-size: 1.8vmin;
+    text-align: center;
+    border: 1px solid #95bad8;
+    padding: 0.7% 1.4%;
+    border-radius: 5px;
+}
+    .tagType {
+        background-color: rgba(179, 168, 240, 0.6);
+        color: black;
+    }
+    .tagTech {
+        background-color: rgba(168, 195, 240, 0.6);
+        color: black;
+    }

@@ -20,6 +20,7 @@ class ProjectsSeeder extends Seeder
         // Add record(s)
         Project::create([
             'name' => 'adscreens',
+            'about' => '',
             'description' => '',
             'image' => 'adscreens.jpg',
             'tags' => '',
@@ -29,6 +30,7 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'Face Facts',
+            'about' => '',
             'description' => '',
             'image' => 'FaceFacts.jpg',
             'tags' => '',
@@ -38,6 +40,7 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'i-walk',
+            'about' => '',
             'description' => '',
             'image' => 'i-walk.jpg',
             'tags' => '',
@@ -47,6 +50,7 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'Little Moore Lighting',
+            'about' => '',
             'description' => '',
             'image' => 'LittleMooreLighting.jpg',
             'tags' => '',
@@ -56,6 +60,7 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'Holistic Vision',
+            'about' => '',
             'description' => '',
             'image' => 'HolisticVision.jpg',
             'tags' => '',
@@ -65,6 +70,7 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'Bling Wing',
+            'about' => '',
             'description' => '',
             'image' => 'BlingWing.jpg',
             'tags' => '',
@@ -74,6 +80,7 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'Exclusion Zone',
+            'about' => '',
             'description' => '',
             'image' => 'ExclusionZone.jpg',
             'tags' => '',
@@ -83,6 +90,7 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'Energized Gaming',
+            'about' => '',
             'description' => '',
             'image' => 'EnergizedGaming.jpg',
             'tags' => '',
@@ -92,6 +100,7 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'PhpChain',
+            'about' => '',
             'description' => '',
             'image' => 'PhpChain.jpg',
             'tags' => '',
@@ -101,9 +110,13 @@ class ProjectsSeeder extends Seeder
 
         Project::create([
             'name' => 'Bee Active',
-            'description' => '',
+            'about' => 'Personal fitness and nutrition',
+            'description' => '
+                App allows users to enter current weight and fitness goals, this calculates their daily targets. Users can then 
+                record their daily intake via meal entry screen and workouts completed.
+            ',
             'image' => 'BeeActive.jpg',
-            'tags' => '',
+            'tags' => 'Fitness,Nutrition,tech_Laravel,tech_MsSQL,tech_PWA',
             'order' => 100,
             'is_active' => true,
         ]);

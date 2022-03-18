@@ -12,9 +12,11 @@
             <div class="projects">
 
                 @foreach ( $projects as $project )
-                    <div class="project">
-                        <img src="{{ asset('img/portfolio/' . $project->image) }}" alt="{{ $project->name }} project image" />
-                    </div>
+                    <a href="{{ route('portfolio') }}/{{ $project->name }}">
+                        <div class="project">
+                            <img src="{{ asset('img/portfolio/' . $project->image) }}" alt="{{ $project->name }} project image" />
+                        </div>
+                    </a>
                 @endforeach
 
             </div>

@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
+use App\Mail\ContactFormSubmission;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -74,7 +76,13 @@ class PagesController extends Controller
 
     public function contactSubmit(Request $request) {
 
-        dd($request);
+        Mail::
+              to('aclearmonth@gmail.com')
+            ->send(new ContactFormSubmission($request));
+
+        return redirect()
+            ->route("contact")
+            ->with(["message" => "Your message has been sent!"]);
     }
 
     public function news() {

@@ -16,8 +16,8 @@
             <label for="reason">Reason for contact</label>
             <select class="form-control contactInput" id="reason" name="reason">
                 <option value="none">-- Please select --</option>
-                <option value=""></option>
-                <option value=""></option>
+                <option value="quote">Request a Quote</option>
+                <option value="query">Ask a question</option>
             </select> 
         </div>
 

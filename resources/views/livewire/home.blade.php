@@ -11,6 +11,9 @@
     {{-- About --}}
     @include('includes.about')
 
+    {{-- Hero --}}
+    @include('includes.hero2')
+
     {{-- Products --}}
     @include('includes.products')
 

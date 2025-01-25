@@ -2,22 +2,19 @@
     {{-- Top slant at angle --}}
     <div 
         style="
-            width: 100%;
+            width: 105%;
             margin-top: -60px;
             border-bottom: 90px solid rgb(249 250 251);
-            transform: rotate(2.5deg);
+            transform: rotate(-2.5deg);
         "
     ></div>
 
     <div class="w-full lg:w-[80%] mx-auto">
-        
         <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Products</h1>
 
-        <p>
+        <p class="w-6/12 mx-auto text-center my-6">
             Products
         </p>
-
-
 
         @php 
             $features = ["First", "Second", "Third",];
@@ -82,10 +79,5 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
-
 </section>

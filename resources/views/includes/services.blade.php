@@ -5,29 +5,26 @@
             width: 100%;
             margin-top: -60px;
             border-bottom: 90px solid rgb(249 250 251);
-            transform: rotate(2.5deg);
+            transform: rotate(-2.5deg);
         "
     ></div>
 
     <div class="w-full lg:w-[80%] mx-auto">
-
-        
-        
-
         {{-- Pricing start --}}
         <div id="pricing" class="relative w-full text-center">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="{{-- bg-white --}} overflow-hidden sm:rounded-lg">
-                    <div class="p-6 text-gray-900">
-                        <section class="max-w-6xl px-6 pt-10 mx-auto md:px-8">
+                <div class="overflow-hidden sm:rounded-lg">
+                    <div class="text-gray-900">
+                        <section class="max-w-6xl px-6 pt-0 mx-auto md:px-8">
                             <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Services</h1>
 
                             <p class="w-full my-1 text-base text-gray-900 opacity-75 sm:text-center text-left sm:my-2 sm:text-xl">
                                 Some of the services offered by Glacial Studio to help get your projects off the ground
                             </p>
 
-                            <div class="w-full mx-auto my-12">
+                            <div class="w-full mx-auto mt-12 mb-8">
                                 <div class="flex flex-col flex-wrap lg:flex-row lg:space-x-5">
+                                    (list of services)
                                     {{--
                                     @foreach(\App\Models\SubscriptionPlan::where('active', 1)->get() as $plan)
                                         @php $features = explode('|', $plan->features); @endphp
@@ -99,11 +96,5 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
     </div>
-
 </section>

@@ -5,7 +5,7 @@
             width: 100%;
             margin-top: -60px;
             border-bottom: 90px solid rgb(229 231 235);
-            transform: rotate(-2.5deg);
+            transform: rotate(2.5deg);
         "
     ></div>
 

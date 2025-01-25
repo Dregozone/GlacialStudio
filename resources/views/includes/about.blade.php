@@ -1,10 +1,10 @@
-<section class="pt-5 pb-32 bg-gray-200">
+<section class="pt-5 bg-sky-50">
     {{-- Top slant at angle --}}
     <div 
         style="
-            width: 100%;
+            width: 105%;
             margin-top: -60px;
-            border-bottom: 90px solid rgb(229 231 235);
+            border-bottom: 90px solid rgb(240, 249, 255);
             transform: rotate(-2.5deg);
         "
     ></div>
@@ -48,4 +48,14 @@
         </div>
     </div>
 
+    {{-- Bottom slant at angle --}}
+    <div 
+        class="pb-24"
+        style="
+            width: 105%;
+            margin-top: -60px;
+            border-bottom: 90px solid rgb(240, 249, 255);
+            transform: rotate(2.5deg);
+        "
+    ></div>
 </section>

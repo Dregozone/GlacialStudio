@@ -2,23 +2,17 @@
     {{-- Top slant at angle --}}
     <div 
         style="
-            width: 100%;
+            width: 105%;
             margin-top: -60px;
             border-bottom: 90px solid rgb(229 231 235);
-            transform: rotate(-2.5deg);
+            transform: rotate(2.5deg);
         "
     ></div>
 
     <div class="w-full lg:w-[80%] mx-auto">
-        {{-- <h1 class="text-3xl text-center">Testimonials</h1> --}}
-
-        
-        
-
-
         <section id="testimonials">
-            <div class="relative flex items-center justify-center pt-24 pb-12 sm:pt-32 {{-- bg-zinc-100 --}} md:pb-32 lg:pb-44 min-w-screen">
-                <div class="max-w-6xl px-10 pb-12 mx-auto {{-- bg-zinc-100 --}}">
+            <div class="relative flex items-center justify-center pt-0 pb-12 sm:pt-10 md:pb-20 lg:pb-28 min-w-screen">
+                <div class="max-w-6xl px-10 pb-12 mx-auto">
                     <div class="flex flex-col items-center lg:flex-row">
                         <div class="flex flex-col justify-center w-full h-full mb-10 lg:pr-8 sm:w-4/5 md:items-center lg:mb-0 lg:items-start md:w-3/5 lg:w-1/2">
                             
@@ -104,5 +98,4 @@
 
 
     </div>
-
 </section>

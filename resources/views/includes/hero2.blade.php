@@ -16,9 +16,13 @@
                 Making the world a better place
             </h3>
 
-            <p class="italic text-center ">
-                Glacial Studio is committed to donating a portion of all profits from product sales and subscriptions to good causes combatting climate change and 
-                in aid of preservation of endangered, primarily arctic animal species.
+            <p class="italic text-center">
+                Since Jan 2025, Glacial Studio is committed to donating a portion of all profits from product sales and subscriptions to good causes combatting climate change and 
+                in aid of the preservation of endangered, primarily arctic animal species.
+
+                <br /><br />
+
+                Every purchase you make helps us to help them.
             </p>
         </div>
 

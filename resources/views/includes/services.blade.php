@@ -98,7 +98,7 @@
                                                 <div class="overflow-hidden rounded-b-lg">
                                                     <a 
                                                         class="block w-full rounded-tl-none rounded-tr-none bg-blue-600 hover:bg-blue-500 text-white py-2" 
-                                                        href="{{ $plan->link }}"
+                                                        href="#contact"
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                     >

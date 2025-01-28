@@ -64,6 +64,18 @@ class ProductSeeder extends Seeder
                 'img' => 'beeactive.png',
                 'link' => 'https://beeactive.glacialstudio.co.uk',
             ],
+            [
+                'name' => 'Scribe MES',
+                'description' => 'Some short description',
+                'features' => 'first|second|third',
+                'default' => false,
+                'monthly_price' => NULL,
+                'yearly_price' => 8999,
+                'one_time_price' => NULL,
+                'active' => true,
+                'img' => 'scribe.png',
+                'link' => 'https://scribe.glacialstudio.co.uk',
+            ],
         ];
 
         foreach ($toAdd as $data) {

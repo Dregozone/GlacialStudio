@@ -1,4 +1,4 @@
-<section class="pt-5 pb-32 bg-gray-50" id="products">
+<section class="pt-5 pb-24 bg-gray-50" id="products">
     {{-- Top slant at angle --}}
     <div 
         style="
@@ -9,20 +9,20 @@
         "
     ></div>
 
-    <div class="w-full lg:w-[80%] mx-auto">
+    <div class="w-full lg:w-[80%] mx-auto pb-10">
         <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Products</h1>
 
-        <p class="w-6/12 mx-auto text-center my-6">
-            Products
+        <p class="w-full mt-5 text-base text-gray-900 opacity-75 sm:text-center text-left sm:mt-5 sm:text-xl">
+            Scroll through some of the recent projects that Glacial Studio has been working on
         </p>
 
-        <div class="w-full mx-auto mt-12 mb-8">
-            <div class="flex flex-col flex-wrap lg:flex-row lg:space-x-5">
+        <div class="w-full mx-auto mt-12 mb-8 overflow-x-auto pb-7">
+            <div class="flex flex-col lg:flex-row lg:space-x-5">
                 
                 @foreach(\App\Models\Product::where('active', 1)->get() as $plan)
                     @php $features = explode('|', $plan->features); @endphp
 
-                    <div class="flex-1 px-0 mx-auto mb-6 w-full sm:max-w-lg lg:mb-0 @if($plan->default) lg:scale-105 @endif" x-cloak>
+                    <div class="flex-1 px-0 mx-auto mb-6 w-full sm:min-w-80 sm:max-w-80 lg:mb-0 @if($plan->default) lg:scale-105 @endif" x-cloak>
                         <div class="relative flex flex-col h-full mb-10 bg-white border rounded-lg shadow-xl border-zinc-200 text-zinc-800 sm:mb-0">                                            
                             <div class="px-10 pt-3">
                                 <div class="absolute right-0 inline-block mr-6 transform">
@@ -44,20 +44,23 @@
                                     <span class="font-mono text-blue-600 text-xl font-bold">Variable costs</span>
 
                                 @elseif ($plan->monthly_price == 0)
-                                    <span class="font-mono text-blue-600 text-5xl font-bold">FREE</span>
-                                
+                                    @if ($plan->yearly_price !== NULL)
+                                        <span class="text-blue-600 font-mono text-2xl font-bold">£{{ str_replace(".00", "", number_format($plan->yearly_price, 2)) }} per year</span>
+                                    @else
+                                        <span class="font-mono text-blue-600 text-5xl font-bold">FREE</span>
+                                    @endif
                                 @else
                                     @if ($plan->one_time_price !== NULL)
                                         <span class="text-blue-600 font-mono text-5xl font-bold">
-                                            £{{ $plan->one_time_price }}
+                                            £{{ number_format($plan->one_time_price, 2) }}
                                         </span>
                                     @else
                                         <span class="text-blue-600 font-mono text-2xl font-bold">
-                                            £{{ $plan->monthly_price }} per month
+                                            £{{ number_format($plan->monthly_price, 2) }} per month
                                             {{-- <br />
                                             <span class="text-blue-600 italic text-sm font-thin">or</span>
                                             <br />
-                                            £{{ $plan->yearly_price }} per year --}}
+                                            £{{ number_format($plan->yearly_price, 2) }} per year --}}
                                         </span>
                                     @endif
                                 @endif

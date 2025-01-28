@@ -9,6 +9,54 @@
         "
     ></div>
 
+
+    {{-- Past work --}}
+    <div class="w-full lg:w-[80%] mx-auto mb-10">
+        <div id="pastWork" class="relative w-full text-center">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="overflow-hidden sm:rounded-lg">
+                    <div class="text-gray-900">
+                        <section class="max-w-8xl px-6 pt-0 mx-auto md:px-8">
+                            <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Past Work</h1>
+
+                            <p class="w-full mt-5 text-base text-gray-900 opacity-75 sm:text-center text-left sm:mt-5 sm:text-xl">
+                                Take a look at some of our previous work and what our clients have to say about us
+                            </p>
+
+                            <div class="w-full mx-auto mt-7 sm:mt-9 mb-8">
+                                <div class="flex justify-start items-start flex-col lg:flex-row lg:space-x-5 overflow-y-auto">
+
+                                    @foreach ([
+                                        "adscreens", 
+                                        "i-walk", 
+                                        "LittleMooreLighting", 
+                                        "FaceFactsClinic", 
+                                        "HolisticVision",
+                                        "BlingWing",
+                                        "ExclusionZone",
+                                        "EnergizedGaming",
+                                    ] as $pastWorkDetails)
+                                        <div class="border-2 border-gray-300 w-full sm:min-w-96 sm:max-w-80 mb-5">
+                                            <img src="" alt="Project screenshot" class="w-full h-40 object-cover" />
+
+                                            <p class="my-5">
+                                                (description {{ $pastWorkDetails }})
+                                            </p>
+                                        </div>
+                                    @endforeach
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="w-1/2 mx-auto my-8 border-t-2 border-gray-300">
+
+    {{-- Testimonials --}}
     <div class="w-full lg:w-[80%] mx-auto">
         <section id="testimonials">
             <div class="relative flex items-center justify-center pt-0 pb-12 sm:pt-10 md:pb-20 lg:pb-28 min-w-screen">

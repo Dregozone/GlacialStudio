@@ -46,11 +46,21 @@
 
 
     <div class="w-full lg:w-7/12 mx-auto h-full flex flex-col lg:flex-row justify-center items-center">
-        <a href="#services" class="w-10/12 lg:w-4/12 mx-auto lg:-mt-10 border rounded-lg px-8 py-6 text-4xl text-center shadow-lg opacity-100 hover:opacity-80" style="background: rgba(255, 255, 255, 0.5);">
+        <a 
+            href="#services" 
+            class="w-10/12 lg:w-4/12 mx-auto lg:-mt-10 rounded-lg px-8 py-6 text-4xl text-center shadow-lg opacity-100 hover:opacity-80 text-blue-900" 
+            style="background: rgba(255, 255, 255, 0.5);"
+        >
+            <i class="fa-regular fa-handshake mr-2"></i>
             Hire me
         </a>
 
-        <a href="#products" class="w-10/12 lg:w-4/12 mx-auto mt-10 lg:-mt-10 border rounded-lg px-8 py-6 text-4xl text-center shadow-lg opacity-100 hover:opacity-80" style="background: rgba(255, 255, 255, 0.5);">
+        <a 
+            href="#products" 
+            class="w-10/12 lg:w-4/12 mx-auto mt-10 lg:-mt-10 rounded-lg px-8 py-6 text-4xl text-center shadow-lg opacity-100 hover:opacity-80 text-indigo-900" 
+            style="background: rgba(255, 255, 255, 0.5);"
+        >
+            <i class="fa-solid fa-hammer mr-2"></i>
             See my work
         </a>
     </div>

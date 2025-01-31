@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('past_works', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->string('type');
+            $table->string('img');
+            $table->boolean('active')->default(1);
+            $table->integer('order');
             $table->timestamps();
         });
     }

@@ -1,6 +1,5 @@
 <section 
     class="pb-32 bg-gray-50" 
-    id="products"
     style="
         margin-top: -45px;
         background-image: url('img/hero-bottom.png');
@@ -13,7 +12,7 @@
 
         <div class="w-4/12 mt-24 bg-sky-50 shadow-lg rounded-lg p-4 border-2 border-sky-600 opacity-80">
             <h3 class="text-2xl text-center mb-3">
-                Making the world a better place
+                Our contribution
             </h3>
 
             <p class="italic text-center">

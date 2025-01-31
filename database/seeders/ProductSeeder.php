@@ -66,8 +66,8 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Scribe MES',
-                'description' => 'Some short description',
-                'features' => 'first|second|third',
+                'description' => 'Enterprise Manufacturing Execution System with focus on data integrity, control and performance to enable your operators to perform with minimal interuptions',
+                'features' => 'Rapid performance|Data integrity|Web browser based',
                 'default' => false,
                 'monthly_price' => NULL,
                 'yearly_price' => 8999,

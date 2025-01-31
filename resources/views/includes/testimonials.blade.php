@@ -26,21 +26,16 @@
                             <div class="w-full mx-auto mt-7 sm:mt-9 mb-8">
                                 <div class="flex justify-start items-start flex-col lg:flex-row lg:space-x-5 overflow-y-auto">
 
-                                    @foreach ([
-                                        "adscreens", 
-                                        "i-walk", 
-                                        "LittleMooreLighting", 
-                                        "FaceFactsClinic", 
-                                        "HolisticVision",
-                                        "BlingWing",
-                                        "ExclusionZone",
-                                        "EnergizedGaming",
-                                    ] as $pastWorkDetails)
+                                    @foreach (\App\Models\PastWork::where("active", 1)->orderBy("order", "ASC")->get() as $pastWork)
                                         <div class="border-2 border-gray-300 w-full sm:min-w-96 sm:max-w-80 mb-5">
-                                            <img src="" alt="Project screenshot" class="w-full h-40 object-cover" />
+                                            <img src="{{ asset("img/{$pastWork->img}") }}" alt="Project screenshot" class="w-full h-40 object-cover" />
+
+                                            <h4 class="text-center font-semibold text-lg">
+                                                {{ $pastWork->name }}
+                                            </h4>
 
                                             <p class="my-5">
-                                                (description {{ $pastWorkDetails }})
+                                                (description {{ $pastWork->description }})
                                             </p>
                                         </div>
                                     @endforeach
@@ -54,9 +49,12 @@
         </div>
     </div>
 
-    <hr class="w-1/2 mx-auto my-8 border-t-2 border-gray-300">
+    <br /><br />
+
+    {{-- <hr class="w-1/2 mx-auto my-8 border-t-2 border-gray-300"> --}}
 
     {{-- Testimonials --}}
+    {{--
     <div class="w-full lg:w-[80%] mx-auto">
         <section id="testimonials">
             <div class="relative flex items-center justify-center pt-0 pb-12 sm:pt-10 md:pb-20 lg:pb-28 min-w-screen">
@@ -146,4 +144,6 @@
 
 
     </div>
+    --}}
+
 </section>

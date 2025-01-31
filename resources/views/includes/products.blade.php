@@ -22,7 +22,7 @@
                 @foreach(\App\Models\Product::where('active', 1)->get() as $plan)
                     @php $features = explode('|', $plan->features); @endphp
 
-                    <div class="flex-1 px-0 mx-auto mb-6 w-full sm:min-w-80 sm:max-w-80 lg:mb-0 @if($plan->default) lg:scale-105 @endif" x-cloak>
+                    <div class="flex-1 px-0 mx-auto mb-6 w-full sm:min-w-80 sm:max-w-80 lg:mb-0 {{-- @if($plan->default) lg:scale-105 @endif --}}" x-cloak>
                         <div class="relative flex flex-col h-full mb-10 bg-white border rounded-lg shadow-xl border-zinc-200 text-zinc-800 sm:mb-0">                                            
                             <div class="px-10 pt-3">
                                 <div class="absolute right-0 inline-block mr-6 transform">
@@ -35,8 +35,19 @@
                                 </div>
                             </div>
 
-                            <div class="px-8 mt-9 border">
-                                <img src="{{ asset('img/' . $plan->image) }}" class="w-full min-h-40 object-cover" alt="{{ $plan->name }}" />
+                            <div class="mt-9">
+                                @if (file_exists('img/' . $plan->img))
+                                    <img src="{{ asset('img/' . $plan->img) }}" class="w-full min-h-40 object-cover" alt="{{ $plan->name }}" />
+                                @else
+                                    <div 
+                                        class="w-full min-h-40"
+                                        style="background-image: linear-gradient(30deg, rgba(0, 255, 255, 0.35), rgba(5, 129, 237, 0.35));"
+                                    >
+                                        <div style="transform: rotate(-5deg);" class="text-center text-white text-2xl font-bold pt-16">
+                                            Coming soon
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="px-8 mt-2">

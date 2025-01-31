@@ -14,11 +14,11 @@
         <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">About</h1>
 
         <div class="flex flex-col md:flex-row justify-evenly items-center md:items-start gap-2 mt-5">
-            <div class="w-3/12">
-                <img src="" style="width: 220px; height: 300px; border: 1px solid gray;" alt="Picture of founder" />
+            <div class="w-4/12">
+                <img src="{{ asset("img/wedding-morning-tsp.png") }}" class="w-full" alt="Picture of founder" />
             </div>
 
-            <div class="w-9/12">
+            <div class="w-8/12">
                 <p class="my-4 ml-2">
                     Some key info about company aim/objectives and what its all about
                 </p>

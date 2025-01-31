@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Service;
 use App\Models\User;
+use App\Models\Service;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\ProductSeeder;
+use Database\Seeders\PastWorkSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ProductSeeder::class);
         $this->call(ServiceSeeder::class);
+        $this->call(PastWorkSeeder::class);
     }
 }

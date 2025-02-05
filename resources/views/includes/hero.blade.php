@@ -1,5 +1,5 @@
 <section 
-    class="w-full h-[750px] bg-gray-50" 
+    class="w-full h-[750px] bg-gray-50 -mt-20" 
     style="
         background-image: url('img/hero-top.png');
         background-position: center top;

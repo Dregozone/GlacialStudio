@@ -16,13 +16,13 @@
             Scroll through some of the recent projects that Glacial Studio has been working on
         </p>
 
-        <div class="w-full mx-auto mt-12 mb-8 overflow-x-auto pb-7">
-            <div class="flex flex-col lg:flex-row lg:space-x-5">
+        <div class="w-full mx-auto mt-12 {{-- mb-8 overflow-x-auto --}} pb-7">
+            <div class="flex flex-col lg:flex-row {{-- lg:space-x-5 --}}">
                 
                 @foreach(\App\Models\Product::where('active', 1)->get() as $plan)
                     @php $features = explode('|', $plan->features); @endphp
 
-                    <div class="flex-1 px-0 mx-auto mb-6 w-full sm:min-w-80 sm:max-w-80 lg:mb-0 {{-- @if($plan->default) lg:scale-105 @endif --}}" x-cloak>
+                    <div class="flex-1 px-0 mx-auto mb-6 w-11/12 ml-5 {{-- sm:min-w-80 sm:max-w-80 --}} lg:mb-0 {{-- @if($plan->default) lg:scale-105 @endif --}}" x-cloak>
                         <div class="relative flex flex-col h-full mb-10 bg-white border rounded-lg shadow-xl border-zinc-200 text-zinc-800 sm:mb-0">                                            
                             <div class="px-10 pt-3">
                                 <div class="absolute right-0 inline-block mr-6 transform">
@@ -37,13 +37,13 @@
 
                             <div class="mt-9">
                                 @if (file_exists('img/' . $plan->img))
-                                    <img src="{{ asset('img/' . $plan->img) }}" class="w-full min-h-40 object-cover" alt="{{ $plan->name }}" />
+                                    <img src="{{ asset('img/' . $plan->img) }}" class="w-full min-h-60 object-cover" alt="{{ $plan->name }}" />
                                 @else
                                     <div 
-                                        class="w-full min-h-40"
+                                        class="w-full min-h-60 flex justify-center items-center"
                                         style="background-image: linear-gradient(30deg, rgba(0, 255, 255, 0.35), rgba(5, 129, 237, 0.35));"
                                     >
-                                        <div style="transform: rotate(-5deg);" class="text-center text-white text-2xl font-bold pt-16">
+                                        <div style="transform: rotate(-5deg);" class="text-white text-2xl md:text-4xl font-bold">
                                             Coming soon
                                         </div>
                                     </div>
@@ -100,14 +100,24 @@
                             </div>
 
                             <div class="overflow-hidden rounded-b-lg">
-                                <a 
-                                    class="block w-full rounded-tl-none rounded-tr-none bg-blue-600 hover:bg-blue-500 text-white py-2 text-center" 
-                                    href="{{ $plan->link }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Go to {{ $plan->name }} site
-                            </a>
+                                @if (
+                                    file_exists('img/' . $plan->img) &&
+                                    $plan->link !== NULL &&
+                                    $plan->link !== ''
+                                )
+                                    <a 
+                                        class="block w-full rounded-tl-none rounded-tr-none bg-blue-600 hover:bg-blue-500 text-white py-2 text-center" 
+                                        href="{{ $plan->link }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Go to {{ $plan->name }} site
+                                    </a>
+                                @else
+                                    <span class="block w-full rounded-tl-none rounded-tr-none bg-amber-600 hover:bg-amber-500 text-white py-2 text-center cursor-not-allowed">
+                                        COMING SOON
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>

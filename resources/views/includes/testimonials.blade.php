@@ -20,22 +20,22 @@
                             <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Past Work</h1>
 
                             <p class="w-full mt-5 text-base text-gray-900 opacity-75 sm:text-center text-left sm:mt-5 sm:text-xl">
-                                Take a look at some of our previous work and what our clients have to say about us
+                                Take a look at some of our previous work{{-- and what our clients have to say about us --}}
                             </p>
 
                             <div class="w-full mx-auto mt-7 sm:mt-9 mb-8">
                                 <div class="flex justify-start items-start flex-col lg:flex-row lg:space-x-5 overflow-y-auto">
 
                                     @foreach (\App\Models\PastWork::where("active", 1)->orderBy("order", "ASC")->get() as $pastWork)
-                                        <div class="border-2 border-gray-300 w-full sm:min-w-96 sm:max-w-80 mb-5">
+                                        <div class="w-full sm:min-w-94 sm:max-w-94 mb-5">
                                             <img src="{{ asset("img/{$pastWork->img}") }}" alt="Project screenshot" class="w-full h-40 object-cover" />
 
                                             <h4 class="text-center font-semibold text-lg">
                                                 {{ $pastWork->name }}
                                             </h4>
 
-                                            <p class="my-5">
-                                                (description {{ $pastWork->description }})
+                                            <p class="my-5 text-left px-5">
+                                                {{ $pastWork->description }}
                                             </p>
                                         </div>
                                     @endforeach

@@ -20,7 +20,7 @@
 
             <div class="w-8/12">
                 <p class="my-4 ml-2">
-                    Some key info about company aim/objectives and what its all about
+                    {{-- Some key info about company aim/objectives and what its all about --}}
                 </p>
 
                 <blockquote class="flex flex-row-reverse items-center justify-between w-full col-span-1 p-6 md:flex-row">
@@ -32,15 +32,15 @@
                             </svg>
 
                             <p class="mt-2 text-base text-zinc-600">
-                                I set up Glacial Studio with a goal to provide affordable, effective web solutions. 
-                                I strive for customer satisfaction, setting deliverables and clear timeframes upfront and 
-                                always working towards your dream solution
+                                I set up Glacial Studio with the goal to provide affordable, effective web solutions. 
+                                I strive for customer satisfaction; Setting deliverables with clear timeframes upfront, and 
+                                always working towards your dream solution.
                             </p>
                         </div>
 
                         <h3 class="mt-3 text-base font-medium leading-5 truncate text-zinc-800 md:pl-12">
                             Anders Learmonth 
-                            <span class="mt-1 text-sm leading-5 truncate text-zinc-500">- Founder (Glacial Studio)</span>
+                            <span class="mt-1 text-sm leading-5 truncate text-zinc-500">- Founder{{-- (Glacial Studio)--}}</span>
                         </h3>
                     </div>
                 </blockquote>

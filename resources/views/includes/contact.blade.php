@@ -13,6 +13,11 @@
         
         <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Contact</h1>
 
+        <p class="text-base text-center font-light italic p-3 m-5 border border-amber-500 w-10/12 sm:w-6/12 mx-auto shadow-md rounded-md bg-amber-50">
+            I am not currently taking on any new projects.
+        </p>
+
+        <!--
         <div x-data="{ on: false, billing: 'Monthly',
                 toggleRepositionMarker(toggleButton){
                     this.$refs.marker.style.width=toggleButton.offsetWidth + 'px';
@@ -31,6 +36,7 @@
             "
             class="w-full mx-auto my-12" x-cloak
         >
+            {{-- Type of form toggle button --}}
             <div class="relative flex items-center justify-start pb-5 -translate-y-2 sm:justify-center">
                 <div class="relative inline-flex items-center justify-center w-auto p-1 text-center -translate-y-3 border-2 border-blue-600 rounded-full sm:mx-auto">
                     <div x-ref="monthly" x-on:click="billing='Monthly'; toggleRepositionMarker($el)" :class="{ 'text-white': billing == 'Monthly' }" class="relative z-20 px-3.5 py-1 text-sm font-medium leading-6 text-gray-900 rounded-full duration-300 ease-out cursor-pointer">
@@ -45,6 +51,7 @@
                 </div>  
             </div>
 
+            {{-- Form to display --}}
             <div class="flex flex-col flex-wrap lg:flex-row lg:space-x-5">
 
                 <div x-show="billing == 'Monthly'">
@@ -92,7 +99,7 @@
 
             </div>
         </div>
-
+        -->
 
     </div>
 

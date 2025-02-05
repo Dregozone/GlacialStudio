@@ -1,4 +1,4 @@
-<header class="z-40 absolute left-0 lg:left-[20%] w-full lg:w-[60%] mx-auto flex justify-center items-center mt-0 py-2">
+<header class="z-40 {{-- absolute left-0 lg:left-[20%]--}} w-full lg:w-[60%] mx-auto flex justify-center items-center mt-0 py-2">
     {{-- Logo --}}
     <div class="w-4/12 flex justify-center items-center">
         <img src="{{ asset('img/gs-logo.png') }}" class="h-10" alt="Glacial Studio Logo" />
@@ -14,16 +14,16 @@
 
     {{-- Socials --}}
     <div class="w-4/12 flex justify-center items-center ml-24 text-2xl">
-        <a href="" class="ml-6">
+        <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank" rel="noreferrer" class="ml-6">
             <i class="fa-brands fa-facebook text-blue-700 hover:text-blue-600 shadow-md"></i>
         </a>
 
-        <a href="" class="ml-6">
+        {{-- <a href="" class="ml-6">
             <i class="fa-brands fa-linkedin text-blue-500 hover:text-blue-600 shadow-md"></i>
         </a>
         
         <a href="" class="ml-6">
             <i class="fa-brands fa-github text-gray-700 hover:text-gray-500 shadow-md"></i>
-        </a>
+        </a> --}}
     </div>
 </header>

@@ -16,8 +16,8 @@
             </h3>
 
             <p class="italic text-center">
-                Since Jan 2025, Glacial Studio is committed to donating a portion of all profits from product sales and subscriptions to good causes combatting climate change and 
-                in aid of the preservation of endangered, primarily arctic animal species.
+                Since Jan 2025, Glacial Studio has been committed to donating 5% of all profits from product sales and subscriptions to good causes that combat 
+                climate change or animal conservation projects.
 
                 <br /><br />
 

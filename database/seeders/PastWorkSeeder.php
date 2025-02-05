@@ -18,7 +18,7 @@ class PastWorkSeeder extends Seeder
         $toAdd = [
             [
                 'name' => 'adscreens',
-                'description' => '',
+                'description' => 'New website bringing all information about the company and its products together.',
                 'type' => 'website',
                 'img' => 'adscreens.jpg',
                 'active' => 1,
@@ -26,7 +26,7 @@ class PastWorkSeeder extends Seeder
             ],
             [
                 'name' => 'i-walk',
-                'description' => '',
+                'description' => 'Landing page for a new product under development by a client in the advertising sector',
                 'type' => 'website',
                 'img' => 'iwalk.jpg',
                 'active' => 1,
@@ -34,7 +34,7 @@ class PastWorkSeeder extends Seeder
             ],
             [
                 'name' => 'Little Moore Lighting',
-                'description' => '',
+                'description' => 'Storefront, admin tools and customer metrics for a car headlight customisation business.',
                 'type' => 'website',
                 'img' => 'littlemoorelighting.jpg',
                 'active' => 1,
@@ -42,7 +42,7 @@ class PastWorkSeeder extends Seeder
             ],
             [
                 'name' => 'Face Facts Clinic',
-                'description' => '',
+                'description' => 'New website for a cosmetic clinic in the UK; with treatment details and appointment booking facilities.',
                 'type' => 'website',
                 'img' => 'facefactsclinic.jpg',
                 'active' => 1,
@@ -53,7 +53,7 @@ class PastWorkSeeder extends Seeder
                 'description' => '',
                 'type' => 'website',
                 'img' => 'holisticvision.jpg',
-                'active' => 1,
+                'active' => 0,
                 'order' => 10,
             ],
             [
@@ -61,7 +61,7 @@ class PastWorkSeeder extends Seeder
                 'description' => '',
                 'type' => 'website',
                 'img' => 'blingwing.jpg',
-                'active' => 1,
+                'active' => 0,
                 'order' => 10,
             ],
             [
@@ -69,7 +69,7 @@ class PastWorkSeeder extends Seeder
                 'description' => '',
                 'type' => 'website',
                 'img' => 'exclusionzone.jpg',
-                'active' => 1,
+                'active' => 0,
                 'order' => 10,
             ],
             [
@@ -77,7 +77,7 @@ class PastWorkSeeder extends Seeder
                 'description' => '',
                 'type' => 'website',
                 'img' => 'energizedgaming.jpg',
-                'active' => 1,
+                'active' => 0,
                 'order' => 10,
             ],
         ];

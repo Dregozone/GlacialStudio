@@ -1,0 +1,8 @@
+[09-Jan-2025 13:41:16 UTC] PHP Warning:  require(/home/dregozon/public_html/GS/vendor/composer/../symfony/polyfill-php72/bootstrap.php): Failed to open stream: No such file or directory in /home/dregozon/public_html/GS/vendor/composer/autoload_real.php on line 78
+[09-Jan-2025 13:41:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/dregozon/public_html/GS/vendor/composer/../symfony/polyfill-php72/bootstrap.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/dregozon/public_html/GS/vendor/composer/autoload_real.php:78
+Stack trace:
+#0 /home/dregozon/public_html/GS/vendor/composer/autoload_real.php(61): composerRequire02440a3fb441a72f3086972a50c06c73()
+#1 /home/dregozon/public_html/GS/vendor/autoload.php(7): ComposerAutoloaderInit02440a3fb441a72f3086972a50c06c73::getLoader()
+#2 /home/dregozon/public_html/GS/public/index.php(34): require('/home/dregozon/...')
+#3 {main}
+  thrown in /home/dregozon/public_html/GS/vendor/composer/autoload_real.php on line 78

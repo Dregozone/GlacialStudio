@@ -26,8 +26,8 @@
             <textarea class="form-control contactInput" id="message" name="message" placeholder="Enter your message"></textarea> 
         </div>
 
-        <div class="form-group">
-            <input type="submit" class="btn callToAction fading" id="submitButton" value="Send" /> 
+        <div class="form-group" title="Contact form is currently disabled" style="cursor: not-allowed;">
+            <input type="submit" class="btn callToAction fading" id="submitButton" value="Send" disabled /> 
         </div>
     </form>
 </div>

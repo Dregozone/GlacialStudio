@@ -76,13 +76,16 @@ class PagesController extends Controller
 
     public function contactSubmit(Request $request) {
 
+        /*
         Mail::
               to('aclearmonth@gmail.com')
             ->send(new ContactFormSubmission($request));
+        */
 
         return redirect()
             ->route("contact")
-            ->with(["message" => "Your message has been sent!"]);
+            //->with(["message" => "Your message has been sent!"]);
+            ->with(["message" => "Sending messages are temporarily disabled!"]);
     }
 
     public function news() {

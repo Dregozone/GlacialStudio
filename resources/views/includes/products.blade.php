@@ -1,130 +1,121 @@
-<section class="pt-5 pb-24 bg-gray-50" id="products">
-    {{-- Top slant at angle --}}
-    <div 
-        style="
-            width: 105%;
-            margin-top: -60px;
-            border-bottom: 90px solid rgb(249 250 251);
-            transform: rotate(-2.5deg);
-        "
-    ></div>
+<section class="section-padding bg-white" id="products">
+    <div class="container-custom">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-glacier-900 mb-6">
+                Our <span class="gradient-text">Products</span>
+            </h2>
+            <p class="text-lg text-glacier-600 max-w-3xl mx-auto">
+                Discover our portfolio of innovative web applications and digital solutions designed to solve real-world
+                problems.
+            </p>
+        </div>
 
-    <div class="w-full lg:w-[80%] mx-auto pb-10">
-        <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Products</h1>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach (\App\Models\Product::where('active', 1)->get() as $product)
+                @php $features = explode('|', $product->features); @endphp
 
-        <p class="w-full mt-5 text-base text-gray-900 opacity-75 sm:text-center text-left sm:mt-5 sm:text-xl">
-            Scroll through some of the recent projects that Glacial Studio has been working on
-        </p>
-
-        <div class="w-full mx-auto mt-12 {{-- mb-8 overflow-x-auto --}} pb-7">
-            <div class="flex flex-col lg:flex-row {{-- lg:space-x-5 --}}">
-                
-                @foreach(\App\Models\Product::where('active', 1)->get() as $plan)
-                    @php $features = explode('|', $plan->features); @endphp
-
-                    <div class="flex-1 px-0 mx-auto mb-6 w-11/12 ml-5 {{-- sm:min-w-80 sm:max-w-80 --}} lg:mb-0 {{-- @if($plan->default) lg:scale-105 @endif --}}" x-cloak>
-                        <div class="relative flex flex-col h-full mb-10 bg-white border rounded-lg shadow-xl border-zinc-200 text-zinc-800 sm:mb-0">                                            
-                            <div class="px-10 pt-3">
-                                <div class="absolute right-0 inline-block mr-6 transform">
-                                    <h2 class="
-                                        relative z-20 w-full h-full px-2 py-1 text-xs font-bold leading-tight tracking-wide text-center uppercase bg-white border-2 
-                                        @if($plan->default){{ 'border-blue-800 text-blue-800' }}@else{{ 'border-zinc-900 text-zinc-800' }}@endif rounded
-                                    ">
-                                        {{ $plan->name }}
-                                    </h2>
+                <div class="card group hover:scale-105 transition-all duration-300">
+                    {{-- Product Image --}}
+                    <div class="relative overflow-hidden rounded-t-xl">
+                        @if (file_exists('img/' . $product->img))
+                            <img src="{{ asset('img/' . $product->img) }}"
+                                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                                alt="{{ $product->name }}" />
+                        @else
+                            <div
+                                class="w-full h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fa-solid fa-code text-4xl text-primary-600 mb-2"></i>
+                                    <p class="text-primary-700 font-medium">Coming Soon</p>
                                 </div>
                             </div>
+                        @endif
 
-                            <div class="mt-9">
-                                @if (file_exists('img/' . $plan->img))
-                                    <img src="{{ asset('img/' . $plan->img) }}" class="w-full min-h-60 object-cover" alt="{{ $plan->name }}" />
+                        {{-- Status Badge --}}
+                        <div class="absolute top-4 right-4">
+                            @if (file_exists('img/' . $product->img) && $product->link)
+                                <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                                    Live
+                                </span>
+                            @else
+                                <span class="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                                    Coming Soon
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    {{-- Product Content --}}
+                    <div class="p-6">
+                        <h3 class="text-xl font-display font-semibold text-glacier-900 mb-3">
+                            {{ $product->name }}
+                        </h3>
+
+                        <p class="text-glacier-600 mb-4 leading-relaxed">
+                            {{ $product->description }}
+                        </p>
+
+                        {{-- Pricing --}}
+                        <div class="mb-4">
+                            @if ($product->one_time_price == -1)
+                                <span class="text-primary-600 font-semibold">Variable costs</span>
+                            @elseif ($product->monthly_price == 0)
+                                @if ($product->yearly_price !== null)
+                                    <span
+                                        class="text-primary-600 font-semibold">£{{ str_replace('.00', '', number_format($product->yearly_price, 2)) }}
+                                        per year</span>
                                 @else
-                                    <div 
-                                        class="w-full min-h-60 flex justify-center items-center"
-                                        style="background-image: linear-gradient(30deg, rgba(0, 255, 255, 0.35), rgba(5, 129, 237, 0.35));"
-                                    >
-                                        <div style="transform: rotate(-5deg);" class="text-white text-2xl md:text-4xl font-bold">
-                                            Coming soon
-                                        </div>
-                                    </div>
+                                    <span class="text-2xl font-bold text-green-600">FREE</span>
                                 @endif
-                            </div>
-
-                            <div class="px-8 mt-2">
-                                @if ($plan->one_time_price == -1)
-                                    <span class="font-mono text-blue-600 text-xl font-bold">Variable costs</span>
-
-                                @elseif ($plan->monthly_price == 0)
-                                    @if ($plan->yearly_price !== NULL)
-                                        <span class="text-blue-600 font-mono text-2xl font-bold">£{{ str_replace(".00", "", number_format($plan->yearly_price, 2)) }} per year</span>
-                                    @else
-                                        <span class="font-mono text-blue-600 text-5xl font-bold">FREE</span>
-                                    @endif
+                            @else
+                                @if ($product->one_time_price !== null)
+                                    <span class="text-2xl font-bold text-primary-600">
+                                        £{{ number_format($product->one_time_price, 2) }}
+                                    </span>
                                 @else
-                                    @if ($plan->one_time_price !== NULL)
-                                        <span class="text-blue-600 font-mono text-5xl font-bold">
-                                            £{{ number_format($plan->one_time_price, 2) }}
-                                        </span>
-                                    @else
-                                        <span class="text-blue-600 font-mono text-2xl font-bold">
-                                            £{{ number_format($plan->monthly_price, 2) }} per month
-                                            {{-- <br />
-                                            <span class="text-blue-600 italic text-sm font-thin">or</span>
-                                            <br />
-                                            £{{ number_format($plan->yearly_price, 2) }} per year --}}
-                                        </span>
-                                    @endif
+                                    <span class="text-primary-600 font-semibold">
+                                        £{{ number_format($product->monthly_price, 2) }} per month
+                                    </span>
                                 @endif
-                            </div>
+                            @endif
+                        </div>
 
-                            <div class="px-8 mt-3">
-                                <p class="text-base leading-7 text-gray-500">{{ $plan->description }}</p>
-                            </div>
-
-                            <div class="p-8 mt-auto rounded-b-lg">
-                                <ul class="flex flex-col">
-                                    @foreach($features as $feature)
-                                        <li class="mt-1">
-                                            <span class="flex items-center text-green-500">
-                                                <svg class="w-4 h-4 mr-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                    <path d="M0 11l2-2 5 5L18 3l2 2L7 18z"></path>
-                                                </svg>
-                                                
-                                                <span class="text-gray-700">
-                                                    {{ $feature }}
-                                                </span>
-                                            </span>
+                        {{-- Features --}}
+                        @if (count($features) > 0)
+                            <div class="mb-6">
+                                <h4 class="text-sm font-semibold text-glacier-700 mb-3 uppercase tracking-wide">Features
+                                </h4>
+                                <ul class="space-y-2">
+                                    @foreach ($features as $feature)
+                                        <li class="flex items-center text-sm text-glacier-600">
+                                            <i class="fa-solid fa-check text-green-500 mr-2"></i>
+                                            {{ $feature }}
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
+                        @endif
 
-                            <div class="overflow-hidden rounded-b-lg">
-                                @if (
-                                    file_exists('img/' . $plan->img) &&
-                                    $plan->link !== NULL &&
-                                    $plan->link !== ''
-                                )
-                                    <a 
-                                        class="block w-full rounded-tl-none rounded-tr-none bg-blue-600 hover:bg-blue-500 text-white py-2 text-center" 
-                                        href="{{ $plan->link }}"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        Go to {{ $plan->name }} site
-                                    </a>
-                                @else
-                                    <span class="block w-full rounded-tl-none rounded-tr-none bg-amber-600 hover:bg-amber-500 text-white py-2 text-center cursor-not-allowed">
-                                        COMING SOON
-                                    </span>
-                                @endif
-                            </div>
+                        {{-- Action Button --}}
+                        <div class="mt-auto">
+                            @if (file_exists('img/' . $product->img) && $product->link !== null && $product->link !== '')
+                                <a href="{{ $product->link }}" target="_blank" rel="noopener noreferrer"
+                                    class="btn-primary w-full justify-center group">
+                                    <i
+                                        class="fa-solid fa-external-link-alt mr-2 group-hover:scale-110 transition-transform duration-200"></i>
+                                    Visit Site
+                                </a>
+                            @else
+                                <button
+                                    class="w-full px-4 py-2 bg-glacier-100 text-glacier-500 rounded-lg cursor-not-allowed">
+                                    <i class="fa-solid fa-clock mr-2"></i>
+                                    Coming Soon
+                                </button>
+                            @endif
                         </div>
                     </div>
-                @endforeach
-                
-            </div>
+                </div>
+            @endforeach
         </div>
-
     </div>
 </section>

@@ -1,61 +1,96 @@
-<section class="pt-5 bg-sky-50">
-    {{-- Top slant at angle --}}
-    <div 
-        style="
-            width: 105%;
-            margin-top: -60px;
-            border-bottom: 90px solid rgb(240, 249, 255);
-            transform: rotate(-2.5deg);
-        "
-    ></div>
+<section id="about" class="section-padding bg-gradient-to-b from-white to-glacier-50">
+    <div class="container-custom">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-glacier-900 mb-6">
+                About <span class="gradient-text">Glacial Studio</span>
+            </h2>
+            <p class="text-lg text-glacier-600 max-w-3xl mx-auto">
+                We specialize in creating modern, effective web solutions that drive business growth and user
+                engagement.
+            </p>
+        </div>
 
-    <div class="w-full lg:w-[60%] mx-auto">
-
-        <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">About</h1>
-
-        <div class="flex flex-col md:flex-row justify-evenly items-center md:items-start gap-2 mt-5">
-            <div class="w-4/12">
-                <img src="{{ asset("img/wedding-morning-tsp.png") }}" class="w-full" alt="Picture of founder" />
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            {{-- Image Section --}}
+            <div class="relative">
+                <div class="relative z-10">
+                    <img src="{{ asset('img/wedding-morning-tsp.png') }}"
+                        class="w-full h-96 object-cover rounded-2xl shadow-2xl"
+                        alt="Anders Learmonth - Founder of Glacial Studio" />
+                </div>
+                {{-- Decorative Elements --}}
+                <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary-200 rounded-full opacity-60"></div>
+                <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-accent-200 rounded-full opacity-60"></div>
             </div>
 
-            <div class="w-8/12">
-                <p class="my-4 ml-2">
-                    {{-- Some key info about company aim/objectives and what its all about --}}
-                </p>
+            {{-- Content Section --}}
+            <div class="space-y-8">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-display font-semibold text-glacier-900">
+                        Our Mission
+                    </h3>
+                    <p class="text-glacier-600 leading-relaxed">
+                        At Glacial Studio, we believe in the power of technology to transform businesses and create
+                        meaningful digital experiences.
+                        Our mission is to deliver affordable, effective web solutions that exceed expectations and drive
+                        real results.
+                    </p>
+                </div>
 
-                <blockquote class="flex flex-row-reverse items-center justify-between w-full col-span-1 p-6 md:flex-row">
-                    <div class="flex flex-col pl-5 md:pr-8">
-                        <div class="relative md:pl-12">
-                            {{-- Quote mark --}}
-                            <svg class="absolute left-0 hidden w-10 h-10 text-blue-500 fill-current md:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
-                                <path d="M30.7 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2C12.7 83.1 5 72.6 5 61.5c0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S30.7 31.6 30.7 42zM82.4 42c0 6.1 12.6 7 12.6 22 0 11-7.9 19.2-18.9 19.2-11.8 0-19.5-10.5-19.5-21.6 0-19.2 18-44.6 29.2-44.6 2.8 0 7.9 2 7.9 5.4S82.4 31.6 82.4 42z"></path>
-                            </svg>
-
-                            <p class="mt-2 text-base text-zinc-600">
-                                I set up Glacial Studio with the goal to provide affordable, effective web solutions. 
-                                I strive for customer satisfaction; Setting deliverables with clear timeframes upfront, and 
-                                always working towards your dream solution.
-                            </p>
+                {{-- Quote Section --}}
+                <div class="relative bg-white p-8 rounded-2xl shadow-lg border border-glacier-100">
+                    <div class="absolute -top-4 left-8">
+                        <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-quote-left text-white text-sm"></i>
                         </div>
-
-                        <h3 class="mt-3 text-base font-medium leading-5 truncate text-zinc-800 md:pl-12">
-                            Anders Learmonth 
-                            <span class="mt-1 text-sm leading-5 truncate text-zinc-500">- Founder{{-- (Glacial Studio)--}}</span>
-                        </h3>
                     </div>
-                </blockquote>
+
+                    <blockquote class="relative">
+                        <p class="text-glacier-700 text-lg leading-relaxed mb-6">
+                            "I set up Glacial Studio with the goal to provide affordable, effective web solutions.
+                            I strive for customer satisfaction; Setting deliverables with clear timeframes upfront, and
+                            always working towards your dream solution."
+                        </p>
+
+                        <footer class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                                <span class="text-primary-600 font-semibold text-lg">A</span>
+                            </div>
+                            <div>
+                                <cite class="text-glacier-900 font-semibold not-italic">Anders Learmonth</cite>
+                                <p class="text-glacier-500 text-sm">Founder & Lead Developer</p>
+                            </div>
+                        </footer>
+                    </blockquote>
+                </div>
+
+                {{-- Key Values --}}
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    <div class="text-center p-4">
+                        <div
+                            class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-rocket text-primary-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-glacier-900 mb-2">Fast Delivery</h4>
+                        <p class="text-sm text-glacier-600">Quick turnaround times without compromising quality</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-shield-halved text-accent-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-glacier-900 mb-2">Reliable</h4>
+                        <p class="text-sm text-glacier-600">Secure, stable, and scalable solutions</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div
+                            class="w-12 h-12 bg-glacier-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-users text-glacier-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-glacier-900 mb-2">Customer Focus</h4>
+                        <p class="text-sm text-glacier-600">Your success is our priority</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    {{-- Bottom slant at angle --}}
-    <div 
-        class="pb-24"
-        style="
-            width: 105%;
-            margin-top: -60px;
-            border-bottom: 90px solid rgb(240, 249, 255);
-            transform: rotate(2.5deg);
-        "
-    ></div>
 </section>

@@ -1,106 +1,111 @@
-<section class="pt-5 pb-32 bg-gray-200" id="contact">
-    {{-- Top slant at angle --}}
-    <div 
-        style="
-            width: 100%;
-            margin-top: -60px;
-            border-bottom: 90px solid rgb(229 231 235);
-            transform: rotate(2.5deg);
-        "
-    ></div>
+<section class="section-padding bg-gradient-to-b from-white to-glacier-50" id="contact">
+    <div class="container-custom">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-glacier-900 mb-6">
+                Get in <span class="gradient-text">Touch</span>
+            </h2>
+            <p class="text-lg text-glacier-600 max-w-3xl mx-auto">
+                Ready to start your next project? Let's discuss how we can bring your vision to life.
+            </p>
+        </div>
 
-    <div class="w-full lg:w-[80%] mx-auto">
-        
-        <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Contact</h1>
-
-        <p class="text-base text-center font-light italic p-3 m-5 border border-amber-500 w-10/12 sm:w-6/12 mx-auto shadow-md rounded-md bg-amber-50">
-            I am not currently taking on any new projects.
-        </p>
-
-        <!--
-        <div x-data="{ on: false, billing: 'Monthly',
-                toggleRepositionMarker(toggleButton){
-                    this.$refs.marker.style.width=toggleButton.offsetWidth + 'px';
-                    this.$refs.marker.style.height=toggleButton.offsetHeight + 'px';
-                    this.$refs.marker.style.left=toggleButton.offsetLeft + 'px';
-                }
-            }" 
-            x-init="
-                    setTimeout(function(){ 
-                        toggleRepositionMarker($refs.monthly); 
-                        $refs.marker.classList.remove('opacity-0');
-                        setTimeout(function(){ 
-                            $refs.marker.classList.add('duration-300', 'ease-out');
-                        }, 10); 
-                    }, 1);
-            "
-            class="w-full mx-auto my-12" x-cloak
-        >
-            {{-- Type of form toggle button --}}
-            <div class="relative flex items-center justify-start pb-5 -translate-y-2 sm:justify-center">
-                <div class="relative inline-flex items-center justify-center w-auto p-1 text-center -translate-y-3 border-2 border-blue-600 rounded-full sm:mx-auto">
-                    <div x-ref="monthly" x-on:click="billing='Monthly'; toggleRepositionMarker($el)" :class="{ 'text-white': billing == 'Monthly' }" class="relative z-20 px-3.5 py-1 text-sm font-medium leading-6 text-gray-900 rounded-full duration-300 ease-out cursor-pointer">
-                        I have a project idea
+        {{-- Availability Notice --}}
+        <div class="max-w-2xl mx-auto mb-12">
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fa-solid fa-clock text-amber-600 text-xl"></i>
                     </div>
-                    <div x-ref="yearly" x-on:click="billing='Yearly'; toggleRepositionMarker($el)" :class="{ 'text-white': billing == 'Yearly' }" class="relative z-20 px-3.5 py-1 text-sm font-medium leading-6 text-gray-900 rounded-full duration-300 ease-out cursor-pointer">
-                        General enquiry
-                    </div>
-                    <div x-ref="marker" class="absolute left-0 z-10 w-1/2 h-full opacity-0" x-cloak>
-                        <div class="w-full h-full bg-blue-600 rounded-full shadow-sm"></div>
-                    </div>
-                </div>  
-            </div>
-
-            {{-- Form to display --}}
-            <div class="flex flex-col flex-wrap lg:flex-row lg:space-x-5">
-
-                <div x-show="billing == 'Monthly'">
-                    Form: I have a project idea
-
-
-
-                    <form action="{{ route('contact.submit') }}" method="POST" class="space-y-4">
-                        @csrf
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                            <input type="text" name="name" id="name" required class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
-                            <input type="email" name="email" id="email" required class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                        </div>
-                        <div>
-                            <label for="reason" class="block text-sm font-medium text-gray-700">Reason for contact</label>
-                            <select name="reason" id="reason" required class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                                <option value="project">Project Idea</option>
-                                <option value="enquiry">General Enquiry</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                            <textarea name="message" id="message" rows="4" required class="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                Submit
-                            </button>
-                        </div>
-                    </form>
-
-
-
-
-
+                    <h3 class="text-xl font-display font-semibold text-amber-800">Currently Unavailable</h3>
                 </div>
-
-                <div x-show="billing == 'Yearly'">
-                    Form: General enquiry
-                </div>
-
+                <p class="text-amber-700 leading-relaxed">
+                    I am not currently taking on any new projects. Please check back later or follow us on social media
+                    for updates.
+                </p>
             </div>
         </div>
-        -->
 
+        {{-- Contact Information --}}
+        <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            {{-- Contact Details --}}
+            <div class="space-y-8">
+                <div>
+                    <h3 class="text-2xl font-display font-semibold text-glacier-900 mb-6">
+                        Contact Information
+                    </h3>
+                    <p class="text-glacier-600 leading-relaxed mb-8">
+                        While we're not taking new projects right now, feel free to reach out for future opportunities
+                        or general inquiries.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-envelope text-primary-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-glacier-900">Email</h4>
+                            <p class="text-glacier-600">info@glacialstudio.com</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-location-dot text-accent-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-glacier-900">Location</h4>
+                            <p class="text-glacier-600">United Kingdom</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-glacier-100 rounded-full flex items-center justify-center">
+                            <i class="fa-brands fa-facebook text-glacier-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-glacier-900">Social Media</h4>
+                            <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank"
+                                rel="noreferrer"
+                                class="text-primary-600 hover:text-primary-700 transition-colors duration-200">
+                                Follow us on Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Future Contact Form Placeholder --}}
+            <div class="bg-white rounded-2xl shadow-lg p-8 border border-glacier-100">
+                <h3 class="text-xl font-display font-semibold text-glacier-900 mb-6">
+                    Future Inquiries
+                </h3>
+                <p class="text-glacier-600 mb-6">
+                    When we're available for new projects, you'll be able to submit your project details here.
+                </p>
+
+                <div class="space-y-4 opacity-50">
+                    <div>
+                        <label class="block text-sm font-medium text-glacier-700 mb-2">Name</label>
+                        <input type="text" disabled
+                            class="w-full px-4 py-3 border border-glacier-200 rounded-lg bg-glacier-50">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-glacier-700 mb-2">Email</label>
+                        <input type="email" disabled
+                            class="w-full px-4 py-3 border border-glacier-200 rounded-lg bg-glacier-50">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-glacier-700 mb-2">Message</label>
+                        <textarea rows="4" disabled class="w-full px-4 py-3 border border-glacier-200 rounded-lg bg-glacier-50"></textarea>
+                    </div>
+                    <button disabled
+                        class="w-full px-4 py-3 bg-glacier-200 text-glacier-500 rounded-lg cursor-not-allowed">
+                        Submit (Coming Soon)
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-
 </section>

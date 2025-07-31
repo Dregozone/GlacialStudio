@@ -1,114 +1,109 @@
-<section class="pt-5 pb-32 bg-gray-50 z-70" id="services">
-    {{-- Top slant at angle --}}
-    <div 
-        style="
-            width: 100%;
-            margin-top: -60px;
-            border-bottom: 90px solid rgb(249 250 251);
-            transform: rotate(-2.5deg);
-        "
-    ></div>
+<section class="section-padding bg-gradient-to-b from-glacier-50 to-white" id="services">
+    <div class="container-custom">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-glacier-900 mb-6">
+                Our <span class="gradient-text">Services</span>
+            </h2>
+            <p class="text-lg text-glacier-600 max-w-3xl mx-auto">
+                Comprehensive web development and digital solutions tailored to your business needs.
+                From concept to deployment, we handle every aspect of your project.
+            </p>
+        </div>
 
-    <div class="w-full lg:w-[80%] mx-auto">
-        {{-- Pricing start --}}
-        <div id="pricing" class="relative w-full text-center">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="overflow-hidden sm:rounded-lg">
-                    <div class="text-gray-900">
-                        <section class="max-w-8xl px-6 pt-0 mx-auto md:px-8">
-                            <h1 class="text-4xl font-extrabold sm:text-center text-left text-gray-900 lg:text-5xl">Services</h1>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach (\App\Models\Service::where('active', 1)->get() as $service)
+                <div class="card group hover:scale-105 transition-all duration-300">
+                    {{-- Service Image --}}
+                    <div class="relative overflow-hidden rounded-t-xl">
+                        <img src="{{ asset('img/' . $service->img) }}"
+                            class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                            alt="{{ $service->name }}" />
 
-                            <p class="w-full mt-5 text-base text-gray-900 opacity-75 sm:text-center text-left sm:mt-5 sm:text-xl">
-                                Some of the services offered by Glacial Studio to help get your projects off the ground
-                            </p>
-
-                            <div class="w-full mx-auto mt-7 sm:mt-9 mb-8">
-                                <div class="flex flex-col flex-wrap lg:flex-row lg:space-x-5">
-                                    
-                                    @foreach(\App\Models\Service::where('active', 1)->get() as $plan)
-                                        {{-- @php $features = explode('|', $plan->features); @endphp --}}
-
-                                        <div class="flex-1 px-0 mx-auto mb-6 w-full sm:max-w-lg lg:mb-0 @if($plan->default) lg:scale-105 @endif" x-cloak>
-                                            <div class="relative flex flex-col h-full mb-10 bg-white border rounded-lg shadow-xl border-zinc-200 text-zinc-800 sm:mb-0">                                            
-                                                <div class="px-10">
-                                                    <div class="absolute right-0 inline-block mr-6 top-1 transform">
-                                                        <h2 class="
-                                                            relative z-20 w-full h-full px-2 py-1 text-base font-bold leading-tight tracking-wide text-center uppercase bg-white border-2 
-                                                            @if($plan->default){{ 'border-blue-800 text-blue-800' }}@else{{ 'border-zinc-900 text-zinc-800' }}@endif rounded
-                                                        ">
-                                                            {{ $plan->name }}
-                                                        </h2>
-                                                    </div>
-                                                </div>
-
-                                                <img src="{{ asset('img/' . $plan->img) }}" class="w-full h-44 object-cover rounded-t-lg" alt="{{ $plan->name }}" />
-
-                                                <div class="px-8 mt-2">
-                                                    @if ($plan->one_time_price == -1)
-                                                        <span class="font-mono text-blue-600 text-xl font-bold">Variable costs</span>
-
-                                                    @elseif ($plan->monthly_price == 0 && $plan->one_time_price === NULL)
-                                                        <span class="font-mono text-blue-600 text-5xl font-bold">FREE</span>
-                                                    
-                                                    @else
-                                                        @if ($plan->one_time_price !== NULL)
-                                                            <span class="text-gray-600 font-mono text-lg font-bold">
-                                                                from
-                                                            </span>
-                                                            
-                                                            <span class="text-blue-600 font-mono text-5xl font-bold">
-                                                                £{{ $plan->one_time_price }}
-                                                            </span>
-                                                        @else
-                                                            <span class="text-blue-600 font-mono text-2xl font-bold">
-                                                                £{{ $plan->monthly_price }} per month
-                                                                {{-- <br />
-                                                                <span class="text-blue-600 italic text-sm font-thin">or</span>
-                                                                <br />
-                                                                £{{ $plan->yearly_price }} per year --}}
-                                                            </span>
-                                                        @endif
-                                                    @endif
-                                                </div>
-
-                                                <div class="px-8 my-5">
-                                                    <p class="text-base leading-7 text-gray-500">{{ $plan->description }}</p>
-                                                </div>
-
-                                                {{-- <div class="p-8 mt-auto rounded-b-lg">
-                                                    <ul class="flex flex-col">
-                                                        @foreach($features as $feature)
-                                                            <li class="mt-1">
-                                                                <span class="flex items-center text-green-500">
-                                                                    <svg class="w-4 h-4 mr-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                                        <path d="M0 11l2-2 5 5L18 3l2 2L7 18z"></path>
-                                                                    </svg>
-                                                                    
-                                                                    <span class="text-gray-700">
-                                                                        {{ $feature }}
-                                                                    </span>
-                                                                </span>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div> --}}
-
-                                                <div class="overflow-hidden rounded-b-lg">
-                                                    <a 
-                                                        class="block w-full rounded-tl-none rounded-tr-none bg-blue-600 hover:bg-blue-500 text-white py-2" 
-                                                        href="#contact"
-                                                    >
-                                                        Get Started
-                                                </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                    
-                                </div>
+                        {{-- Popular Badge --}}
+                        @if ($service->default)
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                                    Popular
+                                </span>
                             </div>
+                        @endif
+                    </div>
 
-                        </section>
+                    {{-- Service Content --}}
+                    <div class="p-6">
+                        <h3 class="text-xl font-display font-semibold text-glacier-900 mb-3">
+                            {{ $service->name }}
+                        </h3>
+
+                        <p class="text-glacier-600 mb-6 leading-relaxed">
+                            {{ $service->description }}
+                        </p>
+
+                        {{-- Pricing --}}
+                        <div class="mb-6">
+                            @if ($service->one_time_price == -1)
+                                <span class="text-primary-600 font-semibold">Variable costs</span>
+                            @elseif ($service->monthly_price == 0 && $service->one_time_price === null)
+                                <span class="text-2xl font-bold text-green-600">FREE</span>
+                            @else
+                                @if ($service->one_time_price !== null)
+                                    <div class="space-y-1">
+                                        <span class="text-glacier-600 text-sm">Starting from</span>
+                                        <div class="text-2xl font-bold text-primary-600">
+                                            £{{ $service->one_time_price }}
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="space-y-1">
+                                        <span class="text-glacier-600 text-sm">Monthly</span>
+                                        <div class="text-2xl font-bold text-primary-600">
+                                            £{{ $service->monthly_price }}
+                                        </div>
+                                    </div>
+                                @endif
+                            @endif
+                        </div>
+
+                        {{-- Action Button --}}
+                        <a href="#contact" class="btn-primary w-full justify-center group">
+                            <i
+                                class="fa-solid fa-arrow-right mr-2 group-hover:translate-x-1 transition-transform duration-200"></i>
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        {{-- Additional Info --}}
+        <div class="mt-16 text-center">
+            <div class="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-display font-semibold text-glacier-900 mb-4">
+                    Why Choose Glacial Studio?
+                </h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-code text-2xl text-primary-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-glacier-900 mb-2">Modern Technology</h4>
+                        <p class="text-sm text-glacier-600">Built with the latest frameworks and best practices</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-mobile-screen text-2xl text-accent-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-glacier-900 mb-2">Responsive Design</h4>
+                        <p class="text-sm text-glacier-600">Perfect on all devices and screen sizes</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-glacier-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-headset text-2xl text-glacier-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-glacier-900 mb-2">Ongoing Support</h4>
+                        <p class="text-sm text-glacier-600">We're here to help after launch</p>
                     </div>
                 </div>
             </div>

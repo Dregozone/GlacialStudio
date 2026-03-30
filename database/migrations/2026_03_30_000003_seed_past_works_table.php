@@ -1,21 +1,13 @@
 <?php
 
-namespace Database\Seeders;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
-use App\Models\PastWork;
-use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
-class PastWorkSeeder extends Seeder
+return new class extends Migration
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function up(): void
     {
-        PastWork::truncate();
-
-        $toAdd = [
+        DB::table('past_works')->insert([
             [
                 'name' => 'adscreens',
                 'description' => 'New website bringing all information about the company and its products together.',
@@ -80,10 +72,14 @@ class PastWorkSeeder extends Seeder
                 'active' => 0,
                 'order' => 10,
             ],
-        ];
-
-        foreach ($toAdd as $data) {
-            PastWork::create($data);
-        }
+        ]);
     }
-}
+
+    public function down(): void
+    {
+        DB::table('past_works')->whereIn('name', [
+            'adscreens', 'i-walk', 'Little Moore Lighting', 'Face Facts Clinic',
+            'Holistic Vision', 'Bling Wing', 'ExclusionZone', 'EnergizedGaming',
+        ])->delete();
+    }
+};

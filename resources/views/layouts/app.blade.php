@@ -41,6 +41,28 @@
 
     {{ $slot }}
 
+    <!-- Scroll to Top Button -->
+    <div
+        x-data="{ show: false }"
+        x-init="window.addEventListener('scroll', () => { show = window.scrollY > window.innerHeight })"
+        x-show="show"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-4"
+        class="fixed bottom-8 right-8 z-50"
+    >
+        <button
+            @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            class="group flex items-center justify-center w-12 h-12 rounded-full bg-primary-600 text-white shadow-lg hover:bg-primary-700 hover:shadow-primary-500/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            aria-label="Scroll to top"
+        >
+            <i class="fa-solid fa-arrow-up text-sm group-hover:scale-110 transition-transform duration-200"></i>
+        </button>
+    </div>
+
     @livewireScripts
 </body>
 

@@ -16,7 +16,7 @@
     <meta name="apple-mobile-web-app-title" content="Glacial Studio" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <title>Glacial Studio - Modern Web Development & Digital Solutions</title>
+    <title>{{ $title ?? 'Glacial Studio - Modern Web Development & Digital Solutions' }}</title>
 
     <!-- Modern Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,12 +33,15 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
+
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased bg-white">
 
     {{ $slot }}
 
+    @livewireScripts
 </body>
 
 </html>

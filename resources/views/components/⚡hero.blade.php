@@ -1,3 +1,11 @@
+<?php
+
+use Livewire\Component;
+
+new class extends Component {};
+
+?>
+
 <section
     class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-glacier-50 via-white to-primary-50">
     {{-- Sophisticated Background Elements --}}
@@ -45,21 +53,6 @@
             </div>
         </div>
 
-        {{-- Animated Data Stream --}}
-        {{-- <div class="absolute bottom-1/4 left-1/6">
-            <div class="flex space-x-1">
-                <div class="w-1 h-8 bg-gradient-to-t from-primary-400 to-transparent animate-pulse"></div>
-                <div class="w-1 h-12 bg-gradient-to-t from-accent-400 to-transparent animate-pulse"
-                    style="animation-delay: -0.5s;"></div>
-                <div class="w-1 h-6 bg-gradient-to-t from-glacier-400 to-transparent animate-pulse"
-                    style="animation-delay: -1s;"></div>
-                <div class="w-1 h-10 bg-gradient-to-t from-primary-400 to-transparent animate-pulse"
-                    style="animation-delay: -1.5s;"></div>
-                <div class="w-1 h-8 bg-gradient-to-t from-accent-400 to-transparent animate-pulse"
-                    style="animation-delay: -2s;"></div>
-            </div>
-        </div> --}}
-
         {{-- Rotating Tech Rings --}}
         <div class="absolute top-1/2 right-1/4">
             <div class="relative w-32 h-32">
@@ -75,11 +68,6 @@
             </div>
         </div>
 
-        {{-- Geometric Tech Shapes --}}
-        {{-- <div class="absolute top-1/4 left-1/6 w-16 h-16 border-2 border-primary-300/40 rounded-lg rotate-45 animate-float"
-            style="animation-delay: -1s;"></div> --}}
-        {{-- <div class="absolute bottom-1/4 right-1/6 w-12 h-12 bg-gradient-to-br from-accent-400/20 to-accent-600/20 rounded-lg animate-float"
-            style="animation-delay: -3s;"></div> --}}
         <div class="absolute top-3/4 left-1/4 w-8 h-8 border border-glacier-300/50 rotate-12 animate-float"
             style="animation-delay: -2s;"></div>
     </div>

@@ -1,3 +1,11 @@
+<?php
+
+use Livewire\Component;
+
+new class extends Component {};
+
+?>
+
 <section class="section-padding bg-gradient-to-b from-white to-glacier-50">
     <div class="container-custom">
         <div class="text-center mb-16">

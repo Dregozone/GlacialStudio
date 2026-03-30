@@ -1,3 +1,11 @@
+<?php
+
+use Livewire\Component;
+
+new class extends Component {};
+
+?>
+
 <section id="about" class="section-padding bg-gradient-to-b from-white to-glacier-50">
     <div class="container-custom">
         <div class="text-center mb-16">
@@ -49,7 +57,7 @@
                         <p class="text-glacier-700 text-lg leading-relaxed mb-6">
                             "I set up Glacial Studio with the goal to provide affordable, effective web solutions.
                             I strive for customer satisfaction; Setting deliverables with clear timeframes upfront, and
-                            always working towards your dream solution."
+                            always working toward your dream solution."
                         </p>
 
                         <footer class="flex items-center space-x-4">

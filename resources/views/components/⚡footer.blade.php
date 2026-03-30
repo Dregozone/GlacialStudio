@@ -1,3 +1,11 @@
+<?php
+
+use Livewire\Component;
+
+new class extends Component {};
+
+?>
+
 <footer class="bg-glacier-900 text-white">
     <div class="container-custom py-16">
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">

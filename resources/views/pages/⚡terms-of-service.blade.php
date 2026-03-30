@@ -1,44 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<?php
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Glacial Studio - Professional web development and digital solutions. Creating modern, effective web applications and digital experiences.">
-    <meta name="keywords" content="web development, digital solutions, Laravel, modern web applications">
-    <meta name="author" content="Glacial Studio">
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
+use Livewire\Component;
 
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Glacial Studio" />
-    <link rel="manifest" href="/site.webmanifest" />
+new #[Layout('layouts::app')] #[Title('Terms of Service - Glacial Studio')] class extends Component {};
 
-    <title>Terms of Service - Glacial Studio</title>
+?>
 
-    <!-- Modern Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @endif
-</head>
-
-<body class="font-sans antialiased bg-white">
-
-    {{-- Header --}}
-    @include('includes.header')
+<div>
+    <livewire:header />
 
     <div class="min-h-screen bg-gradient-to-br from-glacier-50 via-white to-primary-50">
         <div class="container-custom py-16">
@@ -56,7 +27,6 @@
                 {{-- Content --}}
                 <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 space-y-8">
 
-                    {{-- Introduction --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Introduction</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -69,7 +39,6 @@
                         </p>
                     </section>
 
-                    {{-- Services --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Services</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -88,7 +57,6 @@
                         </p>
                     </section>
 
-                    {{-- User Responsibilities --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">User Responsibilities</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -104,7 +72,6 @@
                         </ul>
                     </section>
 
-                    {{-- Payment Terms --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Payment Terms</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -119,7 +86,6 @@
                         </ul>
                     </section>
 
-                    {{-- Intellectual Property --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Intellectual Property</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -136,7 +102,6 @@
                         </p>
                     </section>
 
-                    {{-- Project Terms --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Project Terms</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -151,7 +116,6 @@
                         </ul>
                     </section>
 
-                    {{-- Limitation of Liability --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Limitation of Liability
                         </h2>
@@ -166,7 +130,6 @@
                         </ul>
                     </section>
 
-                    {{-- Warranty and Support --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Warranty and Support</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -184,7 +147,6 @@
                         </p>
                     </section>
 
-                    {{-- Confidentiality --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Confidentiality</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -198,7 +160,6 @@
                         </ul>
                     </section>
 
-                    {{-- Termination --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Termination</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -212,7 +173,6 @@
                         </ul>
                     </section>
 
-                    {{-- Governing Law --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Governing Law</h2>
                         <p class="text-glacier-600 leading-relaxed">
@@ -222,7 +182,6 @@
                         </p>
                     </section>
 
-                    {{-- Changes to Terms --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Changes to Terms</h2>
                         <p class="text-glacier-600 leading-relaxed">
@@ -232,7 +191,6 @@
                         </p>
                     </section>
 
-                    {{-- Contact Information --}}
                     <section>
                         <h2 class="text-2xl font-display font-semibold text-glacier-900 mb-4">Contact Us</h2>
                         <p class="text-glacier-600 leading-relaxed mb-4">
@@ -258,9 +216,5 @@
         </div>
     </div>
 
-    {{-- Footer --}}
-    @include('includes.footer')
-
-</body>
-
-</html>
+    <livewire:footer />
+</div>

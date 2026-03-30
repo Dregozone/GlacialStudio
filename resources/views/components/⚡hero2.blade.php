@@ -1,3 +1,11 @@
+<?php
+
+use Livewire\Component;
+
+new class extends Component {};
+
+?>
+
 <section class="section-padding bg-gradient-to-br from-primary-50 via-white to-accent-50 relative overflow-hidden">
     {{-- Background Elements --}}
     <div class="absolute inset-0">

@@ -8,7 +8,7 @@ new #[Layout('layouts::app')] #[Title('Glacial Studio - Modern Web Development &
 
 ?>
 
-<main class="overflow-x-hidden" x-data>
+<main id="main-content" class="overflow-x-hidden bg-glacier-950" x-data>
     <livewire:header />
     <livewire:hero />
     <livewire:about />

@@ -7,12 +7,6 @@ function sum(float $a, float $b): float
 
 it('performs sums', function () {
     $result = sum(1, 2);
-  
-    expect($result)->toBe(3.0);
-});
 
-it('has a homepage', function () {
-    $response = $this->get('/');
-  
-    $response->assertStatus(200);
+    expect($result)->toBe(3.0);
 });

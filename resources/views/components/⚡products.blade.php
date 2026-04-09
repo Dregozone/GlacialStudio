@@ -6,7 +6,7 @@ new class extends Component {};
 
 ?>
 
-<section class="section-padding bg-glacier-950" id="products">
+<section class="section-padding scroll-mt-20 lg:scroll-mt-24 bg-glacier-950" id="products">
     <div class="container-custom" x-data="{ shown: false }" x-intersect.once="shown = true">
         {{-- Section Header --}}
         <div class="text-center mb-16 lg:mb-20">

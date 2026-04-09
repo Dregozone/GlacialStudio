@@ -6,7 +6,7 @@ new class extends Component {};
 
 ?>
 
-<section class="section-padding bg-glacier-900/50 relative overflow-hidden" id="services">
+<section class="section-padding scroll-mt-20 lg:scroll-mt-24 bg-glacier-900/50 relative overflow-hidden" id="services">
     {{-- Top gradient line --}}
     <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden="true"></div>
 

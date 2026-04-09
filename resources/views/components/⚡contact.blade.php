@@ -6,7 +6,7 @@ new class extends Component {};
 
 ?>
 
-<section class="section-padding bg-glacier-950 relative" id="contact">
+<section class="section-padding scroll-mt-20 lg:scroll-mt-24 bg-glacier-950 relative" id="contact">
     <div class="container-custom" x-data="{ shown: false }" x-intersect.once="shown = true">
         {{-- Section Header --}}
         <div class="text-center mb-16 lg:mb-20">
@@ -49,7 +49,12 @@ new class extends Component {};
                     <h3 class="text-lg font-display font-semibold text-amber-300">Currently Unavailable</h3>
                 </div>
                 <p class="text-amber-300/80 leading-relaxed text-sm">
-                    I am not currently taking on any new projects. Please check back later or follow us on social media for updates.
+                    I am not currently taking on any new projects.
+                    
+                    <br />
+                    <br />
+                    
+                    Please check back later or follow us on social media for updates.
                 </p>
             </div>
         </div>
@@ -78,7 +83,7 @@ new class extends Component {};
                         </div>
                         <div>
                             <h4 class="font-semibold text-white text-sm font-sans">Email</h4>
-                            <p class="text-glacier-400 text-sm">info@glacialstudio.com</p>
+                            <p class="text-glacier-400 text-sm">aclearmonth@gmail.com</p>
                         </div>
                     </div>
 

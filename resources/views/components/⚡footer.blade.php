@@ -64,7 +64,7 @@ new class extends Component {};
                 <ul class="space-y-3">
                     <li class="flex items-center space-x-3">
                         <i class="fa-solid fa-envelope text-primary-400/60 text-xs" aria-hidden="true"></i>
-                        <span class="text-glacier-400 text-sm">info@glacialstudio.com</span>
+                        <span class="text-glacier-400 text-sm">aclearmonth@gmail.com</span>
                     </li>
                     <li class="flex items-center space-x-3">
                         <i class="fa-solid fa-location-dot text-primary-400/60 text-xs" aria-hidden="true"></i>

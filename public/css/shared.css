@@ -167,6 +167,18 @@ footer {
     font-weight: 100;
 }
 
+.owner-teaser-link {
+    display: inline-block;
+    margin-bottom: 1%;
+    font-size: 85%;
+    color: #5a93b8;
+    text-decoration: underline;
+}
+
+.owner-teaser-link:hover {
+    color: #3b7199;
+}
+
 .products {
     display: flex;
     flex-direction: row;

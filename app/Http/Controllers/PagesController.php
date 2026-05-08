@@ -102,4 +102,11 @@ class PagesController extends Controller
 
         return view('pp');
     }
+
+    public function owner() {
+
+        return view('owner', [
+            'page' => 'owner',
+        ]);
+    }
 }

@@ -30,6 +30,10 @@
                 - Anders Learmonth MSc. (Software Engineer, Glacial Studio)
             </p>
 
+            <a href="{{ route('owner') }}" class="owner-teaser-link">
+                Meet the founder &rarr;
+            </a>
+
         </div>
     </section>
     

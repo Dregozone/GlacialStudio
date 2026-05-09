@@ -16,5 +16,6 @@ Route::post('/contact', [PagesController::class, 'contactSubmit']);
 Route::get('/news', [PagesController::class, 'news'])->name('news');
 Route::get('/tos', [PagesController::class, 'tos'])->name('tos');
 Route::get('/pp', [PagesController::class, 'pp'])->name('pp');
+Route::get('/owner', [PagesController::class, 'owner'])->name('owner');
 
 Route::get('/', [PagesController::class, 'home']);

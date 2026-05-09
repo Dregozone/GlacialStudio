@@ -70,6 +70,7 @@
             <section>
                 <ul>
                     <li><a href="{{ route('about') }}">About</a></li>
+                    <li><a href="{{ route('owner') }}">Meet the Owner</a></li>
                     <li><a href="{{ route('contact') }}">Contact</a></li>
                     <li><a href="{{ route('news') }}">News</a></li>
                 </ul>

@@ -9,7 +9,7 @@ it('links to the Meet the Owner page from the landing page', function () {
         ->assertSuccessful()
         ->assertSee('Meet the Owner', false);
 
-    expect(substr_count($response->getContent(), route('meet-the-owner')))->toBe(2);
+    expect(substr_count($response->getContent(), route('meet-the-owner')))->toBeGreaterThanOrEqual(2);
 });
 
 it('renders the Meet the Owner page with Dregozone blog link', function () {

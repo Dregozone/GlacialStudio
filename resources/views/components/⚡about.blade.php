@@ -77,7 +77,7 @@ new class extends Component {};
                     <p class="text-sm text-glacier-500">
                         Want to know more about the founder?
                         <a href="{{ route('meet-the-owner') }}" class="text-primary-300 hover:text-primary-200 underline underline-offset-4 transition-colors duration-200">
-                            Meet the owner
+                            Meet the Owner
                         </a>
                     </p>
                 </div>

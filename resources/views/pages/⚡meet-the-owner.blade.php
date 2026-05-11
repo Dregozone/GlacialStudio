@@ -46,7 +46,7 @@ new #[Layout('layouts::app')] #[Title('Meet the Owner - Glacial Studio')] class 
                         </p>
                         <p>
                             My personal blog is
-                            <a href="https://dregozone.com" target="_blank" rel="noopener noreferrer" aria-label="Visit dregozone.com (opens in new tab)"
+                            <a href="https://dregozone.com" target="_blank" rel="noopener noreferrer"
                                 class="text-primary-300 hover:text-primary-200 underline underline-offset-4 transition-colors duration-200">
                                 dregozone.com
                             </a>.

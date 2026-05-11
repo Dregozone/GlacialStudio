@@ -4,7 +4,7 @@ it('returns a successful response', function () {
     $this->get('/')->assertSuccessful();
 });
 
-it('has subtle links to the meet the owner page on the landing page', function () {
+it('links to the meet the owner page from the landing page', function () {
     $this->get('/')
         ->assertSuccessful()
         ->assertSee(route('meet-the-owner'), false)

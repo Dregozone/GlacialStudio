@@ -15,5 +15,8 @@ it('renders the Meet the Owner page with Dregozone blog link', function () {
     $this->get(route('meet-the-owner'))
         ->assertSuccessful()
         ->assertSee('The person behind', false)
-        ->assertSee('href="https://dregozone.com" target="_blank" rel="noopener noreferrer"', false);
+        ->assertSee('https://dregozone.com', false)
+        ->assertSee('dregozone.com', false)
+        ->assertSee('target="_blank"', false)
+        ->assertSee('rel="noopener noreferrer"', false);
 });

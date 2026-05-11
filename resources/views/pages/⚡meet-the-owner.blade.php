@@ -49,6 +49,7 @@ new #[Layout('layouts::app')] #[Title('Meet the Owner - Glacial Studio')] class 
                             <a href="https://dregozone.com" target="_blank" rel="noopener noreferrer"
                                 class="text-primary-300 hover:text-primary-200 underline underline-offset-4 transition-colors duration-200">
                                 dregozone.com
+                                <span class="sr-only">(opens in a new tab)</span>
                             </a>.
                             That's where I post about technology and other things that interest me.
                         </p>

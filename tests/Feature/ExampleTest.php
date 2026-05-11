@@ -16,5 +16,6 @@ it('renders the meet the owner page with dregozone blog link', function () {
         ->assertSuccessful()
         ->assertSee('The person behind', false)
         ->assertSee('https://dregozone.com', false)
+        ->assertSee('rel="noopener noreferrer"', false)
         ->assertSee('target="_blank"', false);
 });

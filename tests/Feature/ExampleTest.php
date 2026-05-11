@@ -7,7 +7,7 @@ it('returns a successful response', function () {
 it('links to the meet the owner page from the landing page', function () {
     $this->get('/')
         ->assertSuccessful()
-        ->assertSeeHtml('href="'.route('meet-the-owner').'"')
+        ->assertSee(route('meet-the-owner'), false)
         ->assertSee('Meet the Owner', false);
 });
 

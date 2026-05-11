@@ -5,17 +5,16 @@ it('returns a successful response', function () {
 });
 
 it('links to the Meet the Owner page from the landing page', function () {
-    $this->get('/')
+    $response = $this->get('/')
         ->assertSuccessful()
-        ->assertSee(route('meet-the-owner'), false)
         ->assertSee('Meet the Owner', false);
+
+    expect(substr_count($response->getContent(), route('meet-the-owner')))->toBe(2);
 });
 
 it('renders the Meet the Owner page with Dregozone blog link', function () {
     $this->get(route('meet-the-owner'))
         ->assertSuccessful()
         ->assertSee('The person behind', false)
-        ->assertSee('https://dregozone.com', false)
-        ->assertSee('rel="noopener noreferrer"', false)
-        ->assertSee('target="_blank"', false);
+        ->assertSee('href="https://dregozone.com" target="_blank" rel="noopener noreferrer"', false);
 });

@@ -70,6 +70,7 @@ new #[Layout('layouts::app')] #[Title('Meet the Owner - Glacial Studio')] class 
                     <div class="rounded-2xl overflow-hidden relative">
                         <img src="{{ asset('img/wedding-morning-tsp.png') }}"
                             class="w-full h-80 sm:h-96 object-cover"
+                            loading="lazy"
                             alt="Anders Learmonth - Founder of Glacial Studio" />
                         <div class="absolute inset-0 bg-gradient-to-t from-glacier-950/60 via-transparent to-transparent"></div>
                     </div>

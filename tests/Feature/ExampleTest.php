@@ -11,7 +11,7 @@ it('links to the Meet the Owner page from the landing page', function () {
         ->assertSee('Meet the Owner', false);
 });
 
-it('renders the Meet the Owner page with Dregozone blog link', function () {
+it('renders the Meet the Owner page with DregoZone blog link', function () {
     $this->get(route('meet-the-owner'))
         ->assertSuccessful()
         ->assertSee('The person behind', false)

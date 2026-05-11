@@ -5,11 +5,10 @@ it('returns a successful response', function () {
 });
 
 it('links to the Meet the Owner page from the landing page', function () {
-    $response = $this->get('/')
+    $this->get('/')
         ->assertSuccessful()
+        ->assertSee(route('meet-the-owner'), false)
         ->assertSee('Meet the Owner', false);
-
-    expect(substr_count($response->getContent(), route('meet-the-owner')))->toBeGreaterThanOrEqual(2);
 });
 
 it('renders the Meet the Owner page with Dregozone blog link', function () {

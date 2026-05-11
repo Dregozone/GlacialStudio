@@ -55,6 +55,12 @@ new class extends Component {};
                             Contact
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('meet-the-owner') }}" class="text-glacier-400 hover:text-white transition-colors duration-200 text-sm inline-flex items-center gap-2 group">
+                            <span class="w-1 h-1 rounded-full bg-glacier-600 group-hover:bg-primary-400 transition-colors duration-200" aria-hidden="true"></span>
+                            Meet the Owner
+                        </a>
+                    </li>
                 </ul>
             </nav>
 

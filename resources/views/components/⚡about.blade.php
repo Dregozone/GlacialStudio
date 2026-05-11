@@ -74,6 +74,12 @@ new class extends Component {};
                         meaningful digital experiences. Our mission is to deliver affordable, effective web solutions
                         that exceed expectations and drive real results.
                     </p>
+                    <p class="text-sm text-glacier-500">
+                        Want to know more about the founder?
+                        <a href="{{ route('meet-the-owner') }}" class="text-primary-300 hover:text-primary-200 underline underline-offset-4 transition-colors duration-200">
+                            Meet the owner
+                        </a>
+                    </p>
                 </div>
 
                 {{-- Quote Section --}}

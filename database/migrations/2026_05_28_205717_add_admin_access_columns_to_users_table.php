@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_admin')->default(false)->index()->after('password');
             $table->string('identifier')->nullable()->unique()->after('is_admin');
-            $table->string('token')->nullable()->after('identifier');
+            $table->string('token')->nullable()->after('identifier')->comment('Stores hashed admin API tokens');
         });
     }
 

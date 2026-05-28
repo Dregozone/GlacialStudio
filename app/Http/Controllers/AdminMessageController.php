@@ -13,6 +13,9 @@ use Illuminate\View\View;
 
 class AdminMessageController extends Controller
 {
+    /**
+     * Bcrypt hash used when no matching admin exists to keep token checks timing-consistent.
+     */
     private const FALLBACK_TOKEN_HASH = '$2y$12$bjNp0eT8iq8BlOWK9oXcT.UBRfnkWR2Q3klBJAj6kNILfNVGNr5IG';
 
     public function index(string $identifier, string $token): View

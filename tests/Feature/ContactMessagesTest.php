@@ -35,6 +35,13 @@ it('rejects API access when credentials are not an admin account', function () {
         ->assertForbidden();
 });
 
+it('rejects API access when admin token is incorrect', function () {
+    User::factory()->adminAccess('admin-id', 'admin-token')->create();
+
+    $this->getJson('/api/messages/admin-id/wrong-token')
+        ->assertForbidden();
+});
+
 it('returns messages json for admin credentials', function () {
     User::factory()->adminAccess('admin-id', 'admin-token')->create();
     ContactMessage::factory()->create([
@@ -48,6 +55,17 @@ it('returns messages json for admin credentials', function () {
         ->assertOk()
         ->assertJsonPath('0.name', 'API User')
         ->assertJsonPath('0.status', 'new');
+});
+
+it('validates required contact submission fields', function () {
+    $response = $this->from(route('home'))->post(route('contact.submit'), [
+        'name' => '',
+        'email' => 'invalid-email',
+        'message' => '',
+    ]);
+
+    $response->assertRedirect(route('home'));
+    $response->assertSessionHasErrors(['name', 'email', 'message']);
 });
 
 it('allows admin message status updates from admin viewer page', function () {

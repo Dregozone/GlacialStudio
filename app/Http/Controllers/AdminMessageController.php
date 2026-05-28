@@ -13,7 +13,7 @@ use Illuminate\View\View;
 
 class AdminMessageController extends Controller
 {
-    private const FALLBACK_TOKEN_HASH = '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+    private const FALLBACK_TOKEN_HASH = '$2y$12$bjNp0eT8iq8BlOWK9oXcT.UBRfnkWR2Q3klBJAj6kNILfNVGNr5IG';
 
     public function index(string $identifier, string $token): View
     {

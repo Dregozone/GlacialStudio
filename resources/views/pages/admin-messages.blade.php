@@ -37,7 +37,7 @@
 
                     <label for="status-{{ $message->id }}" class="text-sm text-glacier-300">Status</label>
                     <select id="status-{{ $message->id }}" name="status" class="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm">
-                        @foreach (\App\Models\ContactMessage::STATUSES as $status)
+                        @foreach ($statuses as $status)
                             <option value="{{ $status }}" @selected($message->status === $status)>{{ $status }}</option>
                         @endforeach
                     </select>

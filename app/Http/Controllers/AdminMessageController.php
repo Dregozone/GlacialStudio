@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
@@ -19,6 +20,7 @@ class AdminMessageController extends Controller
         return view('pages.admin-messages', [
             'identifier' => $identifier,
             'token' => $token,
+            'statuses' => ContactMessage::STATUSES,
             'messages' => ContactMessage::query()->latest()->get(),
         ]);
     }
@@ -60,7 +62,7 @@ class AdminMessageController extends Controller
             ->first();
 
         abort_if(
-            $admin === null || ! is_string($admin->token) || ! hash_equals($admin->token, $token),
+            $admin === null || ! is_string($admin->token) || ! Hash::check($token, $admin->token),
             403
         );
 

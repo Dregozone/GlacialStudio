@@ -13,6 +13,8 @@ use Illuminate\View\View;
 
 class AdminMessageController extends Controller
 {
+    private const FALLBACK_TOKEN_HASH = '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+
     public function index(string $identifier, string $token): View
     {
         $this->findAdmin($identifier, $token);
@@ -58,11 +60,13 @@ class AdminMessageController extends Controller
     {
         $admin = User::query()
             ->where('identifier', $identifier)
-            ->where('is_admin', true)
             ->first();
 
+        $tokenHash = is_string($admin?->token) ? $admin->token : self::FALLBACK_TOKEN_HASH;
+        $tokenMatches = Hash::check($token, $tokenHash);
+
         abort_if(
-            $admin === null || ! is_string($admin->token) || ! Hash::check($token, $admin->token),
+            $admin === null || ! $admin->is_admin || ! $tokenMatches,
             403
         );
 

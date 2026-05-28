@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
     public function submit(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'message' => 'required|string',
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'message' => ['required', 'string'],
         ]);
 
-        dd("will handle contact form submission here");
-
-        // Send email
-        // Mail::to(config('mail.from.address'))->send(new ContactForm($request->all()));
+        ContactMessage::query()->create($validated);
 
         return redirect()->route('home')->with('success', 'Message sent successfully!');
     }

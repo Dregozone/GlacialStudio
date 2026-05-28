@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminMessageController;
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,3 +14,6 @@ Route::get('/my-ip', function () {
 })->name('my-ip');
 
 Route::post('/contact', [FormController::class, 'submit'])->name('contact.submit');
+
+Route::get('/admin/messages/{identifier}/{token}', [AdminMessageController::class, 'index'])->name('admin.messages.index');
+Route::patch('/admin/messages/{identifier}/{token}/{contactMessage}', [AdminMessageController::class, 'update'])->name('admin.messages.update');

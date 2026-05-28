@@ -3,6 +3,7 @@
 use App\Models\ContactMessage;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 
 uses(RefreshDatabase::class);
 
@@ -27,7 +28,7 @@ it('rejects API access when credentials are not an admin account', function () {
     User::factory()->create([
         'is_admin' => false,
         'identifier' => 'admin-id',
-        'token' => 'admin-token',
+        'token' => Hash::make('admin-token'),
     ]);
 
     $this->getJson('/api/messages/admin-id/admin-token')

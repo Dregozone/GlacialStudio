@@ -37,9 +37,9 @@
 
                     <label for="status-{{ $message->id }}" class="text-sm text-glacier-300">Status</label>
                     <select id="status-{{ $message->id }}" name="status" class="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm">
-                        <option value="new" @selected($message->status === 'new')>new</option>
-                        <option value="actioned" @selected($message->status === 'actioned')>actioned</option>
-                        <option value="ignored" @selected($message->status === 'ignored')>ignored</option>
+                        @foreach (\App\Models\ContactMessage::STATUSES as $status)
+                            <option value="{{ $status }}" @selected($message->status === $status)>{{ $status }}</option>
+                        @endforeach
                     </select>
 
                     <button type="submit" class="btn-primary">Update</button>

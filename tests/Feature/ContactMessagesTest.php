@@ -23,7 +23,7 @@ it('stores a submitted contact message with new status', function () {
     ]);
 });
 
-it('rejects api access when credentials are not an admin account', function () {
+it('rejects API access when credentials are not an admin account', function () {
     User::factory()->create([
         'is_admin' => false,
         'identifier' => 'admin-id',

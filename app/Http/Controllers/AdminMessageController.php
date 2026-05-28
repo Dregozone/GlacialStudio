@@ -28,7 +28,7 @@ class AdminMessageController extends Controller
         $this->findAdmin($identifier, $token);
 
         $validated = $request->validate([
-            'status' => ['required', Rule::in(['new', 'actioned', 'ignored'])],
+            'status' => ['required', Rule::in(ContactMessage::STATUSES)],
         ]);
 
         $contactMessage->update([
@@ -56,11 +56,13 @@ class AdminMessageController extends Controller
     {
         $admin = User::query()
             ->where('identifier', $identifier)
-            ->where('token', $token)
             ->where('is_admin', true)
             ->first();
 
-        abort_if($admin === null, 403);
+        abort_if(
+            $admin === null || ! is_string($admin->token) || ! hash_equals($admin->token, $token),
+            403
+        );
 
         return $admin;
     }

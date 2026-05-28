@@ -21,7 +21,7 @@ class ContactMessageFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'message' => fake()->paragraph(),
-            'status' => 'new',
+            'status' => ContactMessage::STATUS_NEW,
         ];
     }
 }

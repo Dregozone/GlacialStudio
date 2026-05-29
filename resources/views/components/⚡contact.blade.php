@@ -112,35 +112,39 @@ new class extends Component {};
                 </div>
             </div>
 
-            {{-- Future Contact Form Placeholder --}}
+            {{-- Contact Form --}}
             <div class="glass-card p-7 sm:p-8">
                 <h3 class="text-xl font-display font-semibold text-white mb-5">
-                    Future Inquiries
+                    Send a Message
                 </h3>
-                <p class="text-glacier-400 mb-6 text-sm leading-relaxed">
-                    When we're available for new projects, you'll be able to submit your project details here.
-                </p>
 
-                <div class="space-y-4 opacity-40" aria-hidden="true">
+                @if (session('success'))
+                    <div class="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('contact.submit') }}" class="space-y-4">
+                    @csrf
+
                     <div>
-                        <label class="block text-xs font-medium text-glacier-500 mb-2 font-sans">Name</label>
-                        <input type="text" disabled tabindex="-1"
-                            class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-600 text-sm">
+                        <label for="contact-name" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Name</label>
+                        <input id="contact-name" type="text" name="name" value="{{ old('name') }}" required
+                            class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/30">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-glacier-500 mb-2 font-sans">Email</label>
-                        <input type="email" disabled tabindex="-1"
-                            class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-600 text-sm">
+                        <label for="contact-email" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Email</label>
+                        <input id="contact-email" type="email" name="email" value="{{ old('email') }}" required
+                            class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/30">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-glacier-500 mb-2 font-sans">Message</label>
-                        <textarea rows="3" disabled tabindex="-1" class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-600 text-sm resize-none"></textarea>
+                        <label for="contact-message" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Message</label>
+                        <textarea id="contact-message" rows="3" name="message" required class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-500 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary-500/30">{{ old('message') }}</textarea>
                     </div>
-                    <button disabled tabindex="-1"
-                        class="w-full px-4 py-3 bg-white/5 text-glacier-600 rounded-xl border border-white/[0.06] cursor-not-allowed text-sm font-medium">
-                        Submit (Coming Soon)
+                    <button type="submit" class="w-full btn-primary">
+                        Send Message
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     </div>

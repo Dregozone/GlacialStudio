@@ -47,6 +47,17 @@ class AdminMessageController extends Controller
             ->with('success', 'Message status updated.');
     }
 
+    public function destroy(string $identifier, string $token, ContactMessage $contactMessage): RedirectResponse
+    {
+        $this->findAdmin($identifier, $token);
+
+        $contactMessage->delete();
+
+        return redirect()
+            ->route('admin.messages.index', [$identifier, $token])
+            ->with('success', 'Message deleted.');
+    }
+
     public function apiIndex(string $identifier, string $token): JsonResponse
     {
         $this->findAdmin($identifier, $token);

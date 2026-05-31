@@ -17,3 +17,4 @@ Route::post('/contact', [FormController::class, 'submit'])->name('contact.submit
 
 Route::get('/admin/messages/{identifier}/{token}', [AdminMessageController::class, 'index'])->name('admin.messages.index');
 Route::patch('/admin/messages/{identifier}/{token}/{contactMessage}', [AdminMessageController::class, 'update'])->name('admin.messages.update');
+Route::delete('/admin/messages/{identifier}/{token}/{contactMessage}', [AdminMessageController::class, 'destroy'])->name('admin.messages.destroy');

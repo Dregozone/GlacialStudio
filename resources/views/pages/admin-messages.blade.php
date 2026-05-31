@@ -33,19 +33,28 @@
 
                 <p class="text-sm text-glacier-200 whitespace-pre-line mb-4">{{ $message->message }}</p>
 
-                <form method="POST" action="{{ route('admin.messages.update', [$identifier, $token, $message]) }}" class="flex flex-wrap items-center gap-3">
-                    @csrf
-                    @method('PATCH')
+                <div class="flex flex-wrap items-center gap-3">
+                    <form method="POST" action="{{ route('admin.messages.update', [$identifier, $token, $message]) }}" class="flex flex-wrap items-center gap-3">
+                        @csrf
+                        @method('PATCH')
 
-                    <label for="status-{{ $message->id }}" class="text-sm text-glacier-300">Status</label>
-                    <select id="status-{{ $message->id }}" name="status" class="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm">
-                        @foreach ($statuses as $status)
-                            <option value="{{ $status }}" @selected($message->status === $status)>{{ $status }}</option>
-                        @endforeach
-                    </select>
+                        <label for="status-{{ $message->id }}" class="text-sm text-glacier-300">Status</label>
+                        <select id="status-{{ $message->id }}" name="status" class="bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm">
+                            @foreach ($statuses as $status)
+                                <option value="{{ $status }}" @selected($message->status === $status)>{{ $status }}</option>
+                            @endforeach
+                        </select>
 
-                    <button type="submit" class="btn-primary">Update</button>
-                </form>
+                        <button type="submit" class="btn-primary">Update</button>
+                    </form>
+
+                    <form method="POST" action="{{ route('admin.messages.destroy', [$identifier, $token, $message]) }}">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn-danger">Delete</button>
+                    </form>
+                </div>
             </article>
         @empty
             <div class="glass-card p-5 text-glacier-300">No contact messages yet.</div>

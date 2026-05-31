@@ -196,6 +196,18 @@ it('allows admin message status updates from admin viewer page', function () {
     ]);
 });
 
+it('allows admin to hard-delete contact messages from admin viewer page', function () {
+    User::factory()->adminAccess('admin-id', 'admin-token')->create();
+    $contactMessage = ContactMessage::factory()->create();
+
+    $response = $this->delete(route('admin.messages.destroy', ['admin-id', 'admin-token', $contactMessage]));
+
+    $response->assertRedirect(route('admin.messages.index', ['admin-id', 'admin-token']));
+    $response->assertSessionHas('success', 'Message deleted.');
+
+    $this->assertModelMissing($contactMessage);
+});
+
 it('rejects contact submission when captcha challenge is missing', function () {
     $response = $this->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',

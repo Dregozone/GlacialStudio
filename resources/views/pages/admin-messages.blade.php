@@ -19,6 +19,8 @@
     <div class="space-y-4">
         @forelse ($messages as $message)
             <article class="glass-card p-5">
+                <div>{{ $message->created_at->format('F j, Y, g:i a') }}</div>
+                
                 <div class="flex items-center justify-between gap-4 mb-3">
                     <div>
                         <h2 class="font-semibold text-white">{{ $message->name }}</h2>

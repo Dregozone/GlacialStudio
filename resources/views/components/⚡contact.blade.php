@@ -2,7 +2,32 @@
 
 use Livewire\Component;
 
-new class extends Component {};
+new class extends Component {
+    private const CAPTCHA_LEFT_SESSION_KEY = 'contact_captcha_left';
+    private const CAPTCHA_RIGHT_SESSION_KEY = 'contact_captcha_right';
+    private const CAPTCHA_ANSWER_SESSION_KEY = 'contact_captcha_answer';
+
+    public int $captchaLeft = 0;
+
+    public int $captchaRight = 0;
+
+    public function mount(): void
+    {
+        $this->captchaLeft = (int) session(self::CAPTCHA_LEFT_SESSION_KEY, 0);
+        $this->captchaRight = (int) session(self::CAPTCHA_RIGHT_SESSION_KEY, 0);
+
+        if ($this->captchaLeft < 1 || $this->captchaLeft > 9 || $this->captchaRight < 1 || $this->captchaRight > 9) {
+            $this->captchaLeft = random_int(1, 9);
+            $this->captchaRight = random_int(1, 9);
+        }
+
+        session([
+            self::CAPTCHA_LEFT_SESSION_KEY => $this->captchaLeft,
+            self::CAPTCHA_RIGHT_SESSION_KEY => $this->captchaRight,
+            self::CAPTCHA_ANSWER_SESSION_KEY => $this->captchaLeft + $this->captchaRight,
+        ]);
+    }
+};
 
 ?>
 
@@ -140,6 +165,11 @@ new class extends Component {};
                     <div>
                         <label for="contact-message" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Message</label>
                         <textarea id="contact-message" rows="3" name="message" required class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-500 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary-500/30">{{ old('message') }}</textarea>
+                    </div>
+                    <div>
+                        <label for="contact-captcha" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Captcha: What is {{ $this->captchaLeft }} + {{ $this->captchaRight }}?</label>
+                        <input id="contact-captcha" type="text" name="captcha" value="{{ old('captcha') }}" inputmode="numeric" pattern="[0-9]*" required
+                            class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/30">
                     </div>
                     <button type="submit" class="w-full btn-primary">
                         Send Message

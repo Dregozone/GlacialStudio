@@ -7,11 +7,21 @@ use Illuminate\Support\Facades\Hash;
 
 uses(RefreshDatabase::class);
 
+function captchaSession(): array
+{
+    return [
+        'contact_captcha_left' => 3,
+        'contact_captcha_right' => 4,
+        'contact_captcha_answer' => 7,
+    ];
+}
+
 it('stores a submitted contact message with new status', function () {
-    $response = $this->post(route('contact.submit'), [
+    $response = $this->withSession(captchaSession())->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello from a feature test',
+        'captcha' => '7',
     ]);
 
     $response->assertRedirect(route('home'));
@@ -58,21 +68,23 @@ it('returns messages json for admin credentials', function () {
 });
 
 it('validates required contact submission fields', function () {
-    $response = $this->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->withSession(captchaSession())->from(route('home'))->post(route('contact.submit'), [
         'name' => '',
         'email' => 'invalid-email',
         'message' => '',
+        'captcha' => '',
     ]);
 
     $response->assertRedirect(route('home'));
-    $response->assertSessionHasErrors(['name', 'email', 'message']);
+    $response->assertSessionHasErrors(['name', 'email', 'message', 'captcha']);
 });
 
 it('sanitizes dangerous contact submission input before storing', function () {
-    $this->post(route('contact.submit'), [
+    $this->withSession(captchaSession())->post(route('contact.submit'), [
         'name' => ' <b>Test User</b> ',
         'email' => ' TEST@EXAMPLE.COM ',
         'message' => '<script>alert("xss")</script>Hello <b>world</b>',
+        'captcha' => '7',
     ])->assertRedirect(route('home'));
 
     $this->assertDatabaseHas('contact_messages', [
@@ -89,14 +101,29 @@ it('sanitizes dangerous contact submission input before storing', function () {
 });
 
 it('rejects contact submission when message becomes empty after sanitization', function () {
-    $response = $this->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->withSession(captchaSession())->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => '<script>alert("xss")</script>',
+        'captcha' => '7',
     ]);
 
     $response->assertRedirect(route('home'));
     $response->assertSessionHasErrors(['message']);
+
+    expect(ContactMessage::query()->count())->toBe(0);
+});
+
+it('rejects contact submission with an incorrect captcha answer', function () {
+    $response = $this->withSession(captchaSession())->from(route('home'))->post(route('contact.submit'), [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'message' => 'Hello there',
+        'captcha' => '99',
+    ]);
+
+    $response->assertRedirect(route('home'));
+    $response->assertSessionHasErrors('captcha');
 
     expect(ContactMessage::query()->count())->toBe(0);
 });

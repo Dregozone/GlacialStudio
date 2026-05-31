@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 uses(RefreshDatabase::class);
 
-function captchaSession(): array
+function validCaptchaSession(): array
 {
     return [
         'contact_captcha_left' => 3,
@@ -17,7 +17,7 @@ function captchaSession(): array
 }
 
 it('stores a submitted contact message with new status', function () {
-    $response = $this->withSession(captchaSession())->post(route('contact.submit'), [
+    $response = $this->withSession(validCaptchaSession())->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello from a feature test',
@@ -68,7 +68,7 @@ it('returns messages json for admin credentials', function () {
 });
 
 it('validates required contact submission fields', function () {
-    $response = $this->withSession(captchaSession())->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
         'name' => '',
         'email' => 'invalid-email',
         'message' => '',
@@ -80,7 +80,7 @@ it('validates required contact submission fields', function () {
 });
 
 it('sanitizes dangerous contact submission input before storing', function () {
-    $this->withSession(captchaSession())->post(route('contact.submit'), [
+    $this->withSession(validCaptchaSession())->post(route('contact.submit'), [
         'name' => ' <b>Test User</b> ',
         'email' => ' TEST@EXAMPLE.COM ',
         'message' => '<script>alert("xss")</script>Hello <b>world</b>',
@@ -101,7 +101,7 @@ it('sanitizes dangerous contact submission input before storing', function () {
 });
 
 it('rejects contact submission when message becomes empty after sanitization', function () {
-    $response = $this->withSession(captchaSession())->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => '<script>alert("xss")</script>',
@@ -115,7 +115,7 @@ it('rejects contact submission when message becomes empty after sanitization', f
 });
 
 it('rejects contact submission with an incorrect captcha answer', function () {
-    $response = $this->withSession(captchaSession())->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello there',
@@ -142,4 +142,18 @@ it('allows admin message status updates from admin viewer page', function () {
         'id' => $contactMessage->id,
         'status' => 'actioned',
     ]);
+});
+
+it('rejects contact submission when captcha challenge is missing', function () {
+    $response = $this->from(route('home'))->post(route('contact.submit'), [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'message' => 'Hello there',
+        'captcha' => '7',
+    ]);
+
+    $response->assertRedirect(route('home'));
+    $response->assertSessionHasErrors('captcha');
+
+    expect(ContactMessage::query()->count())->toBe(0);
 });

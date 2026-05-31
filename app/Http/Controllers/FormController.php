@@ -44,7 +44,13 @@ class FormController extends Controller
                 'required',
                 'integer',
                 static function (string $attribute, mixed $value, \Closure $fail) use ($request): void {
-                    $expectedAnswer = (int) $request->session()->get(self::CAPTCHA_ANSWER_SESSION_KEY, -1);
+                    if (! $request->session()->has(self::CAPTCHA_ANSWER_SESSION_KEY)) {
+                        $fail('Captcha challenge expired. Please try again.');
+
+                        return;
+                    }
+
+                    $expectedAnswer = (int) $request->session()->get(self::CAPTCHA_ANSWER_SESSION_KEY);
 
                     if ((int) $value !== $expectedAnswer) {
                         $fail('Captcha answer is incorrect.');

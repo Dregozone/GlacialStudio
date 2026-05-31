@@ -4,14 +4,25 @@ use App\Models\ContactMessage;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
+function validCaptchaSession(): array
+{
+    return [
+        'contact_captcha_left' => 3,
+        'contact_captcha_right' => 4,
+        'contact_captcha_answer' => 7,
+    ];
+}
+
 it('stores a submitted contact message with new status', function () {
-    $response = $this->post(route('contact.submit'), [
+    $response = $this->withSession(validCaptchaSession())->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello from a feature test',
+        'captcha' => '7',
     ]);
 
     $response->assertRedirect(route('home'));
@@ -20,6 +31,30 @@ it('stores a submitted contact message with new status', function () {
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello from a feature test',
+        'status' => 'new',
+    ]);
+});
+
+it('submits the contact form through the livewire component', function () {
+    session()->put(validCaptchaSession());
+
+    Livewire::test('contact')
+        ->set('name', ' <b>Test User</b> ')
+        ->set('email', ' TEST@EXAMPLE.COM ')
+        ->set('message', '<script>alert("xss")</script>Hello <b>world</b>')
+        ->set('captcha', '7')
+        ->call('submit')
+        ->assertSet('name', '')
+        ->assertSet('email', '')
+        ->assertSet('message', '')
+        ->assertSet('captcha', '')
+        ->assertSet('successMessage', 'Message sent successfully!')
+        ->assertSee('Message sent successfully!');
+
+    $this->assertDatabaseHas('contact_messages', [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'message' => 'Hello world',
         'status' => 'new',
     ]);
 });
@@ -58,21 +93,35 @@ it('returns messages json for admin credentials', function () {
 });
 
 it('validates required contact submission fields', function () {
-    $response = $this->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
         'name' => '',
         'email' => 'invalid-email',
         'message' => '',
+        'captcha' => '',
     ]);
 
     $response->assertRedirect(route('home'));
-    $response->assertSessionHasErrors(['name', 'email', 'message']);
+    $response->assertSessionHasErrors(['name', 'email', 'message', 'captcha']);
+});
+
+it('validates required fields through the livewire contact form', function () {
+    session()->put(validCaptchaSession());
+
+    Livewire::test('contact')
+        ->set('email', 'invalid-email')
+        ->call('submit')
+        ->assertHasErrors(['name', 'email', 'message', 'captcha'])
+        ->assertSee('Please correct the highlighted fields and try again.');
+
+    expect(ContactMessage::query()->count())->toBe(0);
 });
 
 it('sanitizes dangerous contact submission input before storing', function () {
-    $this->post(route('contact.submit'), [
+    $this->withSession(validCaptchaSession())->post(route('contact.submit'), [
         'name' => ' <b>Test User</b> ',
         'email' => ' TEST@EXAMPLE.COM ',
         'message' => '<script>alert("xss")</script>Hello <b>world</b>',
+        'captcha' => '7',
     ])->assertRedirect(route('home'));
 
     $this->assertDatabaseHas('contact_messages', [
@@ -89,14 +138,44 @@ it('sanitizes dangerous contact submission input before storing', function () {
 });
 
 it('rejects contact submission when message becomes empty after sanitization', function () {
-    $response = $this->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => '<script>alert("xss")</script>',
+        'captcha' => '7',
     ]);
 
     $response->assertRedirect(route('home'));
     $response->assertSessionHasErrors(['message']);
+
+    expect(ContactMessage::query()->count())->toBe(0);
+});
+
+it('rejects contact submission with an incorrect captcha answer', function () {
+    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'message' => 'Hello there',
+        'captcha' => '99',
+    ]);
+
+    $response->assertRedirect(route('home'));
+    $response->assertSessionHasErrors('captcha');
+
+    expect(ContactMessage::query()->count())->toBe(0);
+});
+
+it('shows a livewire validation error when the captcha answer is incorrect', function () {
+    session()->put(validCaptchaSession());
+
+    Livewire::test('contact')
+        ->set('name', 'Test User')
+        ->set('email', 'test@example.com')
+        ->set('message', 'Hello there')
+        ->set('captcha', '99')
+        ->call('submit')
+        ->assertHasErrors(['captcha'])
+        ->assertSee('Captcha answer is incorrect.');
 
     expect(ContactMessage::query()->count())->toBe(0);
 });
@@ -115,4 +194,18 @@ it('allows admin message status updates from admin viewer page', function () {
         'id' => $contactMessage->id,
         'status' => 'actioned',
     ]);
+});
+
+it('rejects contact submission when captcha challenge is missing', function () {
+    $response = $this->from(route('home'))->post(route('contact.submit'), [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'message' => 'Hello there',
+        'captcha' => '7',
+    ]);
+
+    $response->assertRedirect(route('home'));
+    $response->assertSessionHasErrors('captcha');
+
+    expect(ContactMessage::query()->count())->toBe(0);
 });

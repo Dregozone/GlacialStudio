@@ -1,8 +1,129 @@
 <?php
 
+use App\Models\ContactMessage;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
-new class extends Component {};
+new class extends Component {
+    private const MAX_MESSAGE_LENGTH = 5000;
+    private const CAPTCHA_LEFT_SESSION_KEY = 'contact_captcha_left';
+    private const CAPTCHA_RIGHT_SESSION_KEY = 'contact_captcha_right';
+    private const CAPTCHA_ANSWER_SESSION_KEY = 'contact_captcha_answer';
+
+    public string $name = '';
+
+    public string $email = '';
+
+    public string $message = '';
+
+    public string $captcha = '';
+
+    public int $captchaLeft = 0;
+
+    public int $captchaRight = 0;
+
+    public ?string $successMessage = null;
+
+    public function mount(): void
+    {
+        $this->name = (string) old('name', $this->name);
+        $this->email = (string) old('email', $this->email);
+        $this->message = (string) old('message', $this->message);
+        $this->captcha = (string) old('captcha', $this->captcha);
+
+        $this->syncCaptchaChallenge();
+    }
+
+    public function submit(): void
+    {
+        $this->successMessage = null;
+        $this->resetValidation();
+
+        $this->name = Str::squish($this->sanitizeInput($this->name));
+        $this->email = Str::lower($this->sanitizeInput($this->email));
+        $this->message = $this->sanitizeInput($this->message);
+        $this->captcha = trim($this->captcha);
+
+        $validated = $this->validate();
+
+        ContactMessage::query()->create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'message' => $validated['message'],
+        ]);
+
+        session()->forget([
+            self::CAPTCHA_LEFT_SESSION_KEY,
+            self::CAPTCHA_RIGHT_SESSION_KEY,
+            self::CAPTCHA_ANSWER_SESSION_KEY,
+        ]);
+
+        $this->reset(['name', 'email', 'message', 'captcha']);
+        $this->successMessage = 'Message sent successfully!';
+
+        $this->syncCaptchaChallenge();
+    }
+
+    protected function rules(): array
+    {
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'message' => ['required', 'string', 'max:'.self::MAX_MESSAGE_LENGTH],
+            'captcha' => [
+                'required',
+                'integer',
+                function (string $attribute, mixed $value, \Closure $fail): void {
+                    if (! session()->has(self::CAPTCHA_ANSWER_SESSION_KEY)) {
+                        $this->syncCaptchaChallenge();
+                        $fail('Captcha challenge expired. Please try again.');
+
+                        return;
+                    }
+
+                    $expectedAnswer = (int) session()->get(self::CAPTCHA_ANSWER_SESSION_KEY);
+
+                    if ((int) $value !== $expectedAnswer) {
+                        $fail('Captcha answer is incorrect.');
+                    }
+                },
+            ],
+        ];
+    }
+
+    private function syncCaptchaChallenge(): void
+    {
+        $this->captchaLeft = (int) session(self::CAPTCHA_LEFT_SESSION_KEY, 0);
+        $this->captchaRight = (int) session(self::CAPTCHA_RIGHT_SESSION_KEY, 0);
+
+        if ($this->captchaLeft < 1 || $this->captchaLeft > 9 || $this->captchaRight < 1 || $this->captchaRight > 9) {
+            $this->captchaLeft = random_int(1, 9);
+            $this->captchaRight = random_int(1, 9);
+        }
+
+        session([
+            self::CAPTCHA_LEFT_SESSION_KEY => $this->captchaLeft,
+            self::CAPTCHA_RIGHT_SESSION_KEY => $this->captchaRight,
+            self::CAPTCHA_ANSWER_SESSION_KEY => $this->captchaLeft + $this->captchaRight,
+        ]);
+    }
+
+    private function sanitizeInput(mixed $value): string
+    {
+        if (! is_string($value)) {
+            return '';
+        }
+
+        $withoutEmbeddedScripts = $value;
+
+        do {
+            $currentValue = $withoutEmbeddedScripts;
+            $withoutEmbeddedScripts = preg_replace('/<(script|style)\b[^>]*>.*?<\/\1>/is', '', $currentValue) ?? $currentValue;
+        } while ($withoutEmbeddedScripts !== $currentValue);
+
+        return trim(strip_tags($withoutEmbeddedScripts));
+    }
+};
 
 ?>
 
@@ -118,31 +239,75 @@ new class extends Component {};
                     Send a Message
                 </h3>
 
-                @if (session('success'))
+                @if ($successMessage || session('success'))
                     <div class="mb-4 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
-                        {{ session('success') }}
+                        {{ $successMessage ?? session('success') }}
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('contact.submit') }}" class="space-y-4">
+                @if ($errors->count() === 1 && $errors->has('captcha'))
+                    <div class="mb-4 rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-200" role="alert">
+                        {{ $errors->first('captcha') }}
+                    </div>
+                @elseif ($errors->any())
+                    <div class="mb-4 rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-200" role="alert">
+                        Please correct the highlighted fields and try again.
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('contact.submit') }}" wire:submit="submit" class="space-y-4" novalidate>
                     @csrf
 
                     <div>
                         <label for="contact-name" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Name</label>
-                        <input id="contact-name" type="text" name="name" value="{{ old('name') }}" required
-                            class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/30">
+                        <input id="contact-name" type="text" name="name" wire:model="name" required
+                            @class([
+                                'w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-none focus:ring-2',
+                                'border border-white/[0.06] focus:ring-primary-500/30' => ! $errors->has('name'),
+                                'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('name'),
+                            ])>
+                        @error('name')
+                            <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="contact-email" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Email</label>
-                        <input id="contact-email" type="email" name="email" value="{{ old('email') }}" required
-                            class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/30">
+                        <input id="contact-email" type="email" name="email" wire:model="email" required
+                            @class([
+                                'w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-none focus:ring-2',
+                                'border border-white/[0.06] focus:ring-primary-500/30' => ! $errors->has('email'),
+                                'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('email'),
+                            ])>
+                        @error('email')
+                            <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="contact-message" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Message</label>
-                        <textarea id="contact-message" rows="3" name="message" required class="w-full px-4 py-3 bg-white/5 border border-white/[0.06] rounded-xl text-white placeholder-glacier-500 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary-500/30">{{ old('message') }}</textarea>
+                        <textarea id="contact-message" rows="3" name="message" wire:model="message" required @class([
+                            'w-full resize-none rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-none focus:ring-2',
+                            'border border-white/[0.06] focus:ring-primary-500/30' => ! $errors->has('message'),
+                            'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('message'),
+                        ])></textarea>
+                        @error('message')
+                            <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
+                        @enderror
                     </div>
-                    <button type="submit" class="w-full btn-primary">
-                        Send Message
+                    <div>
+                        <label for="contact-captcha" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Captcha: What is {{ $this->captchaLeft }} + {{ $this->captchaRight }}?</label>
+                        <input id="contact-captcha" type="text" name="captcha" wire:model="captcha" inputmode="numeric" pattern="[0-9]*" required
+                            @class([
+                                'w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-none focus:ring-2',
+                                'border border-white/[0.06] focus:ring-primary-500/30' => ! $errors->has('captcha'),
+                                'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('captcha'),
+                            ])>
+                        @error('captcha')
+                            <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <button type="submit" class="w-full btn-primary disabled:cursor-not-allowed disabled:opacity-70" wire:loading.attr="disabled" wire:target="submit">
+                        <span wire:loading.remove wire:target="submit">Send Message</span>
+                        <span wire:loading wire:target="submit">Sending...</span>
                     </button>
                 </form>
             </div>

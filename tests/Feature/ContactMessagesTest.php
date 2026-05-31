@@ -68,6 +68,39 @@ it('validates required contact submission fields', function () {
     $response->assertSessionHasErrors(['name', 'email', 'message']);
 });
 
+it('sanitizes dangerous contact submission input before storing', function () {
+    $this->post(route('contact.submit'), [
+        'name' => ' <b>Test User</b> ',
+        'email' => ' TEST@EXAMPLE.COM ',
+        'message' => '<script>alert("xss")</script>Hello <b>world</b>',
+    ])->assertRedirect(route('home'));
+
+    $this->assertDatabaseHas('contact_messages', [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'message' => 'Hello world',
+        'status' => 'new',
+    ]);
+
+    $storedMessage = ContactMessage::query()->value('message');
+
+    expect($storedMessage)->not->toContain('script')
+        ->and($storedMessage)->not->toContain('alert');
+});
+
+it('rejects contact submission when message becomes empty after sanitization', function () {
+    $response = $this->from(route('home'))->post(route('contact.submit'), [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'message' => '<script>alert("xss")</script>',
+    ]);
+
+    $response->assertRedirect(route('home'));
+    $response->assertSessionHasErrors(['message']);
+
+    expect(ContactMessage::query()->count())->toBe(0);
+});
+
 it('allows admin message status updates from admin viewer page', function () {
     User::factory()->adminAccess('admin-id', 'admin-token')->create();
     $contactMessage = ContactMessage::factory()->create(['status' => 'new']);

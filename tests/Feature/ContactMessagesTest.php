@@ -5,6 +5,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
+use Spatie\Honeypot\Exceptions\SpamException;
+use Spatie\Honeypot\SpamProtection;
 
 uses(RefreshDatabase::class);
 
@@ -37,6 +39,7 @@ it('stores a submitted contact message with new status', function () {
 
 it('submits the contact form through the livewire component', function () {
     session()->put(validCaptchaSession());
+    config(['honeypot.amount_of_seconds' => -10]);
 
     Livewire::test('contact')
         ->set('name', ' <b>Test User</b> ')
@@ -106,6 +109,7 @@ it('validates required contact submission fields', function () {
 
 it('validates required fields through the livewire contact form', function () {
     session()->put(validCaptchaSession());
+    config(['honeypot.amount_of_seconds' => -10]);
 
     Livewire::test('contact')
         ->set('email', 'invalid-email')
@@ -167,6 +171,7 @@ it('rejects contact submission with an incorrect captcha answer', function () {
 
 it('shows a livewire validation error when the captcha answer is incorrect', function () {
     session()->put(validCaptchaSession());
+    config(['honeypot.amount_of_seconds' => -10]);
 
     Livewire::test('contact')
         ->set('name', 'Test User')
@@ -218,6 +223,39 @@ it('rejects contact submission when captcha challenge is missing', function () {
 
     $response->assertRedirect(route('home'));
     $response->assertSessionHasErrors('captcha');
+
+    expect(ContactMessage::query()->count())->toBe(0);
+});
+
+it('silently fakes success when spam is detected', function () {
+    session()->put(validCaptchaSession());
+
+    $this->mock(SpamProtection::class)
+        ->shouldReceive('check')
+        ->andThrow(SpamException::class);
+
+    Livewire::test('contact')
+        ->set('name', 'Spammer')
+        ->set('email', 'spam@example.com')
+        ->set('message', 'Buy cheap stuff')
+        ->set('captcha', '7')
+        ->call('submit')
+        ->assertSet('successMessage', 'Message sent successfully!');
+
+    expect(ContactMessage::query()->count())->toBe(0);
+});
+
+it('silently fakes success when the form is submitted too quickly', function () {
+    session()->put(validCaptchaSession());
+    config(['honeypot.amount_of_seconds' => 3600]);
+
+    Livewire::test('contact')
+        ->set('name', 'Spammer')
+        ->set('email', 'spam@example.com')
+        ->set('message', 'Buy cheap stuff')
+        ->set('captcha', '7')
+        ->call('submit')
+        ->assertSet('successMessage', 'Message sent successfully!');
 
     expect(ContactMessage::query()->count())->toBe(0);
 });

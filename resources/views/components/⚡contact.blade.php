@@ -3,6 +3,9 @@
 use App\Models\ContactMessage;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Spatie\Honeypot\Exceptions\SpamException;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\SpamProtection;
 
 new class extends Component {
     private const MAX_MESSAGE_LENGTH = 5000;
@@ -22,6 +25,8 @@ new class extends Component {
 
     public int $captchaRight = 0;
 
+    public HoneypotData $honeypotData;
+
     public ?string $successMessage = null;
 
     public function mount(): void
@@ -32,10 +37,21 @@ new class extends Component {
         $this->captcha = (string) old('captcha', $this->captcha);
 
         $this->syncCaptchaChallenge();
+        $this->honeypotData = new HoneypotData();
     }
 
     public function submit(): void
     {
+        try {
+            app(SpamProtection::class)->check($this->honeypotData->toArray());
+        } catch (SpamException) {
+            $this->reset(['name', 'email', 'message', 'captcha']);
+            $this->honeypotData = new HoneypotData();
+            $this->successMessage = 'Message sent successfully!';
+
+            return;
+        }
+
         $this->successMessage = null;
         $this->resetValidation();
 
@@ -59,6 +75,7 @@ new class extends Component {
         ]);
 
         $this->reset(['name', 'email', 'message', 'captcha']);
+        $this->honeypotData = new HoneypotData();
         $this->successMessage = 'Message sent successfully!';
 
         $this->syncCaptchaChallenge();
@@ -305,6 +322,7 @@ new class extends Component {
                             <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
                         @enderror
                     </div>
+                    <x-honeypot livewire-model="honeypotData" />
                     <button type="submit" class="w-full btn-primary disabled:cursor-not-allowed disabled:opacity-70" wire:loading.attr="disabled" wire:target="submit">
                         <span wire:loading.remove wire:target="submit">Send Message</span>
                         <span wire:loading wire:target="submit">Sending...</span>

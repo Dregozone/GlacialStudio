@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ContactMessage;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\Honeypot\Exceptions\SpamException;
@@ -20,6 +21,8 @@ new class extends Component {
     public string $message = '';
 
     public string $captcha = '';
+
+    public string $cfTurnstileResponse = '';
 
     public int $captchaLeft = 0;
 
@@ -55,6 +58,26 @@ new class extends Component {
         $this->successMessage = null;
         $this->resetValidation();
 
+        if (empty($this->cfTurnstileResponse)) {
+            $this->addError('cfTurnstileResponse', 'Please complete the security check.');
+
+            return;
+        }
+
+        $turnstileResult = Http::asForm()->timeout(10)->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+            'secret' => config('services.turnstyle.secret_key'),
+            'response' => $this->cfTurnstileResponse,
+            'remoteip' => request()->ip(),
+        ]);
+
+        if (! $turnstileResult->successful() || ! $turnstileResult->json('success')) {
+            $this->cfTurnstileResponse = '';
+            $this->dispatch('turnstile-reset');
+            $this->addError('cfTurnstileResponse', 'Security check failed. Please try again.');
+
+            return;
+        }
+
         $this->name = Str::squish($this->sanitizeInput($this->name));
         $this->email = Str::lower($this->sanitizeInput($this->email));
         $this->message = $this->sanitizeInput($this->message);
@@ -74,9 +97,10 @@ new class extends Component {
             self::CAPTCHA_ANSWER_SESSION_KEY,
         ]);
 
-        $this->reset(['name', 'email', 'message', 'captcha']);
+        $this->reset(['name', 'email', 'message', 'captcha', 'cfTurnstileResponse']);
         $this->honeypotData = new HoneypotData();
         $this->successMessage = 'Message sent successfully!';
+        $this->dispatch('turnstile-reset');
 
         $this->syncCaptchaChallenge();
     }
@@ -322,6 +346,23 @@ new class extends Component {
                             <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div>
+                        <div wire:ignore>
+                            <div
+                                id="cf-turnstile-contact"
+                                class="cf-turnstile"
+                                data-sitekey="{{ config('services.turnstyle.site_key') }}"
+                                data-theme="dark"
+                                data-size="flexible"
+                                data-callback="onTurnstileSuccess"
+                                data-expired-callback="onTurnstileExpired"
+                                data-error-callback="onTurnstileError"
+                            ></div>
+                        </div>
+                        @error('cfTurnstileResponse')
+                            <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
+                        @enderror
+                    </div>
                     <x-honeypot livewire-model="honeypotData" />
                     <button type="submit" class="w-full btn-primary disabled:cursor-not-allowed disabled:opacity-70" wire:loading.attr="disabled" wire:target="submit">
                         <span wire:loading.remove wire:target="submit">Send Message</span>
@@ -332,3 +373,23 @@ new class extends Component {
         </div>
     </div>
 </section>
+
+@script
+<script>
+    window.onTurnstileSuccess = function (token) {
+        $wire.cfTurnstileResponse = token;
+    };
+    window.onTurnstileExpired = function () {
+        $wire.cfTurnstileResponse = '';
+    };
+    window.onTurnstileError = function () {
+        $wire.cfTurnstileResponse = '';
+    };
+
+    $wire.on('turnstile-reset', () => {
+        if (typeof turnstile !== 'undefined') {
+            turnstile.reset('#cf-turnstile-contact');
+        }
+    });
+</script>
+@endscript

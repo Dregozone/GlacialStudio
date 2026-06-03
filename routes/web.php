@@ -14,7 +14,7 @@ Route::get('/my-ip', function () {
     return view('pages.my-ip', ['ip' => request()->ip()]);
 })->name('my-ip');
 
-Route::post('/contact', [FormController::class, 'submit'])->name('contact.submit')->middleware(ProtectAgainstSpam::class);
+Route::post('/contact', [FormController::class, 'submit'])->name('contact.submit')->middleware([ProtectAgainstSpam::class, 'throttle:10,1']);
 
 Route::get('/admin/messages/{identifier}/{token}', [AdminMessageController::class, 'index'])->name('admin.messages.index');
 Route::patch('/admin/messages/{identifier}/{token}/{contactMessage}', [AdminMessageController::class, 'update'])->name('admin.messages.update');

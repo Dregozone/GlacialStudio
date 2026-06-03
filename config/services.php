@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'turnstyle' => [
+        'site_key' => env('TURNSTYLE_SITE_KEY'),
+        'secret_key' => env('TURNSTYLE_SECRET_KEY'),
+    ],
+
 ];

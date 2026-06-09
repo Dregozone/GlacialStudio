@@ -4,27 +4,25 @@ use App\Models\ContactMessage;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Livewire\Livewire;
 use Spatie\Honeypot\Exceptions\SpamException;
 use Spatie\Honeypot\SpamProtection;
 
 uses(RefreshDatabase::class);
 
-function validCaptchaSession(): array
+function fakeTurnstileSuccess(): void
 {
-    return [
-        'contact_captcha_left' => 3,
-        'contact_captcha_right' => 4,
-        'contact_captcha_answer' => 7,
-    ];
+    Http::fake([
+        'https://challenges.cloudflare.com/turnstile/v0/siteverify' => Http::response(['success' => true], 200),
+    ]);
 }
 
 it('stores a submitted contact message with new status', function () {
-    $response = $this->withSession(validCaptchaSession())->post(route('contact.submit'), [
+    $response = $this->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello from a feature test',
-        'captcha' => '7',
     ]);
 
     $response->assertRedirect(route('home'));
@@ -38,19 +36,19 @@ it('stores a submitted contact message with new status', function () {
 });
 
 it('submits the contact form through the livewire component', function () {
-    session()->put(validCaptchaSession());
+    fakeTurnstileSuccess();
     config(['honeypot.amount_of_seconds' => -10]);
 
     Livewire::test('contact')
         ->set('name', ' <b>Test User</b> ')
         ->set('email', ' TEST@EXAMPLE.COM ')
         ->set('message', '<script>alert("xss")</script>Hello <b>world</b>')
-        ->set('captcha', '7')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
         ->assertSet('name', '')
         ->assertSet('email', '')
         ->assertSet('message', '')
-        ->assertSet('captcha', '')
+        ->assertSet('cfTurnstileResponse', '')
         ->assertSet('successMessage', 'Message sent successfully!')
         ->assertSee('Message sent successfully!');
 
@@ -96,36 +94,35 @@ it('returns messages json for admin credentials', function () {
 });
 
 it('validates required contact submission fields', function () {
-    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->from(route('home'))->post(route('contact.submit'), [
         'name' => '',
         'email' => 'invalid-email',
         'message' => '',
-        'captcha' => '',
     ]);
 
     $response->assertRedirect(route('home'));
-    $response->assertSessionHasErrors(['name', 'email', 'message', 'captcha']);
+    $response->assertSessionHasErrors(['name', 'email', 'message']);
 });
 
 it('validates required fields through the livewire contact form', function () {
-    session()->put(validCaptchaSession());
+    fakeTurnstileSuccess();
     config(['honeypot.amount_of_seconds' => -10]);
 
     Livewire::test('contact')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->set('email', 'invalid-email')
         ->call('submit')
-        ->assertHasErrors(['name', 'email', 'message', 'captcha'])
+        ->assertHasErrors(['name', 'email', 'message'])
         ->assertSee('Please correct the highlighted fields and try again.');
 
     expect(ContactMessage::query()->count())->toBe(0);
 });
 
 it('sanitizes dangerous contact submission input before storing', function () {
-    $this->withSession(validCaptchaSession())->post(route('contact.submit'), [
+    $this->post(route('contact.submit'), [
         'name' => ' <b>Test User</b> ',
         'email' => ' TEST@EXAMPLE.COM ',
         'message' => '<script>alert("xss")</script>Hello <b>world</b>',
-        'captcha' => '7',
     ])->assertRedirect(route('home'));
 
     $this->assertDatabaseHas('contact_messages', [
@@ -142,11 +139,10 @@ it('sanitizes dangerous contact submission input before storing', function () {
 });
 
 it('rejects contact submission when message becomes empty after sanitization', function () {
-    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
+    $response = $this->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => '<script>alert("xss")</script>',
-        'captcha' => '7',
     ]);
 
     $response->assertRedirect(route('home'));
@@ -155,34 +151,33 @@ it('rejects contact submission when message becomes empty after sanitization', f
     expect(ContactMessage::query()->count())->toBe(0);
 });
 
-it('rejects contact submission with an incorrect captcha answer', function () {
-    $response = $this->withSession(validCaptchaSession())->from(route('home'))->post(route('contact.submit'), [
+it('accepts contact submissions without a manual captcha field', function () {
+    $response = $this->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello there',
-        'captcha' => '99',
     ]);
 
     $response->assertRedirect(route('home'));
-    $response->assertSessionHasErrors('captcha');
+    $response->assertSessionHasNoErrors();
 
-    expect(ContactMessage::query()->count())->toBe(0);
+    expect(ContactMessage::query()->count())->toBe(1);
 });
 
-it('shows a livewire validation error when the captcha answer is incorrect', function () {
-    session()->put(validCaptchaSession());
+it('submits through livewire without requiring a manual captcha answer', function () {
+    fakeTurnstileSuccess();
     config(['honeypot.amount_of_seconds' => -10]);
 
     Livewire::test('contact')
         ->set('name', 'Test User')
         ->set('email', 'test@example.com')
         ->set('message', 'Hello there')
-        ->set('captcha', '99')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
-        ->assertHasErrors(['captcha'])
-        ->assertSee('Captcha answer is incorrect.');
+        ->assertHasNoErrors()
+        ->assertSet('successMessage', 'Message sent successfully!');
 
-    expect(ContactMessage::query()->count())->toBe(0);
+    expect(ContactMessage::query()->count())->toBe(1);
 });
 
 it('allows admin message status updates from admin viewer page', function () {
@@ -213,23 +208,7 @@ it('allows admin to hard-delete contact messages from admin viewer page', functi
     $this->assertModelMissing($contactMessage);
 });
 
-it('rejects contact submission when captcha challenge is missing', function () {
-    $response = $this->from(route('home'))->post(route('contact.submit'), [
-        'name' => 'Test User',
-        'email' => 'test@example.com',
-        'message' => 'Hello there',
-        'captcha' => '7',
-    ]);
-
-    $response->assertRedirect(route('home'));
-    $response->assertSessionHasErrors('captcha');
-
-    expect(ContactMessage::query()->count())->toBe(0);
-});
-
 it('silently fakes success when spam is detected', function () {
-    session()->put(validCaptchaSession());
-
     $this->mock(SpamProtection::class)
         ->shouldReceive('check')
         ->andThrow(SpamException::class);
@@ -238,7 +217,6 @@ it('silently fakes success when spam is detected', function () {
         ->set('name', 'Spammer')
         ->set('email', 'spam@example.com')
         ->set('message', 'Buy cheap stuff')
-        ->set('captcha', '7')
         ->call('submit')
         ->assertSet('successMessage', 'Message sent successfully!');
 
@@ -246,14 +224,12 @@ it('silently fakes success when spam is detected', function () {
 });
 
 it('silently fakes success when the form is submitted too quickly', function () {
-    session()->put(validCaptchaSession());
     config(['honeypot.amount_of_seconds' => 3600]);
 
     Livewire::test('contact')
         ->set('name', 'Spammer')
         ->set('email', 'spam@example.com')
         ->set('message', 'Buy cheap stuff')
-        ->set('captcha', '7')
         ->call('submit')
         ->assertSet('successMessage', 'Message sent successfully!');
 

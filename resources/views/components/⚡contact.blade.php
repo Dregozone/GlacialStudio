@@ -10,9 +10,6 @@ use Spatie\Honeypot\SpamProtection;
 
 new class extends Component {
     private const MAX_MESSAGE_LENGTH = 5000;
-    private const CAPTCHA_LEFT_SESSION_KEY = 'contact_captcha_left';
-    private const CAPTCHA_RIGHT_SESSION_KEY = 'contact_captcha_right';
-    private const CAPTCHA_ANSWER_SESSION_KEY = 'contact_captcha_answer';
 
     public string $name = '';
 
@@ -20,13 +17,7 @@ new class extends Component {
 
     public string $message = '';
 
-    public string $captcha = '';
-
     public string $cfTurnstileResponse = '';
-
-    public int $captchaLeft = 0;
-
-    public int $captchaRight = 0;
 
     public HoneypotData $honeypotData;
 
@@ -37,9 +28,6 @@ new class extends Component {
         $this->name = (string) old('name', $this->name);
         $this->email = (string) old('email', $this->email);
         $this->message = (string) old('message', $this->message);
-        $this->captcha = (string) old('captcha', $this->captcha);
-
-        $this->syncCaptchaChallenge();
         $this->honeypotData = new HoneypotData();
     }
 
@@ -48,7 +36,7 @@ new class extends Component {
         try {
             app(SpamProtection::class)->check($this->honeypotData->toArray());
         } catch (SpamException) {
-            $this->reset(['name', 'email', 'message', 'captcha']);
+            $this->reset(['name', 'email', 'message']);
             $this->honeypotData = new HoneypotData();
             $this->successMessage = 'Message sent successfully!';
 
@@ -81,7 +69,6 @@ new class extends Component {
         $this->name = Str::squish($this->sanitizeInput($this->name));
         $this->email = Str::lower($this->sanitizeInput($this->email));
         $this->message = $this->sanitizeInput($this->message);
-        $this->captcha = trim($this->captcha);
 
         $validated = $this->validate();
 
@@ -91,18 +78,10 @@ new class extends Component {
             'message' => $validated['message'],
         ]);
 
-        session()->forget([
-            self::CAPTCHA_LEFT_SESSION_KEY,
-            self::CAPTCHA_RIGHT_SESSION_KEY,
-            self::CAPTCHA_ANSWER_SESSION_KEY,
-        ]);
-
-        $this->reset(['name', 'email', 'message', 'captcha', 'cfTurnstileResponse']);
+        $this->reset(['name', 'email', 'message', 'cfTurnstileResponse']);
         $this->honeypotData = new HoneypotData();
         $this->successMessage = 'Message sent successfully!';
         $this->dispatch('turnstile-reset');
-
-        $this->syncCaptchaChallenge();
     }
 
     protected function rules(): array
@@ -111,42 +90,7 @@ new class extends Component {
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'message' => ['required', 'string', 'max:'.self::MAX_MESSAGE_LENGTH],
-            'captcha' => [
-                'required',
-                'integer',
-                function (string $attribute, mixed $value, \Closure $fail): void {
-                    if (! session()->has(self::CAPTCHA_ANSWER_SESSION_KEY)) {
-                        $this->syncCaptchaChallenge();
-                        $fail('Captcha challenge expired. Please try again.');
-
-                        return;
-                    }
-
-                    $expectedAnswer = (int) session()->get(self::CAPTCHA_ANSWER_SESSION_KEY);
-
-                    if ((int) $value !== $expectedAnswer) {
-                        $fail('Captcha answer is incorrect.');
-                    }
-                },
-            ],
         ];
-    }
-
-    private function syncCaptchaChallenge(): void
-    {
-        $this->captchaLeft = (int) session(self::CAPTCHA_LEFT_SESSION_KEY, 0);
-        $this->captchaRight = (int) session(self::CAPTCHA_RIGHT_SESSION_KEY, 0);
-
-        if ($this->captchaLeft < 1 || $this->captchaLeft > 9 || $this->captchaRight < 1 || $this->captchaRight > 9) {
-            $this->captchaLeft = random_int(1, 9);
-            $this->captchaRight = random_int(1, 9);
-        }
-
-        session([
-            self::CAPTCHA_LEFT_SESSION_KEY => $this->captchaLeft,
-            self::CAPTCHA_RIGHT_SESSION_KEY => $this->captchaRight,
-            self::CAPTCHA_ANSWER_SESSION_KEY => $this->captchaLeft + $this->captchaRight,
-        ]);
     }
 
     private function sanitizeInput(mixed $value): string
@@ -286,11 +230,7 @@ new class extends Component {
                     </div>
                 @endif
 
-                @if ($errors->count() === 1 && $errors->has('captcha'))
-                    <div class="mb-4 rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-200" role="alert">
-                        {{ $errors->first('captcha') }}
-                    </div>
-                @elseif ($errors->any())
+                @if ($errors->any())
                     <div class="mb-4 rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-200" role="alert">
                         Please correct the highlighted fields and try again.
                     </div>
@@ -331,18 +271,6 @@ new class extends Component {
                             'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('message'),
                         ])></textarea>
                         @error('message')
-                            <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div>
-                        <label for="contact-captcha" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Captcha: What is {{ $this->captchaLeft }} + {{ $this->captchaRight }}?</label>
-                        <input id="contact-captcha" type="text" name="captcha" wire:model="captcha" inputmode="numeric" pattern="[0-9]*" required
-                            @class([
-                                'w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-none focus:ring-2',
-                                'border border-white/[0.06] focus:ring-primary-500/30' => ! $errors->has('captcha'),
-                                'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('captcha'),
-                            ])>
-                        @error('captcha')
                             <p class="mt-2 text-xs text-rose-300">{{ $message }}</p>
                         @enderror
                     </div>

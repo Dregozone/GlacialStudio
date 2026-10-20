@@ -141,6 +141,69 @@
         </div>
     </div>
 
+    {{-- Honeypot link: hidden from people, disallowed in robots.txt. Whatever follows it is flagged as a bot for the day. --}}
+    <a href="{{ route('visits.honeypot') }}" rel="nofollow" class="hidden" aria-hidden="true" tabindex="-1">Archive</a>
+
+    {{-- Anonymous visit count: one beacon per page, sent only once the page is visible and someone has interacted with it or stayed 5 seconds. --}}
+    <script>
+        (() => {
+            if (navigator.webdriver === true || typeof navigator.sendBeacon !== 'function') {
+                return;
+            }
+
+            const interactionEvents = ['scroll', 'pointermove', 'touchstart', 'keydown'];
+            let hasInteracted = false;
+            let hasStayed = false;
+            let isSent = false;
+            let stayTimer = null;
+
+            const send = () => {
+                if (isSent || document.visibilityState !== 'visible' || !(hasInteracted || hasStayed)) {
+                    return;
+                }
+
+                isSent = true;
+                clearTimeout(stayTimer);
+                interactionEvents.forEach((event) => window.removeEventListener(event, onInteraction));
+                document.removeEventListener('visibilitychange', onVisibilityChange);
+
+                navigator.sendBeacon(@js(route('visits.beacon', absolute: false)), new URLSearchParams({
+                    token: @js(\App\Models\PageVisit::issueBeaconToken()),
+                    path: window.location.pathname,
+                }));
+            };
+
+            const onInteraction = () => {
+                hasInteracted = true;
+                send();
+            };
+
+            const startStayTimer = () => {
+                clearTimeout(stayTimer);
+                stayTimer = setTimeout(() => {
+                    hasStayed = true;
+                    send();
+                }, 5000);
+            };
+
+            const onVisibilityChange = () => {
+                if (document.visibilityState === 'visible') {
+                    startStayTimer();
+                    send();
+                } else {
+                    clearTimeout(stayTimer);
+                }
+            };
+
+            interactionEvents.forEach((event) => window.addEventListener(event, onInteraction, { passive: true }));
+            document.addEventListener('visibilitychange', onVisibilityChange);
+
+            if (document.visibilityState === 'visible') {
+                startStayTimer();
+            }
+        })();
+    </script>
+
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     @livewireScripts
 </body>

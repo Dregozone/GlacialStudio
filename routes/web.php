@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminMessageController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\VisitBeaconController;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
@@ -13,6 +15,9 @@ Route::livewire('/terms-of-service', 'pages::terms-of-service')->name('terms-of-
 Route::get('/my-ip', function () {
     return view('pages.my-ip', ['ip' => request()->ip()]);
 })->name('my-ip');
+
+Route::post('/v', [VisitBeaconController::class, 'store'])->name('visits.beacon')->withoutMiddleware(ValidateCsrfToken::class);
+Route::get('/archive', [VisitBeaconController::class, 'honeypot'])->name('visits.honeypot');
 
 Route::post('/contact', [FormController::class, 'submit'])->name('contact.submit')->middleware([ProtectAgainstSpam::class, 'throttle:10,1']);
 

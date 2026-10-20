@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
+use App\Services\TurnstileVerifier;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -10,7 +12,7 @@ class FormController extends Controller
 {
     private const MAX_MESSAGE_LENGTH = 5000;
 
-    public function submit(Request $request)
+    public function submit(Request $request, TurnstileVerifier $turnstileVerifier): RedirectResponse
     {
         $sanitizeInput = static function (mixed $value): string {
             if (! is_string($value)) {
@@ -32,6 +34,12 @@ class FormController extends Controller
             'email' => Str::lower($sanitizeInput($request->input('email'))),
             'message' => $sanitizeInput($request->input('message')),
         ]);
+
+        if (! $turnstileVerifier->verify($request->input('cf-turnstile-response'), 'contact', $request->ip())) {
+            return back()
+                ->withInput($request->only(['name', 'email', 'message']))
+                ->withErrors(['cfTurnstileResponse' => 'Security check failed. Please try again.']);
+        }
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],

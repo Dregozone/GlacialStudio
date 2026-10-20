@@ -4,6 +4,7 @@ use App\Mail\ContactMessageBurstSummary;
 use App\Mail\NewContactMessage;
 use App\Models\BannedIpAddress;
 use App\Models\ContactMessage;
+use App\Services\TurnstileVerifier;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -15,6 +16,9 @@ uses(RefreshDatabase::class);
 beforeEach(function () {
     config(['services.admin_notify.email' => 'admin@example.com']);
     Mail::fake();
+    Http::fake([
+        TurnstileVerifier::SITEVERIFY_URL => Http::response(['success' => true, 'action' => 'contact', 'hostname' => 'localhost'], 200),
+    ]);
 });
 
 it('emails the admin after a contact message is submitted', function () {
@@ -22,6 +26,7 @@ it('emails the admin after a contact message is submitted', function () {
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello from a feature test',
+        'cf-turnstile-response' => 'test-turnstile-token',
     ])->assertRedirect(route('home'));
 
     Mail::assertSent(NewContactMessage::class, function (NewContactMessage $mail) {
@@ -32,9 +37,6 @@ it('emails the admin after a contact message is submitted', function () {
 
 it('emails the admin after a contact message is submitted through livewire', function () {
     $this->withoutDefer();
-    Http::fake([
-        'https://challenges.cloudflare.com/turnstile/v0/siteverify' => Http::response(['success' => true], 200),
-    ]);
     config(['honeypot.amount_of_seconds' => -10]);
 
     Livewire::test('contact')
@@ -84,6 +86,7 @@ it('does not email the admin about messages from a banned ip address', function 
             'name' => 'Spammer',
             'email' => 'spam@example.com',
             'message' => 'Buy cheap stuff',
+            'cf-turnstile-response' => 'test-turnstile-token',
         ])->assertRedirect(route('home'));
 
     expect(ContactMessage::query()->count())->toBe(1);
@@ -124,6 +127,7 @@ it('still saves the contact message when the email fails to send', function () {
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello there',
+        'cf-turnstile-response' => 'test-turnstile-token',
     ])->assertRedirect(route('home'))
         ->assertSessionHas('success', 'Message sent successfully!');
 

@@ -32,6 +32,10 @@ return [
         'email' => env('ADMIN_NOTIFY_EMAIL'),
     ],
 
+    'stats' => [
+        'token' => env('STATS_TOKEN'),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),

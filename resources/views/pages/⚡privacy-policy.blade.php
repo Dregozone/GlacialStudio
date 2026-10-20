@@ -164,6 +164,21 @@ new #[Layout('layouts::app')] #[Title('Privacy Policy - Glacial Studio')] class 
                     </section>
 
                     <section>
+                        <h2 class="text-2xl font-display font-semibold text-white mb-4">Anonymous Visit Counting</h2>
+                        <p class="text-glacier-400 leading-relaxed mb-4">
+                            We count how many people visit our website each day, without cookies and without storing
+                            your IP address. When you view a page, your IP address and browser type are combined with a
+                            random value that changes every day and turned into a one-way code. Only that code, the page
+                            you viewed and the date are kept.
+                        </p>
+                        <p class="text-glacier-400 leading-relaxed">
+                            The daily random value is thrown away at the end of each day, so the code can't be traced
+                            back to you or used to recognise you on another day. Individual visit records are deleted
+                            after 90 days; only the daily totals are kept.
+                        </p>
+                    </section>
+
+                    <section>
                         <h2 class="text-2xl font-display font-semibold text-white mb-4">Third-Party Links</h2>
                         <p class="text-glacier-400 leading-relaxed">
                             Our website may contain links to third-party websites. We are not responsible for the

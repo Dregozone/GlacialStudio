@@ -2,6 +2,7 @@
 
 use App\Models\ContactMessage;
 use App\Models\User;
+use App\Services\TurnstileVerifier;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -11,18 +12,28 @@ use Spatie\Honeypot\SpamProtection;
 
 uses(RefreshDatabase::class);
 
-function fakeTurnstileSuccess(): void
+/**
+ * @param  array<string, mixed>  $overrides
+ */
+function fakeTurnstileSuccess(array $overrides = []): void
 {
     Http::fake([
-        'https://challenges.cloudflare.com/turnstile/v0/siteverify' => Http::response(['success' => true], 200),
+        TurnstileVerifier::SITEVERIFY_URL => Http::response([
+            'success' => true,
+            'action' => 'contact',
+            'hostname' => 'localhost',
+            ...$overrides,
+        ], 200),
     ]);
 }
 
 it('stores a submitted contact message with new status', function () {
+    fakeTurnstileSuccess();
     $response = $this->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => 'Hello from a feature test',
+        'cf-turnstile-response' => 'test-turnstile-token',
     ]);
 
     $response->assertRedirect(route('home'));
@@ -94,10 +105,12 @@ it('returns messages json for admin credentials', function () {
 });
 
 it('validates required contact submission fields', function () {
+    fakeTurnstileSuccess();
     $response = $this->from(route('home'))->post(route('contact.submit'), [
         'name' => '',
         'email' => 'invalid-email',
         'message' => '',
+        'cf-turnstile-response' => 'test-turnstile-token',
     ]);
 
     $response->assertRedirect(route('home'));
@@ -119,10 +132,12 @@ it('validates required fields through the livewire contact form', function () {
 });
 
 it('sanitizes dangerous contact submission input before storing', function () {
+    fakeTurnstileSuccess();
     $this->post(route('contact.submit'), [
         'name' => ' <b>Test User</b> ',
         'email' => ' TEST@EXAMPLE.COM ',
         'message' => '<script>alert("xss")</script>Hello <b>world</b>',
+        'cf-turnstile-response' => 'test-turnstile-token',
     ])->assertRedirect(route('home'));
 
     $this->assertDatabaseHas('contact_messages', [
@@ -139,10 +154,12 @@ it('sanitizes dangerous contact submission input before storing', function () {
 });
 
 it('rejects contact submission when message becomes empty after sanitization', function () {
+    fakeTurnstileSuccess();
     $response = $this->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'message' => '<script>alert("xss")</script>',
+        'cf-turnstile-response' => 'test-turnstile-token',
     ]);
 
     $response->assertRedirect(route('home'));
@@ -152,6 +169,21 @@ it('rejects contact submission when message becomes empty after sanitization', f
 });
 
 it('accepts contact submissions without a manual captcha field', function () {
+    fakeTurnstileSuccess();
+    $response = $this->from(route('home'))->post(route('contact.submit'), [
+        'name' => 'Test User',
+        'email' => 'test@example.com',
+        'message' => 'Hello there',
+        'cf-turnstile-response' => 'test-turnstile-token',
+    ]);
+
+    $response->assertRedirect(route('home'));
+    $response->assertSessionHasNoErrors();
+
+    expect(ContactMessage::query()->count())->toBe(1);
+});
+
+it('rejects controller submissions without a turnstile token', function () {
     $response = $this->from(route('home'))->post(route('contact.submit'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
@@ -159,9 +191,45 @@ it('accepts contact submissions without a manual captcha field', function () {
     ]);
 
     $response->assertRedirect(route('home'));
-    $response->assertSessionHasNoErrors();
+    $response->assertSessionHasErrors(['cfTurnstileResponse']);
 
-    expect(ContactMessage::query()->count())->toBe(1);
+    expect(ContactMessage::query()->count())->toBe(0);
+    Http::assertNothingSent();
+});
+
+it('rejects livewire submissions when turnstile verification fails', function (array $siteverifyResponse) {
+    fakeTurnstileSuccess($siteverifyResponse);
+    config(['honeypot.amount_of_seconds' => -10]);
+
+    Livewire::test('contact')
+        ->set('name', 'Test User')
+        ->set('email', 'test@example.com')
+        ->set('message', 'Hello there')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
+        ->call('submit')
+        ->assertHasErrors(['cfTurnstileResponse'])
+        ->assertSet('cfTurnstileResponse', '')
+        ->assertDispatched('turnstile-reset');
+
+    expect(ContactMessage::query()->count())->toBe(0);
+})->with([
+    'unsuccessful' => [['success' => false, 'error-codes' => ['invalid-input-response']]],
+    'wrong action' => [['action' => 'login']],
+    'wrong hostname' => [['hostname' => 'evil.example.com']],
+]);
+
+it('requires a turnstile token for livewire submissions', function () {
+    config(['honeypot.amount_of_seconds' => -10]);
+
+    Livewire::test('contact')
+        ->set('name', 'Test User')
+        ->set('email', 'test@example.com')
+        ->set('message', 'Hello there')
+        ->call('submit')
+        ->assertHasErrors(['cfTurnstileResponse']);
+
+    expect(ContactMessage::query()->count())->toBe(0);
+    Http::assertNothingSent();
 });
 
 it('submits through livewire without requiring a manual captcha answer', function () {

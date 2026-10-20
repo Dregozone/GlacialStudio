@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\ContactMessage;
-use Illuminate\Support\Facades\Http;
+use App\Services\TurnstileVerifier;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\Honeypot\Exceptions\SpamException;
@@ -52,13 +52,7 @@ new class extends Component {
             return;
         }
 
-        $turnstileResult = Http::asForm()->timeout(10)->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
-            'secret' => config('services.turnstyle.secret_key'),
-            'response' => $this->cfTurnstileResponse,
-            'remoteip' => request()->ip(),
-        ]);
-
-        if (! $turnstileResult->successful() || ! $turnstileResult->json('success')) {
+        if (! app(TurnstileVerifier::class)->verify($this->cfTurnstileResponse, 'contact', request()->ip())) {
             $this->cfTurnstileResponse = '';
             $this->dispatch('turnstile-reset');
             $this->addError('cfTurnstileResponse', 'Security check failed. Please try again.');
@@ -280,6 +274,7 @@ new class extends Component {
                                 id="cf-turnstile-contact"
                                 class="cf-turnstile"
                                 data-sitekey="{{ config('services.turnstyle.site_key') }}"
+                                data-action="contact"
                                 data-theme="dark"
                                 data-size="flexible"
                                 data-callback="onTurnstileSuccess"

@@ -7,7 +7,7 @@ new class extends Component {};
 ?>
 
 <section
-    class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-glacier-950"
+    class="relative min-h-dvh flex items-center justify-center overflow-hidden bg-glacier-950"
     aria-label="Welcome to Glacial Studio"
 >
     {{-- Aurora Gradient Background --}}
@@ -24,7 +24,7 @@ new class extends Component {};
     {{-- Decorative Rings --}}
     <div class="absolute top-1/2 right-[10%] -translate-y-1/2 hidden lg:block" aria-hidden="true">
         <div class="relative w-48 h-48">
-            <div class="absolute inset-0 border border-white/[0.04] rounded-full animate-spin-slow"></div>
+            <div class="absolute inset-0 border border-white/4 rounded-full animate-spin-slow"></div>
             <div class="absolute inset-6 border border-primary-400/10 rounded-full animate-spin-slower" style="animation-direction: reverse;"></div>
             <div class="absolute inset-12 border border-cyan-400/5 rounded-full animate-spin-slow"></div>
             <div class="absolute inset-0 flex items-center justify-center">
@@ -37,7 +37,7 @@ new class extends Component {};
     @foreach (['success', 'fail', 'msg'] as $type)
         @if (Session::has($type))
             <div id="{{ $type }}" @class([
-                'fixed top-24 left-1/2 transform -translate-x-1/2 z-[60] px-6 py-3 rounded-xl backdrop-blur-xl text-white font-medium shadow-xl border',
+                'fixed top-24 left-1/2 transform -translate-x-1/2 z-60 px-6 py-3 rounded-xl backdrop-blur-xl text-white font-medium shadow-xl border',
                 'bg-green-500/90 border-green-400/30' => $type == 'success',
                 'bg-red-500/90 border-red-400/30' => $type == 'fail',
                 'bg-primary-500/90 border-primary-400/30' => $type == 'msg',
@@ -62,7 +62,7 @@ new class extends Component {};
             {{-- Tagline Badge --}}
             <div
                 :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
-                class="transition-all duration-700 delay-[100ms]"
+                class="transition-all duration-700 delay-100"
             >
                 <span class="section-label">
                     <span class="w-2 h-2 rounded-full bg-primary-400 animate-pulse" aria-hidden="true"></span>
@@ -97,7 +97,7 @@ new class extends Component {};
                 >
                     <span
                         class="gradient-text inline-block transition-all duration-500"
-                        :class="transitioning ? 'opacity-0 translate-y-3 blur-sm' : 'opacity-100 translate-y-0 blur-0'"
+                        :class="transitioning ? 'opacity-0 translate-y-3 blur-xs' : 'opacity-100 translate-y-0 blur-0'"
                         x-text="currentWord"
                         aria-live="polite"
                     >Extraordinary</span>
@@ -165,7 +165,7 @@ new class extends Component {};
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" aria-hidden="true">
         <button
             @click="document.getElementById('about').scrollIntoView({behavior: 'smooth'})"
-            class="flex flex-col items-center space-y-2 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 rounded-full p-2"
+            class="flex flex-col items-center space-y-2 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-primary-400 rounded-full p-2"
             aria-label="Scroll to learn more"
         >
             <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">

@@ -8,7 +8,7 @@ new class extends Component {};
 
 <section class="section-padding relative overflow-hidden bg-glacier-900/50" aria-label="Our Impact">
     {{-- Top gradient line --}}
-    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden="true"></div>
 
     {{-- Background orbs --}}
     <div class="absolute top-10 right-10 w-80 h-80 bg-primary-500/5 rounded-full blur-3xl" aria-hidden="true"></div>
@@ -95,7 +95,7 @@ new class extends Component {};
             >
                 <div class="glass-card p-8 sm:p-10">
                     <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-primary-500/20 to-cyan-400/20 rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3">
+                        <div class="w-20 h-20 bg-linear-to-br from-primary-500/20 to-cyan-400/20 rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3">
                             <i class="fa-solid fa-heart text-3xl text-primary-400" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-2xl font-display font-semibold text-white mb-4">
@@ -126,5 +126,5 @@ new class extends Component {};
     </div>
 
     {{-- Bottom gradient line --}}
-    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" aria-hidden="true"></div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-white/6 to-transparent" aria-hidden="true"></div>
 </section>

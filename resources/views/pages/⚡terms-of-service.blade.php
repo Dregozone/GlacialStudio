@@ -212,7 +212,7 @@ new #[Layout('layouts::app')] #[Title('Terms of Service - Glacial Studio')] clas
                         <p class="text-glacier-400 leading-relaxed mb-4">
                             If you have any questions about these Terms of Service, please contact us:
                         </p>
-                        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl p-6">
+                        <div class="bg-white/3 border border-white/6 rounded-xl p-6">
                             <p class="text-white font-medium">Glacial Studio</p>
                             <p class="text-glacier-400 text-sm">Email: info@glacialstudio.com</p>
                             <p class="text-glacier-400 text-sm">Location: United Kingdom</p>

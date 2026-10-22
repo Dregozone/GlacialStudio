@@ -8,7 +8,7 @@ new class extends Component {};
 
 <section class="section-padding scroll-mt-20 lg:scroll-mt-24 bg-glacier-900/50 relative overflow-hidden" id="services">
     {{-- Top gradient line --}}
-    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-primary-500/20 to-transparent" aria-hidden="true"></div>
 
     <div class="container-custom" x-data="{ shown: false }" x-intersect.once="shown = true">
         {{-- Section Header --}}
@@ -51,12 +51,12 @@ new class extends Component {};
                         <img src="{{ asset('img/' . $service->img) }}"
                             class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
                             alt="{{ $service->name }}" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-glacier-950/80 via-glacier-950/20 to-transparent"></div>
+                        <div class="absolute inset-0 bg-linear-to-t from-glacier-950/80 via-glacier-950/20 to-transparent"></div>
 
                         {{-- Popular Badge --}}
                         @if ($service->default)
                             <div class="absolute top-4 left-4">
-                                <span class="inline-flex items-center gap-1.5 bg-primary-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                <span class="inline-flex items-center gap-1.5 bg-primary-500/90 backdrop-blur-xs text-white px-3 py-1 rounded-full text-xs font-semibold">
                                     <i class="fa-solid fa-star text-[8px]" aria-hidden="true"></i>
                                     Popular
                                 </span>
@@ -147,5 +147,5 @@ new class extends Component {};
     </div>
 
     {{-- Bottom gradient line --}}
-    <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" aria-hidden="true"></div>
+    <div class="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-white/6 to-transparent" aria-hidden="true"></div>
 </section>

@@ -8,7 +8,7 @@ new class extends Component {};
 
 <section id="about" class="section-padding bg-glacier-950 relative overflow-hidden">
     {{-- Subtle gradient accent --}}
-    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-white/6 to-transparent" aria-hidden="true"></div>
 
     <div class="container-custom" x-data="{ shown: false }" x-intersect.once="shown = true">
         {{-- Section Header --}}
@@ -50,13 +50,13 @@ new class extends Component {};
                         class="w-full h-80 sm:h-96 object-cover"
                         alt="Anders Learmonth - Founder of Glacial Studio" />
                     {{-- Image overlay gradient --}}
-                    <div class="absolute inset-0 bg-gradient-to-t from-glacier-950/60 via-transparent to-transparent"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-glacier-950/60 via-transparent to-transparent"></div>
                 </div>
                 {{-- Decorative elements --}}
                 <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary-500/10 rounded-full blur-2xl" aria-hidden="true"></div>
                 <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-cyan-400/10 rounded-full blur-2xl" aria-hidden="true"></div>
                 {{-- Border accent --}}
-                <div class="absolute inset-0 rounded-2xl border border-white/[0.06] z-20 pointer-events-none"></div>
+                <div class="absolute inset-0 rounded-2xl border border-white/6 z-20 pointer-events-none"></div>
             </div>
 
             {{-- Content Section --}}
@@ -98,7 +98,7 @@ new class extends Component {};
                         </p>
 
                         <footer class="flex items-center space-x-4">
-                            <div class="w-11 h-11 bg-gradient-to-br from-primary-500 to-cyan-400 rounded-full flex items-center justify-center">
+                            <div class="w-11 h-11 bg-linear-to-br from-primary-500 to-cyan-400 rounded-full flex items-center justify-center">
                                 <span class="text-white font-bold text-base">A</span>
                             </div>
                             <div>

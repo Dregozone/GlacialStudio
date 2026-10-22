@@ -8,7 +8,7 @@ new class extends Component {};
 
 <footer class="bg-glacier-950 text-white relative" role="contentinfo">
     {{-- Top gradient line --}}
-    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-white/6 to-transparent" aria-hidden="true"></div>
 
     <div class="container-custom py-16 lg:py-20">
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
@@ -26,7 +26,7 @@ new class extends Component {};
                 </p>
                 <div class="flex space-x-3">
                     <a href="https://www.facebook.com/GlacialStudioWebSolutions" target="_blank" rel="noreferrer"
-                        class="w-10 h-10 bg-white/5 border border-white/[0.06] rounded-xl flex items-center justify-center hover:bg-primary-500/20 hover:border-primary-500/30 hover:text-primary-400 transition-all duration-300 text-glacier-400"
+                        class="w-10 h-10 bg-white/5 border border-white/6 rounded-xl flex items-center justify-center hover:bg-primary-500/20 hover:border-primary-500/30 hover:text-primary-400 transition-all duration-300 text-glacier-400"
                         aria-label="Follow us on Facebook">
                         <i class="fa-brands fa-facebook text-sm" aria-hidden="true"></i>
                     </a>
@@ -81,7 +81,7 @@ new class extends Component {};
         </div>
 
         {{-- Bottom Section --}}
-        <div class="border-t border-white/[0.06] pt-8">
+        <div class="border-t border-white/6 pt-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="text-glacier-500 text-xs">
                     © {{ date('Y') }} Glacial Studio. All rights reserved.

@@ -50,9 +50,9 @@ new class extends Component {};
                             <img src="{{ asset('img/' . $product->img) }}"
                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
                                 alt="{{ $product->name }}" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-glacier-950/80 via-glacier-950/20 to-transparent"></div>
+                            <div class="absolute inset-0 bg-linear-to-t from-glacier-950/80 via-glacier-950/20 to-transparent"></div>
                         @else
-                            <div class="w-full h-48 bg-gradient-to-br from-primary-500/10 to-cyan-500/10 flex items-center justify-center">
+                            <div class="w-full h-48 bg-linear-to-br from-primary-500/10 to-cyan-500/10 flex items-center justify-center">
                                 <div class="text-center">
                                     <i class="fa-solid fa-code text-3xl text-primary-400/60 mb-2" aria-hidden="true"></i>
                                     <p class="text-primary-400/80 font-medium text-sm">Coming Soon</p>
@@ -63,12 +63,12 @@ new class extends Component {};
                         {{-- Status Badge --}}
                         <div class="absolute top-4 right-4">
                             @if (file_exists('img/' . $product->img) && $product->link)
-                                <span class="inline-flex items-center gap-1.5 bg-green-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                <span class="inline-flex items-center gap-1.5 bg-green-500/90 backdrop-blur-xs text-white px-3 py-1 rounded-full text-xs font-semibold">
                                     <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse" aria-hidden="true"></span>
                                     Live
                                 </span>
                             @else
-                                <span class="bg-amber-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                <span class="bg-amber-500/90 backdrop-blur-xs text-white px-3 py-1 rounded-full text-xs font-semibold">
                                     Coming Soon
                                 </span>
                             @endif
@@ -133,7 +133,7 @@ new class extends Component {};
                                 </a>
                             @else
                                 <button disabled
-                                    class="w-full px-5 py-3 bg-white/5 text-glacier-500 rounded-xl border border-white/[0.06] cursor-not-allowed text-sm font-medium" aria-disabled="true">
+                                    class="w-full px-5 py-3 bg-white/5 text-glacier-500 rounded-xl border border-white/6 cursor-not-allowed text-sm font-medium" aria-disabled="true">
                                     <i class="fa-solid fa-clock mr-2" aria-hidden="true"></i>
                                     Coming Soon
                                 </button>

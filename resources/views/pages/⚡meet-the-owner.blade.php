@@ -72,7 +72,7 @@ new #[Layout('layouts::app')] #[Title('Meet the Owner - Glacial Studio')] class 
                             class="w-full h-80 sm:h-96 object-cover"
                             loading="lazy"
                             alt="Anders Learmonth - Founder of Glacial Studio" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-glacier-950/60 via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-linear-to-t from-glacier-950/60 via-transparent to-transparent"></div>
                     </div>
                     <div class="mt-5 px-1">
                         <p class="text-white font-semibold">Anders Learmonth</p>

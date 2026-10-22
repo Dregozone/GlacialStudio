@@ -8,7 +8,7 @@ new class extends Component {};
 
 <section class="section-padding scroll-mt-20 lg:scroll-mt-24 bg-glacier-950 relative overflow-hidden" id="pastWork">
     {{-- Top gradient line --}}
-    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" aria-hidden="true"></div>
+    <div class="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-white/6 to-transparent" aria-hidden="true"></div>
 
     <div class="container-custom" x-data="{ shown: false }" x-intersect.once="shown = true">
         {{-- Section Header --}}
@@ -50,11 +50,11 @@ new class extends Component {};
                         <img src="{{ asset("img/{$pastWork->img}") }}"
                             alt="{{ $pastWork->name }} - Project screenshot"
                             class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-glacier-950/80 via-glacier-950/20 to-transparent"></div>
+                        <div class="absolute inset-0 bg-linear-to-t from-glacier-950/80 via-glacier-950/20 to-transparent"></div>
 
                         {{-- Project Badge --}}
                         <div class="absolute top-4 left-4">
-                            <span class="inline-flex items-center gap-1.5 bg-primary-500/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                            <span class="inline-flex items-center gap-1.5 bg-primary-500/90 backdrop-blur-xs text-white px-3 py-1 rounded-full text-xs font-semibold">
                                 <i class="fa-solid fa-check text-[8px]" aria-hidden="true"></i>
                                 Completed
                             </span>
@@ -72,7 +72,7 @@ new class extends Component {};
                         </p>
 
                         {{-- Project Stats --}}
-                        <div class="mt-5 pt-4 border-t border-white/[0.06]">
+                        <div class="mt-5 pt-4 border-t border-white/6">
                             <div class="flex items-center justify-between text-sm text-glacier-500">
                                 <span class="flex items-center gap-2">
                                     <i class="fa-solid fa-calendar text-glacier-600 text-xs" aria-hidden="true"></i>

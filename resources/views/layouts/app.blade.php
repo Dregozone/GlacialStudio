@@ -42,7 +42,7 @@
 
     {{-- Skip to content (accessibility) --}}
     <a href="#main-content"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">
+        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-200 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">
         Skip to main content
     </a>
 
@@ -63,7 +63,7 @@
     >
         <button
             @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-            class="group flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white shadow-lg hover:bg-primary-600 hover:border-primary-500 hover:shadow-primary-500/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-glacier-900"
+            class="group flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white shadow-lg hover:bg-primary-600 hover:border-primary-500 hover:shadow-primary-500/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-glacier-900"
             aria-label="Scroll to top"
         >
             <i class="fa-solid fa-arrow-up text-sm group-hover:scale-110 transition-transform duration-200"></i>
@@ -104,7 +104,7 @@
         x-transition:leave-start="translate-y-0 opacity-100"
         x-transition:leave-end="translate-y-full opacity-0"
         x-cloak
-        class="fixed bottom-0 inset-x-0 z-[100] p-4 sm:p-6"
+        class="fixed bottom-0 inset-x-0 z-100 p-4 sm:p-6"
         role="dialog"
         aria-label="Cookie consent"
         aria-describedby="cookie-description"
@@ -126,13 +126,13 @@
                 <div class="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
                     <button
                         @click="essentialOnly()"
-                        class="px-5 py-2.5 text-sm text-glacier-300 hover:text-white border border-white/10 rounded-xl hover:border-white/25 hover:bg-white/5 transition-all duration-200 font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                        class="px-5 py-2.5 text-sm text-glacier-300 hover:text-white border border-white/10 rounded-xl hover:border-white/25 hover:bg-white/5 transition-all duration-200 font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white/50"
                     >
                         Essential Only
                     </button>
                     <button
                         @click="accept()"
-                        class="px-5 py-2.5 text-sm text-white bg-primary-600 hover:bg-primary-500 rounded-xl shadow-lg shadow-primary-600/25 transition-all duration-200 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400"
+                        class="px-5 py-2.5 text-sm text-white bg-primary-600 hover:bg-primary-500 rounded-xl shadow-lg shadow-primary-600/25 transition-all duration-200 font-semibold focus:outline-hidden focus-visible:ring-2 focus-visible:ring-primary-400"
                     >
                         Accept All
                     </button>

@@ -141,7 +141,7 @@ new class extends Component {
             :class="shown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
             style="transition: all 0.7s ease; transition-delay: 300ms;"
         >
-            <div class="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-6 text-center backdrop-blur-sm" role="status">
+            <div class="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-6 text-center backdrop-blur-xs" role="status">
                 <div class="flex items-center justify-center mb-4">
                     <div class="w-11 h-11 bg-amber-500/20 rounded-xl flex items-center justify-center mr-3">
                         <i class="fa-solid fa-clock text-amber-400" aria-hidden="true"></i>
@@ -237,8 +237,8 @@ new class extends Component {
                         <label for="contact-name" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Name</label>
                         <input id="contact-name" type="text" name="name" wire:model="name" required
                             @class([
-                                'w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-none focus:ring-2',
-                                'border border-white/[0.06] focus:ring-primary-500/30' => ! $errors->has('name'),
+                                'w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-hidden focus:ring-2',
+                                'border border-white/6 focus:ring-primary-500/30' => ! $errors->has('name'),
                                 'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('name'),
                             ])>
                         @error('name')
@@ -249,8 +249,8 @@ new class extends Component {
                         <label for="contact-email" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Email</label>
                         <input id="contact-email" type="email" name="email" wire:model="email" required
                             @class([
-                                'w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-none focus:ring-2',
-                                'border border-white/[0.06] focus:ring-primary-500/30' => ! $errors->has('email'),
+                                'w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-hidden focus:ring-2',
+                                'border border-white/6 focus:ring-primary-500/30' => ! $errors->has('email'),
                                 'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('email'),
                             ])>
                         @error('email')
@@ -260,8 +260,8 @@ new class extends Component {
                     <div>
                         <label for="contact-message" class="block text-xs font-medium text-glacier-300 mb-2 font-sans">Message</label>
                         <textarea id="contact-message" rows="3" name="message" wire:model="message" required @class([
-                            'w-full resize-none rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-none focus:ring-2',
-                            'border border-white/[0.06] focus:ring-primary-500/30' => ! $errors->has('message'),
+                            'w-full resize-none rounded-xl bg-white/5 px-4 py-3 text-sm text-white placeholder-glacier-500 focus:outline-hidden focus:ring-2',
+                            'border border-white/6 focus:ring-primary-500/30' => ! $errors->has('message'),
                             'border border-rose-500/40 focus:ring-rose-500/30' => $errors->has('message'),
                         ])></textarea>
                         @error('message')

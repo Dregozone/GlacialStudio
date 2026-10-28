@@ -183,7 +183,7 @@ new class extends Component {
                         </div>
                         <div>
                             <h4 class="font-semibold text-white text-sm font-sans">Email</h4>
-                            <p class="text-glacier-400 text-sm">aclearmonth@gmail.com</p>
+                            <p class="text-glacier-400 text-sm">hello@glacialstudio.co.uk</p>
                         </div>
                     </div>
 

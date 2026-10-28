@@ -7,8 +7,8 @@ use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
-Route::livewire('/', 'pages::home')->name('home')->middleware('bot.protection');
-Route::livewire('/meet-the-owner', 'pages::meet-the-owner')->name('meet-the-owner')->middleware('bot.protection');
+Route::livewire('/', 'pages::home')->name('home');
+Route::livewire('/meet-the-owner', 'pages::meet-the-owner')->name('meet-the-owner');
 Route::livewire('/privacy-policy', 'pages::privacy-policy')->name('privacy-policy');
 Route::livewire('/terms-of-service', 'pages::terms-of-service')->name('terms-of-service');
 

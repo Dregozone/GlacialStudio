@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         RateLimiter::for('web-routes', function (Request $request) {
-            return Limit::perMinute(20)->by($request->ip())
+            return Limit::perMinute(60)->by($request->ip())
                 ->response(function (Request $request, array $headers) {
                     return response('Too many requests. Please slow down.', 429, $headers);
                 });

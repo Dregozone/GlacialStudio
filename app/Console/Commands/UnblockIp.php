@@ -2,14 +2,13 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Middleware\BotProtection;
 use App\Models\BannedIpAddress;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 
 #[Signature('unblock {ip : The IP address to unblock}')]
-#[Description('Remove an IP address from the banned list and clear the ban cache.')]
+#[Description('Remove an IP address from the banned list.')]
 class UnblockIp extends Command
 {
     /**
@@ -27,9 +26,7 @@ class UnblockIp extends Command
             return self::FAILURE;
         }
 
-        BotProtection::flushBannedCache();
-
-        $this->info("IP address [{$ip}] has been unblocked and the ban cache has been cleared.");
+        $this->info("IP address [{$ip}] has been unblocked.");
 
         return self::SUCCESS;
     }

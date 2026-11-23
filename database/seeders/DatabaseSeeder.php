@@ -3,11 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Service;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\ProductSeeder;
-use Database\Seeders\PastWorkSeeder;
 
 class DatabaseSeeder extends Seeder
 {
